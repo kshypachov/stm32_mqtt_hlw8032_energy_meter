@@ -1,0 +1,8 @@
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:142:5:set_device_id	24	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:153:5:set_device_conf_ip	16	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:163:5:set_home_assistant_prefix	16	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:170:5:get_config_topik_string	32	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:205:5:get_config_payload_string	104	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:257:5:convert_bint_to_JSON_statusIO	88	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:286:5:generate_comand_topik_for_subscrabe	16	static
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:294:5:generate_status_topik	16	static

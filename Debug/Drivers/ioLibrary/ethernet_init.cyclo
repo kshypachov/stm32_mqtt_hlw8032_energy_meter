@@ -1,0 +1,15 @@
+../Drivers/ioLibrary/ethernet_init.c:23:6:proto_reset	1
+../Drivers/ioLibrary/ethernet_init.c:25:6:proto_delay_func	2
+../Drivers/ioLibrary/ethernet_init.c:34:6:w5500_lib_init	1
+../Drivers/ioLibrary/ethernet_init.c:39:6:network_init	1
+../Drivers/ioLibrary/ethernet_init.c:50:6:Callback_IPConflict	1
+../Drivers/ioLibrary/ethernet_init.c:55:6:Callback_IPAssigned	1
+../Drivers/ioLibrary/ethernet_init.c:71:6:dhcp_rutine	3
+../Drivers/ioLibrary/ethernet_init.c:96:5:link_status	2
+../Drivers/ioLibrary/ethernet_init.c:103:5:link_duplex	1
+../Drivers/ioLibrary/ethernet_init.c:109:5:link_speed	1
+../Drivers/ioLibrary/ethernet_init.c:115:5:assigned_ip	1
+../Drivers/ioLibrary/ethernet_init.c:119:6:set_ip_aasigned	1
+../Drivers/ioLibrary/ethernet_init.c:123:5:w5500_init	3
+../Drivers/ioLibrary/ethernet_init.c:145:6:w5500_delay_cb	2
+../Drivers/ioLibrary/ethernet_init.c:154:6:w5500_reset_cb	3

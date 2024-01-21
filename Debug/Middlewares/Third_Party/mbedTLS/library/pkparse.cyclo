@@ -1,0 +1,10 @@
+../Middlewares/Third_Party/mbedTLS/include/mbedtls/pk.h:170:36:mbedtls_pk_ec	1
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:189:12:pk_get_ecparams	5
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:462:12:pk_use_ecparams	6
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:501:12:pk_get_ecpubkey	2
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:583:12:pk_get_pk_alg	7
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:616:5:mbedtls_pk_parse_subpubkey	13
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:811:12:pk_parse_key_sec1_der	21
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:949:12:pk_parse_key_pkcs8_unencrypted_der	13
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:1164:5:mbedtls_pk_parse_key	16
+../Middlewares/Third_Party/mbedTLS/library/pkparse.c:1377:5:mbedtls_pk_parse_public_key	5

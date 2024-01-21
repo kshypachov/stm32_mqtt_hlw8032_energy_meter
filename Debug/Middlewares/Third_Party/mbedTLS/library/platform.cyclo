@@ -1,0 +1,2 @@
+../Middlewares/Third_Party/mbedTLS/library/platform.c:332:5:mbedtls_platform_setup	1
+../Middlewares/Third_Party/mbedTLS/library/platform.c:342:6:mbedtls_platform_teardown	1

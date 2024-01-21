@@ -1,0 +1,7 @@
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:13:6:Eth_reset_on	1
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:17:6:Eth_reset_off	1
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:21:6:Eth_spi_select	1
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:25:6:Eth_spi_deselect	1
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:29:6:Reg_eth_spi	1
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:33:6:Eth_spi_send_byte	1
+../Drivers/ioLibrary/ll_SPI_enh_abstractions.c:37:9:Eth_spi_resv_byte	1

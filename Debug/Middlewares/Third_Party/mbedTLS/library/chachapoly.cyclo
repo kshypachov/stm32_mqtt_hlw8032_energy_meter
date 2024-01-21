@@ -1,0 +1,12 @@
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:63:12:chachapoly_pad_aad	2
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:83:12:chachapoly_pad_ciphertext	2
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:97:6:mbedtls_chachapoly_init	1
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:109:6:mbedtls_chachapoly_free	2
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:122:5:mbedtls_chachapoly_setkey	1
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:134:5:mbedtls_chachapoly_starts	4
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:174:5:mbedtls_chachapoly_update_aad	2
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:189:5:mbedtls_chachapoly_update	10
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:240:5:mbedtls_chachapoly_finish	7
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:297:12:chachapoly_crypt_and_tag	4
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:327:5:mbedtls_chachapoly_encrypt_and_tag	1
+../Middlewares/Third_Party/mbedTLS/library/chachapoly.c:348:5:mbedtls_chachapoly_auth_decrypt	4

@@ -1,0 +1,5 @@
+../Drivers/SPI_flash/src/SPI_flash_io.c:14:6:SPI_flash_set	8	static
+../Drivers/SPI_flash/src/SPI_flash_io.c:18:9:SPI_flash_read_byte	16	static
+../Drivers/SPI_flash/src/SPI_flash_io.c:26:6:SPI_flash_send_byte	16	static
+../Drivers/SPI_flash/src/SPI_flash_io.c:32:6:SPI_flash_select	8	static
+../Drivers/SPI_flash/src/SPI_flash_io.c:36:6:SPI_flash_deselect	8	static

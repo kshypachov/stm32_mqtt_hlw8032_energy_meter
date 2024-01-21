@@ -1,0 +1,4 @@
+../Middlewares/Third_Party/mbedTLS/library/xtea.c:69:6:mbedtls_xtea_init	1
+../Middlewares/Third_Party/mbedTLS/library/xtea.c:74:6:mbedtls_xtea_free	2
+../Middlewares/Third_Party/mbedTLS/library/xtea.c:85:6:mbedtls_xtea_setup	2
+../Middlewares/Third_Party/mbedTLS/library/xtea.c:100:5:mbedtls_xtea_crypt_ecb	4

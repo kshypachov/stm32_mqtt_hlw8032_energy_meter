@@ -1,0 +1,3 @@
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSubscribeClient.c:28:5:MQTTSerialize_subscribeLength	2
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSubscribeClient.c:50:5:MQTTSerialize_subscribe	3
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSubscribeClient.c:100:5:MQTTDeserialize_suback	5

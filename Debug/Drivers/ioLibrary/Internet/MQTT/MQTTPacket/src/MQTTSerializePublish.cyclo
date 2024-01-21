@@ -1,0 +1,6 @@
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.c:31:5:MQTTSerialize_publishLength	2
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.c:55:5:MQTTSerialize_publish	3
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.c:104:5:MQTTSerialize_ack	2
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.c:137:5:MQTTSerialize_puback	1
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.c:151:5:MQTTSerialize_pubrel	1
+../Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.c:164:5:MQTTSerialize_pubcomp	1

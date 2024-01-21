@@ -1,0 +1,8 @@
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:61:29:mbedtls_nist_kw_safer_memcmp	2
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:108:6:mbedtls_nist_kw_init	1
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:113:5:mbedtls_nist_kw_setkey	6
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:162:6:mbedtls_nist_kw_free	1
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:172:13:calc_a_xor_t	2
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:185:5:mbedtls_nist_kw_wrap	16
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:326:12:unwrap	6
+../Middlewares/Third_Party/mbedTLS/library/nist_kw.c:387:5:mbedtls_nist_kw_unwrap	20

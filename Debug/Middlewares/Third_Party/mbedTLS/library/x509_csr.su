@@ -1,0 +1,6 @@
+../Middlewares/Third_Party/mbedTLS/library/x509_csr.c:67:12:x509_csr_get_version	32	static
+../Middlewares/Third_Party/mbedTLS/library/x509_csr.c:90:5:mbedtls_x509_csr_parse_der	72	static
+../Middlewares/Third_Party/mbedTLS/library/x509_csr.c:262:5:mbedtls_x509_csr_parse	64	static
+../Middlewares/Third_Party/mbedTLS/library/x509_csr.c:336:5:mbedtls_x509_csr_info	64	static
+../Middlewares/Third_Party/mbedTLS/library/x509_csr.c:379:6:mbedtls_x509_csr_init	16	static
+../Middlewares/Third_Party/mbedTLS/library/x509_csr.c:387:6:mbedtls_x509_csr_free	24	static

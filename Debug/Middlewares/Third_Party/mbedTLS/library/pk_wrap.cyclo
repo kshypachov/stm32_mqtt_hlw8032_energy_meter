@@ -1,0 +1,14 @@
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:214:12:eckey_can_do	4
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:221:15:eckey_get_bitlen	1
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:237:12:eckey_verify_wrap	2
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:254:12:eckey_sign_wrap	2
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:379:12:eckey_check_pair	1
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:385:14:eckey_alloc_wrap	2
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:395:13:eckey_free_wrap	1
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:401:13:eckey_debug	1
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:439:12:eckeydh_can_do	3
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:470:12:ecdsa_can_do	1
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:475:12:ecdsa_verify_wrap	2
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:491:12:ecdsa_sign_wrap	1
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:534:14:ecdsa_alloc_wrap	2
+../Middlewares/Third_Party/mbedTLS/library/pk_wrap.c:544:13:ecdsa_free_wrap	1

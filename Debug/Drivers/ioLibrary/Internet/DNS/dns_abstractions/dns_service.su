@@ -1,0 +1,9 @@
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:14:6:Prototype	4	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:24:6:dns_service_reg_cb_mutex	16	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:31:6:dns_service_reg_cb_net_ready	16	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:37:5:dns_service_init	16	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:45:6:dns_service_set_dns_ip	16	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:49:8:dns_service_resolve_name	24	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:67:6:dns_service_increment_second	8	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:71:5:validate_number	16	static
+../Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.c:81:6:isValidIPv4	32	static

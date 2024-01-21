@@ -1,0 +1,4 @@
+../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_1.c:69:7:pvPortMalloc	5
+../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_1.c:121:6:vPortFree	2
+../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_1.c:133:6:vPortInitialiseBlocks	1
+../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_1.c:140:8:xPortGetFreeHeapSize	1
