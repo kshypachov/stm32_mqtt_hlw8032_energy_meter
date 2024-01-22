@@ -21,6 +21,6 @@
 ../Core/Src/main.c:827:6:vMaintEthTask	7
 ../Core/Src/main.c:975:6:vDebugMemUsage	1
 ../Core/Src/main.c:1004:6:httpServ	4
-../Core/Src/main.c:1055:6:vMQTT_Task	8
-../Core/Src/main.c:1101:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:1118:6:Error_Handler	1
+../Core/Src/main.c:1055:6:vMQTT_Task	10
+../Core/Src/main.c:1115:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:1132:6:Error_Handler	1

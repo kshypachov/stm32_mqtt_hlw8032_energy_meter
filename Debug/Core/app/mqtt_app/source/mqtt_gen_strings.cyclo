@@ -1,8 +1,9 @@
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:142:5:set_device_id	2
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:153:5:set_device_conf_ip	2
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:163:5:set_home_assistant_prefix	1
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:170:5:get_config_topik_string	8
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:205:5:get_config_payload_string	8
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:257:5:convert_bint_to_JSON_statusIO	4
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:286:5:generate_comand_topik_for_subscrabe	1
-../Core/app/mqtt_app/source/mqtt_gen_strings.c:294:5:generate_status_topik	3
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:145:5:set_device_id	2
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:156:5:set_device_conf_ip	2
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:166:5:set_home_assistant_prefix	1
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:173:5:get_config_topik_string	8
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:208:5:get_config_payload_string	8
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:260:5:convert_bint_to_JSON_statusIO	4
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:289:5:generate_comand_topik_for_subscrabe	1
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:296:5:generate_status_topik	3
+../Core/app/mqtt_app/source/mqtt_gen_strings.c:319:6:generate_key_value_JSON	1

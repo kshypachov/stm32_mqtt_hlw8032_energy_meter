@@ -212,6 +212,7 @@ int8_t mqtt_client_reg_dev_on_home_assist(void){
 		mqtt_message.id++;
 
 //------------------------------REG CURRENT SENSOR-------------------------------
+		return 0;
 		/*
 	//-------------------Register Inputs on Home assistant---------------------------
 	for(i = 1; i <= NUMBER_INPUT_TOPIKS; i++){ //config input topiks

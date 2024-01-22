@@ -1057,8 +1057,12 @@ void vMQTT_Task(void *argument)
   /* USER CODE BEGIN vMQTT_Task */
 	Ethernet_info_struct	EthernetInfo;
 	MQTT_cred_struct		MQTT_cred;
+	PowerSensStruct			PowerData;
 	char 					MQTT_SEND_BUF[MQTT_BUF_LEN];
 	char 					MQTT_READ_BUF[MQTT_BUF_LEN];
+	char					topik_name[TOPIK_MAX_LEN];
+	char					topik_payload[128];
+
 
 	init_mqtt_call_mutex(SocketMutexTake, SocketMutexRelease);
   /* Infinite loop */
@@ -1082,7 +1086,17 @@ void vMQTT_Task(void *argument)
 		if (mqtt_client_connect() < 0) continue;
 		if (mqtt_client_reg_dev_on_home_assist() != 0) continue;
 
+		generate_status_topik(topik_name, 0);
 		while (1){
+			xQueuePeek(PowerDataQHandle, &PowerData, 0);
+			generate_key_value_JSON(topik_payload, dev_class_energy, PowerData.KWatt_h);
+			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
+
+			generate_key_value_JSON(topik_payload, dev_class_voltage, PowerData.Voltage);
+			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
+
+
+			//generate_status_topik
 			osDelay(1000);
 		}
 		osDelay(1000);

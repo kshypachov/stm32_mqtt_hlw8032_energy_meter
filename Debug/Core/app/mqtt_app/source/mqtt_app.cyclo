@@ -5,8 +5,8 @@
 ../Core/app/mqtt_app/source/mqtt_app.c:83:5:mqtt_client_init	3
 ../Core/app/mqtt_app/source/mqtt_app.c:127:9:mqtt_client_connect	3
 ../Core/app/mqtt_app/source/mqtt_app.c:148:8:mqtt_client_reg_dev_on_home_assist	6
-../Core/app/mqtt_app/source/mqtt_app.c:247:8:mqtt_subscrabe_on_topik	1
-../Core/app/mqtt_app/source/mqtt_app.c:257:8:send_data_to_topik	1
-../Core/app/mqtt_app/source/mqtt_app.c:269:8:mqtt_handler	1
-../Core/app/mqtt_app/source/mqtt_app.c:279:6:mqtt_1ms_tik	1
-../Core/app/mqtt_app/source/mqtt_app.c:283:6:mqtt_message_resieve	4
+../Core/app/mqtt_app/source/mqtt_app.c:248:8:mqtt_subscrabe_on_topik	1
+../Core/app/mqtt_app/source/mqtt_app.c:258:8:send_data_to_topik	1
+../Core/app/mqtt_app/source/mqtt_app.c:270:8:mqtt_handler	1
+../Core/app/mqtt_app/source/mqtt_app.c:280:6:mqtt_1ms_tik	1
+../Core/app/mqtt_app/source/mqtt_app.c:284:6:mqtt_message_resieve	4

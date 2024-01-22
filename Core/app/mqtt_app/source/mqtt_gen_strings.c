@@ -11,7 +11,10 @@
 #include "stdio.h"
 
 
-#define universal_config_topik_temlate	"%s/%s/%s_%s/%s/config"
+#define key_value_float_JSON_template	"{\"%s\" : \"%.2f\"}"
+
+#define universal_config_topik_template	"%s/%s/%s_%s/%s/config"
+#define universal_status_topik_template	"%s_%s/%s"
 #define component_sensor				"sensor"
 
 #define dev_system						"zalupa"
@@ -180,19 +183,19 @@ int get_config_topik_string (char * buff, uint8_t topik_type, uint8_t obj_number
 			break;
 
 		case ENERGY_SENSOR_TOPIK:
-			sprintf(buff, universal_config_topik_temlate, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_energy);
+			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_energy);
 			break;
 		case VOLTAGE_SENSOR_TOPIK:
-			sprintf(buff, universal_config_topik_temlate, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_voltage);
+			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_voltage);
 			break;
 		case POWER_SENSOR_TOPIK:
-			sprintf(buff, universal_config_topik_temlate, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_power);
+			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_power);
 			break;
 		case POWER_FACTOR_SENSOR_TOPIK:
-			sprintf(buff, universal_config_topik_temlate, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_power_factor);
+			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_power_factor);
 			break;
 		case CURRENT_SENSOR_TOPIK:
-			sprintf(buff, universal_config_topik_temlate, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_current);
+			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_current);
 			break;
 		default:
 			break;
@@ -283,17 +286,18 @@ int convert_bint_to_JSON_statusIO(char * buff, uint8_t bin, char * on_mess, char
 	return 0;
 }
 
-int generate_comand_topik_for_subscrabe(unsigned char * buff, uint8_t obj_number){
+int generate_comand_topik_for_subscrabe(char * buff, uint8_t obj_number){
 
 	strcpy(buff, "\0");
 	sprintf(buff, subscr_topik_template, unical_id, obj_number);
 	return 0;
-
 }
 
 int generate_status_topik(char * buff, mqtt_topik_string_type topik_type){
 
 	strcpy(buff, "\0");
+
+	sprintf(buff, universal_status_topik_template, dev_system, unical_id, state_topik);
 
 	switch (topik_type) {
 		case INPUT_TOPIK:
@@ -310,4 +314,9 @@ int generate_status_topik(char * buff, mqtt_topik_string_type topik_type){
 	}
 
 	return 0;
+}
+
+void generate_key_value_JSON(char * buf, char * key, float value){
+
+	sprintf(buf, key_value_float_JSON_template, key, value);
 }
