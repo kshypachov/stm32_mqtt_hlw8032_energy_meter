@@ -56,6 +56,7 @@ enum parameters_type{
 	ModBusTCP 		= 2,
 	PowrData    	= 3,
 	PowrSensSett	= 4,
+	Uptime			= 5,
 };
 
 typedef struct Power_sensor_data_t{
@@ -66,5 +67,8 @@ typedef struct Power_sensor_data_t{
 	float ActivPower;
 	float ApparPower;
 	float PowerFactor;
+	uint32_t test_pulse_counter;
+	uint32_t readed_counter;
+	uint32_t PF_reg;
 } PowerSensStruct;
 #endif /* INC_DATA_TYPES_H_ */

@@ -22,7 +22,9 @@ float PowerFactor(void);
 float GetKWh(void);
 
 
-float GetKWh();
-
+//float GetKWh();
+uint32_t GetTestPulse();
+uint32_t GetCountedPulse();
+uint32_t GetPFReg();
 
 #endif /* HLW8032_INC_HLW8032_H_ */

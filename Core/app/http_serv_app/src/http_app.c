@@ -25,10 +25,12 @@ xQueueHandle HomeAsistant_Q;
 xQueueHandle ModbusTCP_Q;
 xQueueHandle Power_Data_Q;
 xQueueHandle PowerSensSettings_Q;
+xQueueHandle Uptime_Q;
 
 float float_temp;
 
-int part = 0;
+int			part = 0;
+uint32_t	part_offset = 0;
 
 int CharToDec(char c){
     if(c>='0' && c<='9') return c-'0';
@@ -58,6 +60,10 @@ void http_parse_params_init (xQueueHandle xQueue, uint8_t parameters_type){
 	}else if (parameters_type == PowrSensSett){
 		if (xQueue){
 			PowerSensSettings_Q = xQueue;
+		}
+	}else if (parameters_type == Uptime){
+		if (xQueue){
+			Uptime_Q = xQueue;
 		}
 	}
 }
@@ -138,10 +144,10 @@ void param_from_http_to_Q(char * http_resp, const uint8_t parameters_type){
 			buf = (uint8_t *) get_http_param_value( http_resp, "shunt");
 			if (buf ) {						// 5 ��������, ������������ ����� ������ �����
 				sscanf(buf, "%f", &float_temp);							//TODO add validation
-				if (float_temp > 0.0001){ 									//validate value
-				PowShunSett.resistance = float_temp;
-				PowShunSett.save = 1;
-				xQueueOverwrite(PowerSensSettings_Q, (void *)&PowShunSett);
+				if (float_temp > 0){									//validate value
+					PowShunSett.resistance = float_temp;
+					PowShunSett.save = 1;
+					xQueueOverwrite(PowerSensSettings_Q, (void *)&PowShunSett);
 				}
 			}
 			break;
@@ -177,14 +183,13 @@ void param_from_Q_to_JSON(char * buf, const uint8_t parameters_type, uint16_t * 
 			xQueuePeek(PowerSensSettings_Q ,&PowShunSett,0);
 			sprintf(buf, (const char *)template_shunt_sett, PowShunSett.resistance);
 			*len = strlen(buf);
-
 			break;
 		default:
 			break;
 	}
 }
 
-int write_to_file(char * buf, uint16_t * len, char * response){
+int write_to_file(char * buf, uint16_t * len, char * response, char * base_path){
 	char 		tmp_data_buf[TMP_BUFF_FOR_FILE_RECV];
 	char 		filename[MAX_CONTENT_NAME_LEN];
 	char * 		param_value;
@@ -199,12 +204,11 @@ int write_to_file(char * buf, uint16_t * len, char * response){
 	unsigned char recv_digest_bin[17];
 	int i, t ,t2 ,r;
 
-
 	p_len = &parsed_len;
 
 	param_value = get_http_param_value((char *)buf, "filename");
 	if (param_value){
-		strcpy(filename, HTTP_FS_DIR);
+		strcpy(filename, base_path);
 		strncat(filename, param_value, MAX_CONTENT_NAME_LEN-5);
 	}else{
 		strncpy(response, "error", strlen("error")+1);
@@ -286,25 +290,85 @@ int8_t read_all_parameters(uint8_t * buf, uint16_t * len){
 	P_sens_sett_struct	PowShunSett;
 	MQTT_cred_struct	MQTT_params;
 	ModBusTCP_struct	mb_tcp_params;
+	uint32_t			uptime;
 
-	unsigned const char template_data[] = {"{\"voltage\": \"%.2f\", \"current\": \"%.2f\", \"active_power_w\": \"%.2f\", \"apparent_power_w\": \"%.2f\", \"power_factor\": \"%.2f\", \"w_h\": \"%.2f\", \"shunt\": \"%.4f\", \"mb_tcp\": %u, \"mqtt\": %u, \"mqtt_login\": \"%s\", \"mqtt_port\": \"%u\", \"uri\": \"%s\" }"};
+	unsigned const char template_data[] = {"{\"voltage\": \"%.2f\", \"current\": \"%.2f\", \"active_power_w\": \"%.2f\", \"apparent_power_w\": \"%.2f\", \"power_factor\": \"%.2f\", \"kWh\": \"%.2f\", \"shunt\": \"%.8f\", \"mb_tcp\": %u, \"mqtt\": %u, \"mqtt_login\": \"%s\", \"mqtt_port\": \"%u\", \"uri\": \"%s\", \"test_pulse\": \"%u\",  \"readed_pulse\": \"%u\", \"PF_reg\": \"%u\", \"uptime\": \"%u\"}"};
 
 	xQueuePeek(Power_Data_Q,			(void *)&PowerParm,0);
 	xQueuePeek(PowerSensSettings_Q ,	(void *)&PowShunSett,0);
 	xQueuePeek(MQTT_Q ,					(void *)&MQTT_params,0);
 	xQueuePeek(ModbusTCP_Q,				(void *)&mb_tcp_params, 0);
+	xQueuePeek(Uptime_Q,				(void *)&uptime, 0);
 
 
-	sprintf(buf, (const char *)template_data, PowerParm.Voltage, PowerParm.Current, PowerParm.ActivPower, PowerParm.ApparPower, PowerParm.PowerFactor, PowerParm.KWatt_h, PowShunSett.resistance, mb_tcp_params.enable, MQTT_params.enable, MQTT_params.login, MQTT_params.port, MQTT_params.uri);
+	sprintf(buf, (const char *)template_data, PowerParm.Voltage, PowerParm.Current, PowerParm.ActivPower, PowerParm.ApparPower, PowerParm.PowerFactor, PowerParm.KWatt_h, PowShunSett.resistance, mb_tcp_params.enable, MQTT_params.enable, MQTT_params.login, MQTT_params.port, MQTT_params.uri, PowerParm.test_pulse_counter, PowerParm.readed_counter, PowerParm.PF_reg, uptime);
 	*len = strlen(buf);
 
 	return 0 ;
 }
 
+int calculate_md5_file(char * base_path, char * filename, char * buffer, uint16_t * len){
+	unsigned char 			md5sum[17];
+	mbedtls_md5_context 	md5_ctx;
+	uint8_t 				read_buffer[TMP_BUF_FOR_MD5_CALC+1];
+	uint32_t				offset = 0;
+	uint16_t				readed_len;
+	char 					path[64];
+
+	mbedtls_md5_init(&md5_ctx);
+	mbedtls_md5_starts_ret(&md5_ctx);
+
+	strcpy(path, base_path);
+	strncat(path, filename, 20);
+
+	for (;;){
+		memset(&read_buffer, 0, TMP_BUF_FOR_MD5_CALC+1);
+		readed_len = spi_fs_read_file_offset(path, read_buffer, offset, TMP_BUF_FOR_MD5_CALC);
+		if (readed_len < 0){
+			mbedtls_md5_free(&md5_ctx);
+			* len = 0;
+			return -1;
+		}else{
+			if (readed_len == TMP_BUF_FOR_MD5_CALC){
+				mbedtls_md5_update_ret(&md5_ctx, &read_buffer, readed_len);
+				offset += readed_len;
+			}else{
+				mbedtls_md5_update_ret(&md5_ctx, &read_buffer, readed_len);
+				mbedtls_md5_finish_ret(&md5_ctx, &md5sum);
+				mbedtls_md5_free(&md5_ctx);
+				md5sum[16] = '\0';
+				break;
+			}
+		}
+	}
+	sprintf((char *)buffer,"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X", md5sum[0], md5sum[1], md5sum[2], md5sum[3], md5sum[4], md5sum[5], md5sum[6], md5sum[7], md5sum[8], md5sum[9], md5sum[10], md5sum[11], md5sum[12], md5sum[13], md5sum[14], md5sum[15]);
+	//strncpy(buffer, md5sum, 17);
+	* len = 32;
+	return 0;
+}
+
+int activate_firmware(char * buf, uint16_t * len){
+
+	char old_path[60];
+	int err;
+
+	strcpy(old_path, FIRMWARE_FS_DIR);
+	strncat(old_path, "file.bin" , 20);
+
+	err = spi_fs_mv((const char *)old_path, FIRMWARE_FILE);
+
+	if(err >= 0){
+		strcpy(buf, "OK");
+		* len = 2;
+		return 1;
+	}
+
+ 	return 0;
+}
 
 uint8_t http_post_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf, uint16_t * len){
 
-	uint8_t ret;
+	uint8_t ret = HTTP_FAILED;
 	len = 0;
 
 	if(strcmp((const char *)uri_name, "settings_mqtt.cgi") == 0){
@@ -314,7 +378,7 @@ uint8_t http_post_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf
 		param_from_http_to_Q((char *)uri, ModBusTCP);
 		ret = HTTP_OK;
 	}else if (strcmp((const char *)uri_name, "file_upload.cgi") == 0){
-		if (write_to_file((char *)uri, len, buf) < 0 ){
+		if (write_to_file((char *)uri, len, (char *) buf, HTTP_FS_DIR) < 0 ){
 			ret = HTTP_FAILED;
 		}else{
 			ret = HTTP_OK;
@@ -322,6 +386,12 @@ uint8_t http_post_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf
 	}else if (strcmp((const char *)uri_name, "settings_resistance.cgi") == 0){
 		param_from_http_to_Q((char *)uri, PowrSensSett);
 		ret = HTTP_OK;
+	}else if (strcmp((const char *)uri_name, "firmware_upload.cgi") == 0){
+		if (write_to_file((char *)uri, len, (char *) buf, FIRMWARE_FS_DIR) < 0 ){
+			ret = HTTP_FAILED;
+		}else{
+			ret = HTTP_OK;
+		}
 	}
 
 	return ret;
@@ -335,9 +405,9 @@ uint8_t http_get_cgi_processor(uint8_t * uri_name, uint8_t * buf, uint16_t * len
 		param_from_Q_to_JSON((char *)buf, MQTT, len);
 		ret = HTTP_OK;
 	}else if(strcmp((const char *)uri_name, "test.cgi") == 0){
-		strncpy((const char *)buf, "ok", strlen("ok"));
+		strncpy((const char *)buf, "oK", strlen("oK"));
 		ret = HTTP_OK;
-		*len = strlen("ok");
+		*len = strlen("oK");
 	}else if(strcmp((const char *)uri_name, "power.cgi") == 0){
 		param_from_Q_to_JSON((char *)buf, PowrData, len);
 		ret = HTTP_OK;
@@ -346,6 +416,21 @@ uint8_t http_get_cgi_processor(uint8_t * uri_name, uint8_t * buf, uint16_t * len
 		ret = HTTP_OK;
 	}else if(strcmp((const char *)uri_name, "get_all.cgi") == 0){
 		read_all_parameters((char *)buf, len);
+		ret = HTTP_OK;
+	}else if(strcmp((const char *)uri_name, "get_firmware_md5.cgi") == 0){
+		if (calculate_md5_file(FIRMWARE_FS_DIR, "file.bin", buf, len) == 0){
+			ret = HTTP_OK;
+		}else{
+			* len = 0;
+			ret = HTTP_FAILED;
+		}
+	}else if(strcmp((const char *)uri_name, "activate_firmware.cgi") == 0){
+		ret = activate_firmware((char *)buf, len);
+	}else if(strcmp((const char *)uri_name, "reset_energy.cgi") == 0){ ///---------------------------------------FOR DEBUG-------------------------------------
+		spi_fs_remove(KW_COUNT_STOR_FILE);
+		ret = HTTP_OK;
+	}else if(strcmp((const char *)uri_name, "format_flash.cgi") == 0){ ///---------------------------------------FOR DEBUG-------------------------------------
+		spi_fs_remove_recurcuve_in("/");
 		ret = HTTP_OK;
 	}
 

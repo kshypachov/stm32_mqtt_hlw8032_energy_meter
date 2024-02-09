@@ -8,6 +8,11 @@
 #ifndef INC_DEFINITION_H_
 #define INC_DEFINITION_H_
 
+/*------------------------FIRMWARE----------------------------*/
+#define UPGRADE_PATTERN			0xA5 //просто случайное число его ожидает считать бутлоадер чтобы начать апгрейд прошивки.
+#define UPGRADE_PATERN_FILE		"upgrade_stat"
+#define FIRMWARE_FILE			"firmware.bin"
+
 /*----------------------DNS--------------------------*/
 #define	MAX_DNS_BUF_SIZE		1024
 #define MAX_DOMAIN_NAME   		128
@@ -29,6 +34,7 @@
 
 /*--------App def----------------*/
 #define delay1s			1000
+#define delay30s		delay1s * 30
 #define delay10s		delay1s * 10
 #define delay5s			delay1s * 5
 #define delay3s			delay1s * 3
@@ -51,7 +57,9 @@
 #define MAX_CONTENT_NAME_LEN	50
 #define MAX_CONTENT_CALLBACK	4
 #define HTTP_FS_DIR				"web/"
+#define	FIRMWARE_FS_DIR			"firmware/"
 #define TMP_BUFF_FOR_FILE_RECV	512
+#define TMP_BUF_FOR_MD5_CALC	64
 
 
 /*---------------SOCKETS-------------------------------------*/
@@ -67,10 +75,13 @@
 #define POW_SETT_FILE			"power_sett.conf"
 #define MQTT_SETT_FILE			"mqtt_sett.conf"
 #define MB_TCP_SETT_FILE		"mb_tcp_sett.conf"
+#define KW_COUNT_STOR_FILE		"kWh_count_stor.conf"
 
 
 /*-------------------------POWER SHUNT SETTINGS--------------*/
 #define DEFAULT_SHUNT_RESISTANSE	0.001
+#define ENERGY_VALUE_SAVE_INTERVAL	3600
+#define DETECT_POWER_TRASHOLD_W		15
 
 
 #endif /* INC_DEFINITION_H_ */

@@ -253,6 +253,7 @@ void httpServer_run(uint8_t seqnum)
 #endif
 			if(socket(s, Sn_MR_TCP, HTTP_SERVER_PORT, 0x00) == s)    /* Reinitialize the socket */
 			{
+//				setsockopt(s, SO_KEEPALIVEAUTO, 0);
 #ifdef _HTTPSERVER_DEBUG_
 				printf("> HTTPSocket[%d] : OPEN\r\n", s);
 #endif

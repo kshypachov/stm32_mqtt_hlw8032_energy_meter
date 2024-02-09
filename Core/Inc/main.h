@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define enable_power_isolator_Pin GPIO_PIN_1
+#define enable_power_isolator_GPIO_Port GPIOA
 #define SPI_flash_cs_Pin GPIO_PIN_4
 #define SPI_flash_cs_GPIO_Port GPIOA
 #define Ethernet_reset_Pin GPIO_PIN_15

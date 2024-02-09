@@ -35,7 +35,7 @@
 #define conf_page_mqtt		"<!DOCTYPE html>\r\n"\
 							"<html lang=\"ua\">\r\n"\
 							"<head>\r\n"\
-							"<meta charset=\"windows-1251\">\r\n"\
+							"<meta charset=\"utf-8\">\r\n"\
 							"	<style>\r\n"\
 							"		h2 {text-align: center;}\r\n"\
 							"		form {text-align: center;}\r\n"\
@@ -43,12 +43,12 @@
 							"</head>\r\n"\
 							"<body>\r\n"\
 							"	<h2>MQTT Settings page</h2>\r\n"\
-							"	<form action=\"settings_MQTT.cgi\" method=\"post\" target=\"_blank\">\r\n"\
+							"	<form action=\"settings_mqtt.cgi\" method=\"post\" target=\"_blank\">\r\n"\
 							"	<fieldset>\r\n"\
-							"		<legend>Налаштування:</legend>\r\n"\
+							"		<legend>Settings:</legend>\r\n"\
 							"			<div style=\"display:flex;flex-direction:row;justify-content:center\">\r\n"\
 							"				<div style=\"display:flex;flex-direction:column;align-items:end;justify-content:space-between\">\r\n"\
-							"					<label for=\"Enable\">Увімкнути функцію MQTT:</label>\r\n"\
+							"					<label for=\"Enable\">Enable MQTT:</label>\r\n"\
 							"					<br>\r\n"\
 							"					<label for=\"login\">Login:</label>\r\n"\
 							"					<label for=\"pass\">Password:</label>\r\n"\
@@ -57,12 +57,12 @@
 							"				</div>\r\n"\
 							"				<div style=\"display:flex;flex-direction:column;margin-left:20px;width:200px\">\r\n"\
 							"					<div style=\"display:flex;flex-direction:row\">\r\n"\
-							"						<input type=\"radio\" name=\"MQTT\" value=\"on\" checked> Так \r\n"\
-							"						<input type=\"radio\" name=\"MQTT\" value=\"off\"> Ні \r\n"\
+							"						<input type=\"radio\" name=\"mqtt\" value=\"1\" checked> Так \r\n"\
+							"						<input type=\"radio\" name=\"mqtt\" value=\"0\"> Ні \r\n"\
 							"					</div>\r\n"\
 							"					<br>\r\n"\
 							"					<input type=\"text\" id=\"login\" name=\"login\" maxlength=\"30\">\r\n"\
-							"					<input type=\"password\" id=\"pass\" name=\"pass\" maxlength=\"30\">\r\n"\
+							"					<input type=\"password\" id=\"password\" name=\"password\" maxlength=\"30\">\r\n"\
 							"					<input type=\"text\" id=\"uri\" name=\"uri\" maxlength=\"30\" \">\r\n"\
 							"					<input type=\"number\" id=\"port\" name=\"port\" min=\"1\" max=\"65535\" placeholder = \"by default 1883\" >\r\n"\
 							"				</div>\r\n"\
@@ -74,31 +74,31 @@
 							"</body>\r\n"\
 							"</html>\r\n"
 
-#define setting_power_sens_page	"<!DOCTYPE html>\r\n"\
+#define setting_resistance_sens_page	"<!DOCTYPE html>\r\n"\
 								"<html lang=\"ua\">\r\n"\
 								"<head>\r\n"\
-								"<meta charset=\"windows-1252\">\r\n"\
+								"<meta charset=\"utf-8\">\r\n"\
 								"	<style>\r\n"\
 								"		h2 {text-align: center;}\r\n"\
 								"		form {text-align: center;}\r\n"\
 								"	</style>\r\n"\
 								"</head>\r\n"\
 								"<body>\r\n"\
-								"	<h2>Сторінка налаштувань сенсора потужності</h2>\r\n"\
-								"	<form action=\"settings_power.cgi\" method=\"post\" target=\"_blank\">\r\n"\
+								"	<h2>Power settings page</h2>\r\n"\
+								"	<form action=\"settings_resistance.cgi\" method=\"post\" target=\"_blank\">\r\n"\
 								"	<fieldset>\r\n"\
-								"		<legend>Налаштування:</legend>\r\n"\
+								"		<legend>Settings:</legend>\r\n"\
 								"			<div style=\"display:flex;flex-direction:row;justify-content:center\">\r\n"\
 								"				<div style=\"display:flex;flex-direction:column;align-items:end;justify-content:space-between\">\r\n"\
-								"					<label for=\"shunt\">Значение :</label>\r\n"\
+								"					<label for=\"shunt\">Value :</label>\r\n"\
 								"				</div>\r\n"\
 								"				<div style=\"display:flex;flex-direction:column;margin-left:20px;width:200px\">\r\n"\
 								"					<br>\r\n"\
-								"					<input type=\"number\" id=\"shunt\" name=\"shunt\" min=\"0.00001\" max=\"10.0\" step=\"0.0001\" >\r\n"\
+								"					<input type=\"number\" id=\"shunt\" name=\"shunt\" step=0.00000000001>\r\n"\
 								"				</div>\r\n"\
 								"			</div>\r\n"\
 								"			<br>\r\n"\
-								"			<input type=\"submit\" value=\"Застосувати\" >\r\n"\
+								"			<input type=\"submit\" value=\"Submit\" >\r\n"\
 								"	</fieldset>\r\n"\
 								"	</form>\r\n"\
 								"</body>\r\n"\

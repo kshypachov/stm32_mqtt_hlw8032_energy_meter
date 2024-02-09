@@ -159,6 +159,11 @@ osMessageQueueId_t mb_tcp_settingsQHandle;
 const osMessageQueueAttr_t mb_tcp_settingsQ_attributes = {
   .name = "mb_tcp_settingsQ"
 };
+/* Definitions for uptimeQ */
+osMessageQueueId_t uptimeQHandle;
+const osMessageQueueAttr_t uptimeQ_attributes = {
+  .name = "uptimeQ"
+};
 /* Definitions for Network */
 osMutexId_t NetworkHandle;
 const osMutexAttr_t Network_attributes = {
@@ -182,6 +187,8 @@ const osMutexAttr_t ServiceSocket_attributes = {
 /* USER CODE BEGIN PV */
 /* Define buffer for UART communication with power sensor via interrupt */
 uint8_t data_bufer[30];
+float	test_kWh_from_flash = 0.0;
+float   test_kWh_from_read  = 0.0;
 /* Define Memory pool for Ethernet info  */
 //osMemoryPoolId_t EthernetEthPool;
 
@@ -214,16 +221,12 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size){
 
 	if (huart->Instance == USART2){
 		if (Size == 24){
-		//	if (!osMessageQueueGetCount(Q_hlw8032_rawHandle)){
+			if (!osMessageQueueGetCount(rowPowerSensorQHandle)){
 				osMessageQueuePut(rowPowerSensorQHandle, &data_bufer, 0, 0);
-		//	}
-			//copy data to queue
-			__NOP();
-			//set data ready flag
+			}
+			HAL_UARTEx_ReceiveToIdle_IT(&huart2, data_bufer,  24);
 		}
-	//HAL_UARTEx_ReceiveToIdle_IT(&huart1, data_bufer,  24);
 	}
-	//HAL_UARTEx_ReceiveToIdle_IT(&huart1, data_bufer,  24);
 }
 
 void EthMutexTake(void){
@@ -257,6 +260,14 @@ void ServiceSockMutexTake(){
 void ServiceSockMutexRelease(){
 	osMutexRelease(ServiceSocketHandle);
 }
+
+void PowerON_HLW8032(){
+	HAL_GPIO_WritePin(GPIOA, enable_power_isolator_Pin,GPIO_PIN_RESET);
+}
+
+void PowerOFF_HLW8032(){
+	HAL_GPIO_WritePin(GPIOA, enable_power_isolator_Pin,GPIO_PIN_SET);
+}
 /* USER CODE END 0 */
 
 /**
@@ -266,7 +277,10 @@ void ServiceSockMutexRelease(){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	__disable_irq();
+	SCB->VTOR = (uint32_t)0x08000000 | (0x08010000 & (uint32_t)0x1FFFFF80);
+	 //NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x08010000);
+	__enable_irq();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -346,6 +360,9 @@ int main(void)
 
   /* creation of mb_tcp_settingsQ */
   mb_tcp_settingsQHandle = osMessageQueueNew (1, sizeof(ModBusTCP_struct), &mb_tcp_settingsQ_attributes);
+
+  /* creation of uptimeQ */
+  uptimeQHandle = osMessageQueueNew (1, sizeof(uint32_t), &uptimeQ_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -597,7 +614,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SPI_flash_cs_GPIO_Port, SPI_flash_cs_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, enable_power_isolator_Pin|SPI_flash_cs_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Ethernet_reset_GPIO_Port, Ethernet_reset_Pin, GPIO_PIN_RESET);
@@ -605,19 +622,19 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(Ethernet_cs_GPIO_Port, Ethernet_cs_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pins : enable_power_isolator_Pin Ethernet_reset_Pin */
+  GPIO_InitStruct.Pin = enable_power_isolator_Pin|Ethernet_reset_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pin : SPI_flash_cs_Pin */
   GPIO_InitStruct.Pin = SPI_flash_cs_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(SPI_flash_cs_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : Ethernet_reset_Pin */
-  GPIO_InitStruct.Pin = Ethernet_reset_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(Ethernet_reset_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Ethernet_cs_Pin */
   GPIO_InitStruct.Pin = Ethernet_cs_Pin;
@@ -666,36 +683,52 @@ void vSensorsTask(void *argument)
 	uint8_t				array[30];
 	PowerSensStruct		PowerData;
 	P_sens_sett_struct	PowerSett;
+	uint32_t			count = 0;
+
 
 	PowerSett.resistance = 0.001;
 	PowerSett.save = 0;
-	xQueueOverwrite(Curr_sensor_settingsHandle, (void *)&PowerSett);
+	//xQueueOverwrite(Curr_sensor_settingsHandle, (void *)&PowerSett);
+
+	osDelay(delay5s);
+
+	xQueuePeek(Curr_sensor_settingsHandle ,&PowerSett,0);
+	PowerOFF_HLW8032();
+	osDelay(delay0_5s);
+	USART2->DR; //read data from register if exist
+	HAL_UARTEx_ReceiveToIdle_IT(&huart2, data_bufer,  24);
+	osDelay(delay1s);
+	PowerON_HLW8032();
 
 	sens_task_start:
 
-	xQueuePeek(Curr_sensor_settingsHandle ,&PowerSett,0);
-	HAL_UARTEx_ReceiveToIdle_IT(&huart2, data_bufer,  24);
-	osDelay(100);
 	InitHLW8032(1880000, 1000, PowerSett.resistance);
   /* Infinite loop */
   for(;;)
   {
-	if (osMessageQueueGetCount(rowPowerSensorQHandle) != 0 ){
-		osMessageQueueGet	(rowPowerSensorQHandle,&array,NULL, 1000);
+	if (osMessageQueueGet	(rowPowerSensorQHandle,&array,NULL, 1000) != osErrorTimeout ){
 		if( RecvRawString((const unsigned char *)array) == 0){ // all OK if return 0
-			PowerData.KWatt_h 		= GetKWh();
-			PowerData.Voltage 		= GetVoltage();
-			PowerData.ApparPower 	= GetApparentPower();
-			PowerData.ActivPower 	= GetActivePower();
-			PowerData.Current 		= GetCurrent();
-			PowerData.PowerFactor	= PowerFactor();
+			test_kWh_from_read 				= GetKWh();
+			PowerData.KWatt_h 				= GetKWh()+ test_kWh_from_flash;
+			PowerData.Voltage 				= GetVoltage();
+			PowerData.ApparPower 			= GetApparentPower();
+			PowerData.ActivPower 			= GetActivePower();
+			PowerData.Current 				= GetCurrent();
+			PowerData.PowerFactor			= PowerFactor();
+			PowerData.test_pulse_counter 	= GetTestPulse();
+			PowerData.readed_counter 		= GetCountedPulse();
+			PowerData.PF_reg				= GetPFReg();
 			xQueueOverwrite(PowerDataQHandle, (void *)&PowerData);
 		}
+	}else{
+		count++;
+		while (HAL_UARTEx_ReceiveToIdle_IT(&huart2, data_bufer,  24) == HAL_ERROR){
+			temp = USART2->DR;
+			osThreadYield();
 	}
-	while (HAL_UARTEx_ReceiveToIdle_IT(&huart2, data_bufer,  24) == HAL_ERROR){
-		temp = USART2->DR;
+
 	}
-    osDelay(1000);
+	osThreadYield();
     xQueuePeek(Curr_sensor_settingsHandle ,&PowerSett,0);
     if (PowerSett.save == 1){
     	PowerSett.save = 0;
@@ -723,6 +756,9 @@ void vRW_Settings_Tas(void *argument)
 	P_sens_sett_struct		PowerSett;
 	MQTT_cred_struct		MQTT_cred;
 	ModBusTCP_struct		mb_tcp_sett;
+	uint32_t				next_update = 20, time_counter = 0;
+	PowerSensStruct			PowerData;
+	float					KWatt_h_old = 0;
 
 	SPI_flash_set(hspi1);
 	SPI_flash_reg_cb(SPI_flash_select, SPI_flash_deselect, SPI_flash_read_byte, SPI_flash_send_byte);
@@ -750,6 +786,9 @@ void vRW_Settings_Tas(void *argument)
 	}else{
 		MQTT_cred.save 			= 1;
 		MQTT_cred.enable		= 0;
+		MQTT_cred.login[0]		= '\0';
+		MQTT_cred.pass[0]		= '\0';
+		MQTT_cred.uri[0]		= '\0';
 		xQueueOverwrite(mqttQHandle ,(void *)&MQTT_cred);
 	}
 
@@ -761,9 +800,20 @@ void vRW_Settings_Tas(void *argument)
 		mb_tcp_sett.save		= 1;
 	}
 
-//	spi_fs_remove_recurcuve_in("/web");
+	if (0 < spi_fs_file_size(KW_COUNT_STOR_FILE)){
+		spi_fs_read_file_offset(KW_COUNT_STOR_FILE, &test_kWh_from_flash, 0, sizeof(test_kWh_from_flash));
+		KWatt_h_old = test_kWh_from_flash;
+	}else{
+		test_kWh_from_flash = 0.0;
+		KWatt_h_old 		= 0.0;
+		spi_fs_over_write_file(KW_COUNT_STOR_FILE, &test_kWh_from_flash, sizeof(test_kWh_from_flash));
+
+	}
+
 	spi_fs_mkdir("/web");
 	spi_fs_mkdir("/web/assets");
+	spi_fs_remove_recurcuve_in("/firmware");
+	spi_fs_mkdir("/firmware");
   /* Infinite loop */
 
   for(;;)
@@ -788,6 +838,14 @@ void vRW_Settings_Tas(void *argument)
 		  spi_fs_over_write_file(MB_TCP_SETT_FILE, &mb_tcp_sett, sizeof(mb_tcp_sett));
 	  }
 
+	  xQueuePeek(PowerDataQHandle, (void *)&PowerData, 0);
+
+	  if ((next_update < time_counter) || ((PowerData.KWatt_h - KWatt_h_old)> 1.0)){
+		  spi_fs_over_write_file(KW_COUNT_STOR_FILE, &PowerData.KWatt_h, sizeof(PowerData.KWatt_h));
+		  next_update += ENERGY_VALUE_SAVE_INTERVAL;
+	  }
+
+	  time_counter ++;
     osDelay(delay1s);
   }
   /* USER CODE END vRW_Settings_Tas */
@@ -812,6 +870,7 @@ void vOneSecondTickTask(void *argument)
 	DHCP_time_handler();
 	httpServer_time_handler();
 	dns_service_increment_second();
+	xQueueOverwrite(uptimeQHandle, (void *)&seconds);
     osDelay(delay1s);
   }
   /* USER CODE END vOneSecondTickTask */
@@ -1019,9 +1078,11 @@ void httpServ(void *argument)
 	http_parse_params_init(Curr_sensor_settingsHandle,	PowrSensSett);
 	http_parse_params_init(mqttQHandle,					MQTT);
 	http_parse_params_init(mb_tcp_settingsQHandle,		ModBusTCP);
+	http_parse_params_init(uptimeQHandle,				Uptime);
+
 
 	reg_httpServer_webContent((uint8_t *)"index.html",			(uint8_t *)index_page);
-	reg_httpServer_webContent((uint8_t *)"power_settings.html",	(uint8_t *)setting_power_sens_page);
+	reg_httpServer_webContent((uint8_t *)"power_settings.html",	(uint8_t *)setting_resistance_sens_page);
 	reg_httpServer_webContent((uint8_t *)"mqtt.html",			(uint8_t *)conf_page_mqtt);
 
 
@@ -1034,12 +1095,13 @@ void httpServ(void *argument)
 			  SocketMutexTake();
 			  httpServer_run(i); // HTTP Server handler
 			  SocketMutexRelease();
-			  osThreadYield();
+			  //osDelay(delay0_1s);
+
 		  }
 	  }else{
 		  osDelay(delay1s);
 	  }
-	  osThreadYield();
+	  osDelay(delay0_1s);
 	  //osDelay(delay0_1s);
   }
   /* USER CODE END httpServ */
@@ -1095,11 +1157,18 @@ void vMQTT_Task(void *argument)
 			generate_key_value_JSON(topik_payload, dev_class_voltage, PowerData.Voltage);
 			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
 
+			generate_key_value_JSON(topik_payload, dev_class_current, PowerData.Current);
+			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
 
-			//generate_status_topik
-			osDelay(1000);
+			generate_key_value_JSON(topik_payload, dev_class_power_factor, PowerData.PowerFactor * 100);
+			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
+
+			generate_key_value_JSON(topik_payload, dev_class_power, PowerData.ApparPower);
+			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
+
+			osDelay(delay30s);
 		}
-		osDelay(1000);
+		osDelay(delay1s);
 	}
   /* USER CODE END vMQTT_Task */
 }

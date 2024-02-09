@@ -27,5 +27,6 @@ int spi_fs_mkdir(const char *path);
 int spi_fs_read_dir(const char *path);
 void list_files_and_directories(const char *path);
 void spi_fs_remove_recurcuve_in (const char *path);
+int spi_fs_mv(const char *oldpath, const char *newpath);
 
 #endif /* HIGH_LEVEL_ABSTRACTIONS_FILE_SYSTEM_ADSTRACTIONS_SPI_FS_H_ */

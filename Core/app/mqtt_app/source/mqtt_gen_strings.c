@@ -25,20 +25,20 @@
 #define dev_sw_ver						"sw0.1"
 
 #define dev_class_energy				"energy"
-#define dev_class_energy_human			"Energy"
+#define dev_class_energy_human			"Енергія"
 #define dev_class_energy_state			"\"state_class\": \"total_increasing\",\n"
-#define dev_class_energy_unit_of_measurement	"Wh"
+#define dev_class_energy_unit_of_measurement	"kWh"
 
 #define dev_class_voltage				"voltage"
-#define dev_class_voltage_human			"Voltage"
+#define dev_class_voltage_human			"Напруга"
 #define dev_class_voltage_unit_of_measurement	"V"
 
 #define dev_class_power					"power"
-#define dev_class_power_human			"Power"
+#define dev_class_power_human			"Потужність"
 #define dev_class_power_unit_of_measurement	"W"
 
 #define dev_class_power_factor			"power_factor"
-#define dev_class_power_factor_human	"PF"
+#define dev_class_power_factor_human	"Коефіцієнт потужності"
 #define dev_class_power_factor_unit_of_measurement "%"
 
 #define dev_class_current				"current"

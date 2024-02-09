@@ -330,3 +330,18 @@ void spi_fs_remove_recurcuve_in (const char *path){
 #endif
 }
 
+int spi_fs_mv(const char *oldpath, const char *newpath){
+	int err;
+
+#ifdef LFS_USE_MUTEX
+	FSMutexGet();
+#endif
+
+	err = lfs_rename(&lfs, oldpath, newpath);
+
+#ifdef LFS_USE_MUTEX
+	FSMutexRelease();
+#endif
+	return err;
+}
+

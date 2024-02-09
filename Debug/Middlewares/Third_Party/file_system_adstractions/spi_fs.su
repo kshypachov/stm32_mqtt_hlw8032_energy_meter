@@ -19,3 +19,4 @@
 ../Middlewares/Third_Party/file_system_adstractions/spi_fs.c:266:6:list_files_and_directories	544	static
 ../Middlewares/Third_Party/file_system_adstractions/spi_fs.c:293:6:remove_recursively_files_and_directories	544	static
 ../Middlewares/Third_Party/file_system_adstractions/spi_fs.c:320:6:spi_fs_remove_recurcuve_in	16	static
+../Middlewares/Third_Party/file_system_adstractions/spi_fs.c:333:5:spi_fs_mv	24	static
