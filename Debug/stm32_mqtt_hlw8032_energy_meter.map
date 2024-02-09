@@ -17823,7 +17823,7 @@ LOAD C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_line    0x00000000000313be      0x9ec ./Middlewares/Third_Party/mbedTLS/library/md5.o
  .debug_line    0x0000000000031daa      0x7bd ./Middlewares/Third_Party/mbedTLS/library/platform_util.o
 
-.debug_str      0x0000000000000000    0xa9bb8
+.debug_str      0x0000000000000000    0xa9c00
  .debug_str     0x0000000000000000    0x8d070 ./Core/Src/freertos.o
                                       0x8d330 (size before relaxing)
  .debug_str     0x000000000008d070     0xd4df ./Core/Src/main.o
@@ -17846,97 +17846,97 @@ LOAD C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                                        0xfcb0 (size before relaxing)
  .debug_str     0x000000000009d01d      0x641 ./Core/app/mqtt_app/source/mqtt_app.o
                                       0x10ac9 (size before relaxing)
- .debug_str     0x000000000009d65e      0x40e ./Core/app/mqtt_app/source/mqtt_gen_strings.o
-                                       0x85dd (size before relaxing)
- .debug_str     0x000000000009da6c      0x169 ./Drivers/HLW8032/src/HLW8032.o
+ .debug_str     0x000000000009d65e      0x456 ./Core/app/mqtt_app/source/mqtt_gen_strings.o
+                                       0x8625 (size before relaxing)
+ .debug_str     0x000000000009dab4      0x169 ./Drivers/HLW8032/src/HLW8032.o
                                        0x441f (size before relaxing)
- .debug_str     0x000000000009dbd5      0x2a5 ./Drivers/SPI_flash/src/SPI_flash.o
+ .debug_str     0x000000000009dc1d      0x2a5 ./Drivers/SPI_flash/src/SPI_flash.o
                                       0x87d9f (size before relaxing)
- .debug_str     0x000000000009de7a       0x57 ./Drivers/SPI_flash/src/SPI_flash_io.o
+ .debug_str     0x000000000009dec2       0x57 ./Drivers/SPI_flash/src/SPI_flash_io.o
                                       0x87e36 (size before relaxing)
- .debug_str     0x000000000009ded1      0x5ba ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x000000000009df19      0x5ba ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
                                       0x88485 (size before relaxing)
- .debug_str     0x000000000009e48b      0x320 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x000000000009e4d3      0x320 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
                                       0x881bd (size before relaxing)
- .debug_str     0x000000000009e7ab       0x8a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o
+ .debug_str     0x000000000009e7f3       0x8a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o
                                       0x87a7f (size before relaxing)
- .debug_str     0x000000000009e835      0x315 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x000000000009e87d      0x315 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
                                       0x87e6b (size before relaxing)
- .debug_str     0x000000000009eb4a      0x11c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x000000000009eb92      0x11c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
                                       0x87bde (size before relaxing)
- .debug_str     0x000000000009ec66      0x1fd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x000000000009ecae      0x1fd ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
                                       0x87e97 (size before relaxing)
- .debug_str     0x000000000009ee63      0x541 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_str     0x000000000009eeab      0x541 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
                                       0x88315 (size before relaxing)
- .debug_str     0x000000000009f3a4      0xe26 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x000000000009f3ec      0xe26 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
                                       0x88ddb (size before relaxing)
- .debug_str     0x00000000000a01ca      0x503 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x00000000000a0212      0x503 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
                                       0x885e7 (size before relaxing)
- .debug_str     0x00000000000a06cd      0x5b1 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_str     0x00000000000a0715      0x5b1 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
                                       0x88466 (size before relaxing)
- .debug_str     0x00000000000a0c7e      0x195 ./Drivers/ioLibrary/Ethernet/W5500/w5500.o
+ .debug_str     0x00000000000a0cc6      0x195 ./Drivers/ioLibrary/Ethernet/W5500/w5500.o
                                        0x6a7b (size before relaxing)
- .debug_str     0x00000000000a0e13      0x3c4 ./Drivers/ioLibrary/Ethernet/socket.o
+ .debug_str     0x00000000000a0e5b      0x3c4 ./Drivers/ioLibrary/Ethernet/socket.o
                                        0x70ba (size before relaxing)
- .debug_str     0x00000000000a11d7      0x5d1 ./Drivers/ioLibrary/Ethernet/wizchip_conf.o
+ .debug_str     0x00000000000a121f      0x5d1 ./Drivers/ioLibrary/Ethernet/wizchip_conf.o
                                        0x7331 (size before relaxing)
- .debug_str     0x00000000000a17a8      0x8d1 ./Drivers/ioLibrary/Internet/DHCP/dhcp.o
+ .debug_str     0x00000000000a17f0      0x8d1 ./Drivers/ioLibrary/Internet/DHCP/dhcp.o
                                        0x76a6 (size before relaxing)
- .debug_str     0x00000000000a2079      0x30f ./Drivers/ioLibrary/Internet/DNS/dns.o
+ .debug_str     0x00000000000a20c1      0x30f ./Drivers/ioLibrary/Internet/DNS/dns.o
                                        0xa9d7 (size before relaxing)
- .debug_str     0x00000000000a2388       0xd4 ./Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.o
+ .debug_str     0x00000000000a23d0       0xd4 ./Drivers/ioLibrary/Internet/DNS/dns_abstractions/dns_service.o
                                        0x7f25 (size before relaxing)
- .debug_str     0x00000000000a245c      0x409 ./Drivers/ioLibrary/Internet/MQTT/MQTTClient.o
+ .debug_str     0x00000000000a24a4      0x409 ./Drivers/ioLibrary/Internet/MQTT/MQTTClient.o
                                        0x819f (size before relaxing)
- .debug_str     0x00000000000a2865       0x73 ./Drivers/ioLibrary/Internet/MQTT/mqtt_interface.o
+ .debug_str     0x00000000000a28ad       0x73 ./Drivers/ioLibrary/Internet/MQTT/mqtt_interface.o
                                        0x6dd8 (size before relaxing)
- .debug_str     0x00000000000a28d8      0x149 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTConnectClient.o
+ .debug_str     0x00000000000a2920      0x149 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTConnectClient.o
                                        0x7308 (size before relaxing)
- .debug_str     0x00000000000a2a21       0x80 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTDeserializePublish.o
+ .debug_str     0x00000000000a2a69       0x80 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTDeserializePublish.o
                                        0x7141 (size before relaxing)
- .debug_str     0x00000000000a2aa1      0x118 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTPacket.o
+ .debug_str     0x00000000000a2ae9      0x118 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTPacket.o
                                        0x7208 (size before relaxing)
- .debug_str     0x00000000000a2bb9       0xa5 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.o
+ .debug_str     0x00000000000a2c01       0xa5 ./Drivers/ioLibrary/Internet/MQTT/MQTTPacket/src/MQTTSerializePublish.o
                                        0x71e5 (size before relaxing)
- .debug_str     0x00000000000a2c5e      0x11f ./Drivers/ioLibrary/Internet/httpServer/httpParser.o
+ .debug_str     0x00000000000a2ca6      0x11f ./Drivers/ioLibrary/Internet/httpServer/httpParser.o
                                        0xb26f (size before relaxing)
- .debug_str     0x00000000000a2d7d      0x416 ./Drivers/ioLibrary/Internet/httpServer/httpServer.o
+ .debug_str     0x00000000000a2dc5      0x416 ./Drivers/ioLibrary/Internet/httpServer/httpServer.o
                                        0xbe06 (size before relaxing)
- .debug_str     0x00000000000a3193       0xa2 ./Drivers/ioLibrary/Internet/httpServer/httpUtil.o
+ .debug_str     0x00000000000a31db       0xa2 ./Drivers/ioLibrary/Internet/httpServer/httpUtil.o
                                        0x89e8 (size before relaxing)
- .debug_str     0x00000000000a3235       0xb8 ./Drivers/ioLibrary/ethernet_init.o
+ .debug_str     0x00000000000a327d       0xb8 ./Drivers/ioLibrary/ethernet_init.o
                                        0x727b (size before relaxing)
- .debug_str     0x00000000000a32ed       0x3b ./Drivers/ioLibrary/ll_SPI_enh_abstractions.o
+ .debug_str     0x00000000000a3335       0x3b ./Drivers/ioLibrary/ll_SPI_enh_abstractions.o
                                       0x87e53 (size before relaxing)
- .debug_str     0x00000000000a3328       0x19 ./MBEDTLS/App/mbedtls.o
+ .debug_str     0x00000000000a3370       0x19 ./MBEDTLS/App/mbedtls.o
                                        0x5611 (size before relaxing)
- .debug_str     0x00000000000a3341     0x1fab ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_str     0x00000000000a3389     0x1fab ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
                                       0x92868 (size before relaxing)
- .debug_str     0x00000000000a52ec      0x12d ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_str     0x00000000000a5334      0x12d ./Middlewares/Third_Party/FreeRTOS/Source/list.o
                                        0xab26 (size before relaxing)
- .debug_str     0x00000000000a5419      0x894 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_str     0x00000000000a5461      0x894 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
                                        0xc666 (size before relaxing)
- .debug_str     0x00000000000a5cad     0x109a ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_str     0x00000000000a5cf5     0x109a ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
                                        0xd4ce (size before relaxing)
- .debug_str     0x00000000000a6d47      0x5af ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_str     0x00000000000a6d8f      0x5af ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
                                        0xcec1 (size before relaxing)
- .debug_str     0x00000000000a72f6      0x783 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x00000000000a733e      0x783 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
                                        0xa2de (size before relaxing)
- .debug_str     0x00000000000a7a79       0xe8 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_1.o
+ .debug_str     0x00000000000a7ac1       0xe8 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_1.o
                                        0xb1e6 (size before relaxing)
- .debug_str     0x00000000000a7b61     0x141a ./Middlewares/Third_Party/Littlefs/Source/lfs.o
+ .debug_str     0x00000000000a7ba9     0x141a ./Middlewares/Third_Party/Littlefs/Source/lfs.o
                                        0xa299 (size before relaxing)
- .debug_str     0x00000000000a8f7b       0xf0 ./Middlewares/Third_Party/Littlefs/Source/lfs_config.o
+ .debug_str     0x00000000000a8fc3       0xf0 ./Middlewares/Third_Party/Littlefs/Source/lfs_config.o
                                       0x8c965 (size before relaxing)
- .debug_str     0x00000000000a906b       0x3d ./Middlewares/Third_Party/Littlefs/Source/lfs_util.o
+ .debug_str     0x00000000000a90b3       0x3d ./Middlewares/Third_Party/Littlefs/Source/lfs_util.o
                                        0x8b90 (size before relaxing)
- .debug_str     0x00000000000a90a8      0x18f ./Middlewares/Third_Party/file_system_adstractions/spi_fs.o
+ .debug_str     0x00000000000a90f0      0x18f ./Middlewares/Third_Party/file_system_adstractions/spi_fs.o
                                       0x8d481 (size before relaxing)
- .debug_str     0x00000000000a9237       0x8f ./Middlewares/Third_Party/mbedTLS/library/base64.o
+ .debug_str     0x00000000000a927f       0x8f ./Middlewares/Third_Party/mbedTLS/library/base64.o
                                        0x624f (size before relaxing)
- .debug_str     0x00000000000a92c6      0x493 ./Middlewares/Third_Party/mbedTLS/library/md5.o
+ .debug_str     0x00000000000a930e      0x493 ./Middlewares/Third_Party/mbedTLS/library/md5.o
                                        0x81bc (size before relaxing)
- .debug_str     0x00000000000a9759      0x45f ./Middlewares/Third_Party/mbedTLS/library/platform_util.o
+ .debug_str     0x00000000000a97a1      0x45f ./Middlewares/Third_Party/mbedTLS/library/platform_util.o
                                        0x80c0 (size before relaxing)
 
 .debug_frame    0x0000000000000000     0xc99c

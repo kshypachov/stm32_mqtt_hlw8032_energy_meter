@@ -17,12 +17,12 @@
 #define universal_status_topik_template	"%s_%s/%s"
 #define component_sensor				"sensor"
 
-#define dev_system						"zalupa"
-#define dev_common_name					"ZalupaKonskaya"
+#define dev_system						"vombat"
+#define dev_common_name					"Energy-Counter"
 #define dev_model_name					"PowerMeter3000"
 #define dev_manufacturer_name			"Manufacturer"
 #define dev_hw_ver						"hv0.1"
-#define dev_sw_ver						"sw0.1"
+#define dev_sw_ver						"sw1.0"
 
 #define dev_class_energy				"energy"
 #define dev_class_energy_human			"Енергія"
