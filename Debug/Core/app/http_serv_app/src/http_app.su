@@ -3,8 +3,9 @@
 ../Core/app/http_serv_app/src/http_app.c:71:6:param_from_http_to_Q	312	static
 ../Core/app/http_serv_app/src/http_app.c:159:6:param_from_Q_to_JSON	592	static
 ../Core/app/http_serv_app/src/http_app.c:192:5:write_to_file	776	static
-../Core/app/http_serv_app/src/http_app.c:288:8:read_all_parameters	752	static
-../Core/app/http_serv_app/src/http_app.c:310:5:calculate_md5_file	384	static
-../Core/app/http_serv_app/src/http_app.c:350:5:activate_firmware	80	static
-../Core/app/http_serv_app/src/http_app.c:369:9:http_post_cgi_processor	32	static
-../Core/app/http_serv_app/src/http_app.c:400:9:http_get_cgi_processor	32	static
+../Core/app/http_serv_app/src/http_app.c:288:8:web_mkdir	80	static
+../Core/app/http_serv_app/src/http_app.c:302:8:read_all_parameters	752	static
+../Core/app/http_serv_app/src/http_app.c:324:5:calculate_md5_file	384	static
+../Core/app/http_serv_app/src/http_app.c:365:5:activate_firmware	80	static
+../Core/app/http_serv_app/src/http_app.c:384:9:http_post_cgi_processor	32	static
+../Core/app/http_serv_app/src/http_app.c:422:9:http_get_cgi_processor	32	static

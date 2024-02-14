@@ -132,10 +132,9 @@ int spi_fs_over_write_file(const char *path, void *buffer, uint32_t write_size){
 	err = lfs_file_opencfg(&lfs, &file, path, LFS_O_RDWR | LFS_O_CREAT | LFS_O_TRUNC, &fileConf);
 	if (err < 0) goto func_end;
 	err = lfs_file_write(&lfs, &file, buffer, write_size);
-	if (err < 0) goto func_end;
 
-	func_end:
 	lfs_file_close(&lfs, &file);
+	func_end:
 #ifdef LFS_USE_MUTEX
 	FSMutexRelease();
 #endif
@@ -290,7 +289,7 @@ void list_files_and_directories(const char *path) {
 #endif
 }
 
-void remove_recursively_files_and_directories(const char *path) {
+void remove_recursively_files_and_directories(const char *path, uint8_t deep) {
 
     struct lfs_info info;
 
@@ -303,7 +302,7 @@ void remove_recursively_files_and_directories(const char *path) {
                 char sub_path[256];  // Adjust the size based on your needs
                 snprintf(sub_path, sizeof(sub_path), "%s/%s", path, info.name);
                 lfs_dir_close(&lfs, &dir);
-                remove_recursively_files_and_directories(sub_path);  // Recursive call for subdirectories
+                remove_recursively_files_and_directories(sub_path, deep + 1);  // Recursive call for subdirectories
             } else {
             	char sub_path2[256];
                 printf("File: %s\n", info.name);
@@ -312,18 +311,22 @@ void remove_recursively_files_and_directories(const char *path) {
             }
         }
         lfs_dir_close(&lfs, &dir);
-        lfs_remove(&lfs, path);
-    }
+        if (deep >= 1){
+        	lfs_remove(&lfs, path);
+        }
 
+    }
 }
 
 void spi_fs_remove_recurcuve_in (const char *path){
 #ifdef LFS_USE_MUTEX
 	FSMutexGet();
 #endif
+	uint8_t deep = 0;
 
-	remove_recursively_files_and_directories(path);
-	remove_recursively_files_and_directories(path);
+	remove_recursively_files_and_directories(path, deep);
+	deep = 0;
+	remove_recursively_files_and_directories(path, deep);
 
 #ifdef LFS_USE_MUTEX
 	FSMutexRelease();

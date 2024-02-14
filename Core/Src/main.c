@@ -68,6 +68,8 @@
 /* Private variables ---------------------------------------------------------*/
 CRC_HandleTypeDef hcrc;
 
+IWDG_HandleTypeDef hiwdg;
+
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi3;
 
@@ -127,6 +129,13 @@ osThreadId_t mqttClientTaskHandle;
 const osThreadAttr_t mqttClientTask_attributes = {
   .name = "mqttClientTask",
   .stack_size = 1000 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for resetWatchDog */
+osThreadId_t resetWatchDogHandle;
+const osThreadAttr_t resetWatchDog_attributes = {
+  .name = "resetWatchDog",
+  .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for rowPowerSensorQ */
@@ -201,6 +210,7 @@ static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SPI3_Init(void);
 static void MX_CRC_Init(void);
+static void MX_IWDG_Init(void);
 void StartDefaultTask(void *argument);
 void vSensorsTask(void *argument);
 void vRW_Settings_Tas(void *argument);
@@ -209,6 +219,7 @@ void vMaintEthTask(void *argument);
 void vDebugMemUsage(void *argument);
 void httpServ(void *argument);
 void vMQTT_Task(void *argument);
+void vResetWatchDog(void *argument);
 
 /* USER CODE BEGIN PFP */
 void EthMutexTake(void);
@@ -306,6 +317,7 @@ int main(void)
   MX_SPI3_Init();
   MX_MBEDTLS_Init();
   MX_CRC_Init();
+  MX_IWDG_Init();
   /* Call PreOsInit function */
   MX_MBEDTLS_Init();
   /* USER CODE BEGIN 2 */
@@ -393,6 +405,9 @@ int main(void)
   /* creation of mqttClientTask */
   mqttClientTaskHandle = osThreadNew(vMQTT_Task, NULL, &mqttClientTask_attributes);
 
+  /* creation of resetWatchDog */
+  resetWatchDogHandle = osThreadNew(vResetWatchDog, NULL, &resetWatchDog_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -434,8 +449,9 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;
@@ -485,6 +501,34 @@ static void MX_CRC_Init(void)
   /* USER CODE BEGIN CRC_Init 2 */
 
   /* USER CODE END CRC_Init 2 */
+
+}
+
+/**
+  * @brief IWDG Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_IWDG_Init(void)
+{
+
+  /* USER CODE BEGIN IWDG_Init 0 */
+
+  /* USER CODE END IWDG_Init 0 */
+
+  /* USER CODE BEGIN IWDG_Init 1 */
+
+  /* USER CODE END IWDG_Init 1 */
+  hiwdg.Instance = IWDG;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_256;
+  hiwdg.Init.Reload = 4095;
+  if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN IWDG_Init 2 */
+
+  /* USER CODE END IWDG_Init 2 */
 
 }
 
@@ -684,6 +728,7 @@ void vSensorsTask(void *argument)
 	PowerSensStruct		PowerData;
 	P_sens_sett_struct	PowerSett;
 	uint32_t			count = 0;
+	float				old_resistance;
 
 
 	PowerSett.resistance = 0.001;
@@ -693,6 +738,7 @@ void vSensorsTask(void *argument)
 	osDelay(delay5s);
 
 	xQueuePeek(Curr_sensor_settingsHandle ,&PowerSett,0);
+	old_resistance = PowerSett.resistance;
 	PowerOFF_HLW8032();
 	osDelay(delay0_5s);
 	USART2->DR; //read data from register if exist
@@ -701,6 +747,7 @@ void vSensorsTask(void *argument)
 	PowerON_HLW8032();
 
 	sens_task_start:
+
 
 	InitHLW8032(1880000, 1000, PowerSett.resistance);
   /* Infinite loop */
@@ -712,7 +759,7 @@ void vSensorsTask(void *argument)
 			PowerData.KWatt_h 				= GetKWh()+ test_kWh_from_flash;
 			PowerData.Voltage 				= GetVoltage();
 			PowerData.ApparPower 			= GetApparentPower();
-			PowerData.ActivPower 			= GetActivePower();
+			PowerData.ActivePower 			= GetActivePower();
 			PowerData.Current 				= GetCurrent();
 			PowerData.PowerFactor			= PowerFactor();
 			PowerData.test_pulse_counter 	= GetTestPulse();
@@ -725,14 +772,12 @@ void vSensorsTask(void *argument)
 		while (HAL_UARTEx_ReceiveToIdle_IT(&huart2, data_bufer,  24) == HAL_ERROR){
 			temp = USART2->DR;
 			osThreadYield();
-	}
-
+		}
 	}
 	osThreadYield();
     xQueuePeek(Curr_sensor_settingsHandle ,&PowerSett,0);
-    if (PowerSett.save == 1){
-    	PowerSett.save = 0;
-    	xQueueOverwrite(Curr_sensor_settingsHandle, (void *)&PowerSett);
+    if (PowerSett.resistance != old_resistance){
+    	old_resistance = PowerSett.resistance;
     	goto sens_task_start;
     }
   }
@@ -811,10 +856,9 @@ void vRW_Settings_Tas(void *argument)
 	}
 
 	spi_fs_mkdir("/web");
-	spi_fs_mkdir("/web/assets");
 	spi_fs_remove_recurcuve_in("/firmware");
 	spi_fs_mkdir("/firmware");
-  /* Infinite loop */
+	/* Infinite loop */
 
   for(;;)
   {
@@ -1163,14 +1207,38 @@ void vMQTT_Task(void *argument)
 			generate_key_value_JSON(topik_payload, dev_class_power_factor, PowerData.PowerFactor * 100);
 			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
 
-			generate_key_value_JSON(topik_payload, dev_class_power, PowerData.ApparPower);
+			generate_key_value_JSON(topik_payload, dev_class_power, PowerData.ActivePower);
 			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
+
+			generate_key_value_JSON(topik_payload, dev_class_apparent_power, PowerData.ApparPower);
+			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
+
+
 
 			osDelay(delay30s);
 		}
 		osDelay(delay1s);
 	}
   /* USER CODE END vMQTT_Task */
+}
+
+/* USER CODE BEGIN Header_vResetWatchDog */
+/**
+* @brief Function implementing the resetWatchDog thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_vResetWatchDog */
+void vResetWatchDog(void *argument)
+{
+  /* USER CODE BEGIN vResetWatchDog */
+  /* Infinite loop */
+  for(;;)
+  {
+	HAL_IWDG_Refresh(&hiwdg);
+    osDelay(1);
+  }
+  /* USER CODE END vResetWatchDog */
 }
 
 /**

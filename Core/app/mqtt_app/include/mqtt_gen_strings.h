@@ -11,6 +11,7 @@
 
 #include <stdint.h>
 
+/*
 #define dev_system						"zalupa"
 #define dev_common_name					"ZalupaKonskaya"
 #define dev_model_name					"PowerMeter3000"
@@ -38,25 +39,62 @@
 #define dev_class_current				"current"
 #define dev_class_current_human			"Струм"
 #define dev_class_current_unit_of_measurement	"A"
+*/
+
+#define dev_system						"vombat"
+#define dev_common_name					"Energy-Counter"
+#define dev_model_name					"PowerMeter3000"
+#define dev_manufacturer_name			"Manufacturer"
+#define dev_hw_ver						"hv0.1"
+#define dev_sw_ver						"sw1.0"
+
+#define dev_class_energy				"energy"
+#define dev_class_energy_human			"Енергія"
+#define dev_class_energy_state			"\"state_class\": \"total_increasing\",\n"
+#define dev_class_energy_unit_of_measurement	"kWh"
+
+#define dev_class_voltage				"voltage"
+#define dev_class_voltage_human			"Напруга"
+#define dev_class_voltage_unit_of_measurement	"V"
+
+#define dev_class_power					"power"
+#define dev_class_power_human			"Потужність"
+#define dev_class_power_unit_of_measurement	"W"
+
+#define dev_class_power_factor			"power_factor"
+#define dev_class_power_factor_human	"Коефіцієнт потужності"
+#define dev_class_power_factor_unit_of_measurement "%"
+
+#define dev_class_current				"current"
+#define dev_class_current_human			"Струм"
+#define dev_class_current_unit_of_measurement	"A"
+
+#define dev_class_apparent_power		"apparent_power"
+#define dev_class_apparent_power_human	"Повна потужність"
+#define dev_class_apparent_power_unit_of_measurement	"VA"
+
+#define state_topik						"main"
 
 typedef enum{
-	INPUT_TOPIK = 1,
-	OUTPUT_TOPIK = 2,
-	ENERGY_SENSOR_TOPIK = 3,
-	POWER_SENSOR_TOPIK = 4,
-	VOLTAGE_SENSOR_TOPIK = 5,
-	POWER_FACTOR_SENSOR_TOPIK = 6,
-	CURRENT_SENSOR_TOPIK = 7
+	INPUT_TOPIK					= 1,
+	OUTPUT_TOPIK				= 2,
+	ENERGY_SENSOR_TOPIK			= 3,
+	POWER_SENSOR_TOPIK			= 4,
+	VOLTAGE_SENSOR_TOPIK		= 5,
+	POWER_FACTOR_SENSOR_TOPIK	= 6,
+	CURRENT_SENSOR_TOPIK 		= 7,
+	APPARENT_POWER_SENSOR_TOPIK	= 8
 }mqtt_topik_string_type;
 
 typedef enum{
-	INP_CONF_PAYLOAD = 1,
-	OUT_CONF_PAYLOAD = 2,
-	ENERGY_SENSOR_PAYLOAD = 3,
-	POWER_SENSOR_PAYLOAD = 4,
-	VOLTAGE_SENSOR_PAYLOAD = 5,
-	POWER_FACTOR_SENSOR_PAYLOAD = 6,
-	CURRENT_SENSOR_PAYLOAD = 7
+	INP_CONF_PAYLOAD				= 1,
+	OUT_CONF_PAYLOAD				= 2,
+	ENERGY_SENSOR_PAYLOAD			= 3,
+	POWER_SENSOR_PAYLOAD			= 4,
+	VOLTAGE_SENSOR_PAYLOAD			= 5,
+	POWER_FACTOR_SENSOR_PAYLOAD		= 6,
+	CURRENT_SENSOR_PAYLOAD			= 7,
+	APPARENT_POWER_SENSOR_PAYLOAD	= 8
 }mqqt_conf_payload_string_type;
 
 int set_device_id(unsigned char * dev_id);

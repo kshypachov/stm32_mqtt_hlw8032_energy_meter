@@ -34,6 +34,7 @@
 
 /*--------App def----------------*/
 #define delay1s			1000
+#define delay2s			delay1s * 2
 #define delay30s		delay1s * 30
 #define delay10s		delay1s * 10
 #define delay5s			delay1s * 5

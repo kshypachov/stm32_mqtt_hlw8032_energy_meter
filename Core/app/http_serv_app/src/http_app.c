@@ -176,7 +176,7 @@ void param_from_Q_to_JSON(char * buf, const uint8_t parameters_type, uint16_t * 
 			break;
 		case PowrData:
 			xQueuePeek(Power_Data_Q ,&PowerParm,0);
-			sprintf(buf, (const char *)template_power_data, PowerParm.Voltage, PowerParm.Current, PowerParm.ActivPower, PowerParm.ApparPower, PowerParm.PowerFactor, PowerParm.KWatt_h);
+			sprintf(buf, (const char *)template_power_data, PowerParm.Voltage, PowerParm.Current, PowerParm.ActivePower, PowerParm.ApparPower, PowerParm.PowerFactor, PowerParm.KWatt_h);
 			*len = strlen(buf);
 			break;
 		case PowrSensSett:
@@ -285,6 +285,20 @@ int write_to_file(char * buf, uint16_t * len, char * response, char * base_path)
 	*len = strlen("ok");
 }
 
+int8_t web_mkdir(char * buf, char * base_path){
+
+	char * dirname;
+	char tmp[MAX_CONTENT_NAME_LEN];
+
+	dirname = get_http_param_value((char *)buf, "dirname");
+	if (dirname != 0 || (strlen(dirname) < MAX_CONTENT_NAME_LEN - 5)) //TODO add dirname validation
+		{
+			snprintf(tmp, sizeof(tmp), "%s%s", base_path, dirname);
+			return (spi_fs_mkdir(tmp));
+		}
+	return -1;
+}
+
 int8_t read_all_parameters(uint8_t * buf, uint16_t * len){
 	PowerSensStruct		PowerParm;
 	P_sens_sett_struct	PowShunSett;
@@ -301,7 +315,7 @@ int8_t read_all_parameters(uint8_t * buf, uint16_t * len){
 	xQueuePeek(Uptime_Q,				(void *)&uptime, 0);
 
 
-	sprintf(buf, (const char *)template_data, PowerParm.Voltage, PowerParm.Current, PowerParm.ActivPower, PowerParm.ApparPower, PowerParm.PowerFactor, PowerParm.KWatt_h, PowShunSett.resistance, mb_tcp_params.enable, MQTT_params.enable, MQTT_params.login, MQTT_params.port, MQTT_params.uri, PowerParm.test_pulse_counter, PowerParm.readed_counter, PowerParm.PF_reg, uptime);
+	sprintf(buf, (const char *)template_data, PowerParm.Voltage, PowerParm.Current, PowerParm.ActivePower, PowerParm.ApparPower, PowerParm.PowerFactor, PowerParm.KWatt_h, PowShunSett.resistance, mb_tcp_params.enable, MQTT_params.enable, MQTT_params.login, MQTT_params.port, MQTT_params.uri, PowerParm.test_pulse_counter, PowerParm.readed_counter, PowerParm.PF_reg, uptime);
 	*len = strlen(buf);
 
 	return 0 ;
@@ -340,6 +354,7 @@ int calculate_md5_file(char * base_path, char * filename, char * buffer, uint16_
 				break;
 			}
 		}
+		osThreadYield();
 	}
 	sprintf((char *)buffer,"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X", md5sum[0], md5sum[1], md5sum[2], md5sum[3], md5sum[4], md5sum[5], md5sum[6], md5sum[7], md5sum[8], md5sum[9], md5sum[10], md5sum[11], md5sum[12], md5sum[13], md5sum[14], md5sum[15]);
 	//strncpy(buffer, md5sum, 17);
@@ -383,6 +398,13 @@ uint8_t http_post_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf
 		}else{
 			ret = HTTP_OK;
 		}
+	}else if (strcmp((const char *)uri_name, "web_mkdir.cgi") == 0){
+		if( web_mkdir((char *)uri, HTTP_FS_DIR) >= 0){
+			ret = HTTP_OK;
+		}else{
+			ret = HTTP_RESET;
+		}
+
 	}else if (strcmp((const char *)uri_name, "settings_resistance.cgi") == 0){
 		param_from_http_to_Q((char *)uri, PowrSensSett);
 		ret = HTTP_OK;
@@ -426,6 +448,9 @@ uint8_t http_get_cgi_processor(uint8_t * uri_name, uint8_t * buf, uint16_t * len
 		}
 	}else if(strcmp((const char *)uri_name, "activate_firmware.cgi") == 0){
 		ret = activate_firmware((char *)buf, len);
+	}else if(strcmp((const char *)uri_name, "erace_web_interface.cgi") == 0){
+		spi_fs_remove_recurcuve_in("/web");
+		ret = HTTP_OK;
 	}else if(strcmp((const char *)uri_name, "reset_energy.cgi") == 0){ ///---------------------------------------FOR DEBUG-------------------------------------
 		spi_fs_remove(KW_COUNT_STOR_FILE);
 		ret = HTTP_OK;

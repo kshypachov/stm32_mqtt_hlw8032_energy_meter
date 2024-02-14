@@ -64,7 +64,7 @@ typedef struct Power_sensor_data_t{
 	float Voltage;
 	float Current;
 	float KWatt_h;
-	float ActivPower;
+	float ActivePower;
 	float ApparPower;
 	float PowerFactor;
 	uint32_t test_pulse_counter;

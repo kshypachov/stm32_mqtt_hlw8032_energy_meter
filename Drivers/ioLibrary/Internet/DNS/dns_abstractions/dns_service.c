@@ -1,7 +1,7 @@
 /*
  * dns_service.c
  *
- *  Created on: 29 дек. 2023 г.
+ *  Created on: 29 пїЅпїЅпїЅ. 2023 пїЅ.
  *      Author: kirill
  */
 
@@ -51,7 +51,7 @@ int8_t dns_service_resolve_name(const char * domain_name, uint8_t * resolved_ip)
 	DNSMutexGet();
 #endif
 	int8_t err;
-	if (NetworkReady){
+	if (NetworkReady()){
 		err = DNS_run(dns_server_ip, domain_name, resolved_ip);
 	}else{
 		err = -1;

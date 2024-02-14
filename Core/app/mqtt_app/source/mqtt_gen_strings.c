@@ -17,35 +17,7 @@
 #define universal_status_topik_template	"%s_%s/%s"
 #define component_sensor				"sensor"
 
-#define dev_system						"vombat"
-#define dev_common_name					"Energy-Counter"
-#define dev_model_name					"PowerMeter3000"
-#define dev_manufacturer_name			"Manufacturer"
-#define dev_hw_ver						"hv0.1"
-#define dev_sw_ver						"sw1.0"
 
-#define dev_class_energy				"energy"
-#define dev_class_energy_human			"Енергія"
-#define dev_class_energy_state			"\"state_class\": \"total_increasing\",\n"
-#define dev_class_energy_unit_of_measurement	"kWh"
-
-#define dev_class_voltage				"voltage"
-#define dev_class_voltage_human			"Напруга"
-#define dev_class_voltage_unit_of_measurement	"V"
-
-#define dev_class_power					"power"
-#define dev_class_power_human			"Потужність"
-#define dev_class_power_unit_of_measurement	"W"
-
-#define dev_class_power_factor			"power_factor"
-#define dev_class_power_factor_human	"Коефіцієнт потужності"
-#define dev_class_power_factor_unit_of_measurement "%"
-
-#define dev_class_current				"current"
-#define dev_class_current_human			"Струм"
-#define dev_class_current_unit_of_measurement	"A"
-
-#define state_topik						"main"
 
 #define voltage 						"voltage"
 #define energy							"energy"
@@ -191,6 +163,9 @@ int get_config_topik_string (char * buff, uint8_t topik_type, uint8_t obj_number
 		case POWER_SENSOR_TOPIK:
 			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_power);
 			break;
+		case APPARENT_POWER_SENSOR_TOPIK:
+			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_apparent_power);
+			break;
 		case POWER_FACTOR_SENSOR_TOPIK:
 			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_power_factor);
 			break;
@@ -198,6 +173,7 @@ int get_config_topik_string (char * buff, uint8_t topik_type, uint8_t obj_number
 			sprintf(buff, universal_config_topik_template, home_assistant_prefix, component_sensor, dev_system, unical_id, dev_class_current);
 			break;
 		default:
+			return -1;
 			break;
 	}
 
@@ -238,6 +214,13 @@ int get_config_payload_string( char * payload, uint8_t payload_type, uint8_t obj
 					dev_class_power, dev_class_power_unit_of_measurement, dev_system, unical_id, dev_common_name, dev_model_name,\
 					dev_manufacturer_name, dev_hw_ver, dev_sw_ver, dev_conf_ip);
 			break;
+		case APPARENT_POWER_SENSOR_PAYLOAD:
+			len = sprintf(payload, universal_conf_template, dev_class_apparent_power, dev_system, \
+					unical_id, state_topik, dev_class_apparent_power, "\n", dev_class_apparent_power_human, dev_system, unical_id, \
+					dev_class_apparent_power, dev_class_apparent_power_unit_of_measurement, dev_system, unical_id, dev_common_name, dev_model_name,\
+					dev_manufacturer_name, dev_hw_ver, dev_sw_ver, dev_conf_ip);
+			break;
+
 		case POWER_FACTOR_SENSOR_PAYLOAD:
 			len = sprintf(payload, universal_conf_template, dev_class_power_factor, dev_system, \
 					unical_id, state_topik, dev_class_power_factor, "\n", dev_class_power_factor_human, dev_system, unical_id, \

@@ -186,6 +186,20 @@ int8_t mqtt_client_reg_dev_on_home_assist(void){
 		mqtt_message.id++;
 
 //------------------------------REG POWER SENSOR-------------------------------
+//------------------------------REG APPARENT POWER SENSOR-------------------------------
+		memset(buf_topik, 0, TOPIK_MAX_LEN);
+		get_config_topik_string(buf_topik, APPARENT_POWER_SENSOR_TOPIK, 0);
+		get_config_payload_string(buf_payload, APPARENT_POWER_SENSOR_PAYLOAD, 0);
+		mqtt_message.payloadlen = strlen(buf_payload);
+		mqtt_message.payload = buf_payload;
+		set_mutex();
+		result = MQTTPublish(&MQTT_Client, &buf_topik , &mqtt_message);
+		release_mutex();
+		if (result != SUCCESSS) return result;
+		mqtt_message.id++;
+
+
+//------------------------------REG APPARENT POWER SENSOR-------------------------------
 //------------------------------REG POWER FACTOR SENSOR-------------------------------
 		memset(buf_topik, 0, TOPIK_MAX_LEN);
 		get_config_topik_string(buf_topik, POWER_FACTOR_SENSOR_TOPIK, 0);
