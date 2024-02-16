@@ -138,6 +138,13 @@ const osThreadAttr_t resetWatchDog_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for SendBroadcast */
+osThreadId_t SendBroadcastHandle;
+const osThreadAttr_t SendBroadcast_attributes = {
+  .name = "SendBroadcast",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 /* Definitions for rowPowerSensorQ */
 osMessageQueueId_t rowPowerSensorQHandle;
 const osMessageQueueAttr_t rowPowerSensorQ_attributes = {
@@ -220,6 +227,7 @@ void vDebugMemUsage(void *argument);
 void httpServ(void *argument);
 void vMQTT_Task(void *argument);
 void vResetWatchDog(void *argument);
+void vSendBroadcast(void *argument);
 
 /* USER CODE BEGIN PFP */
 void EthMutexTake(void);
@@ -407,6 +415,9 @@ int main(void)
 
   /* creation of resetWatchDog */
   resetWatchDogHandle = osThreadNew(vResetWatchDog, NULL, &resetWatchDog_attributes);
+
+  /* creation of SendBroadcast */
+  SendBroadcastHandle = osThreadNew(vSendBroadcast, NULL, &SendBroadcast_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -1239,6 +1250,24 @@ void vResetWatchDog(void *argument)
     osDelay(1);
   }
   /* USER CODE END vResetWatchDog */
+}
+
+/* USER CODE BEGIN Header_vSendBroadcast */
+/**
+* @brief Function implementing the SendBroadcast thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_vSendBroadcast */
+void vSendBroadcast(void *argument)
+{
+  /* USER CODE BEGIN vSendBroadcast */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END vSendBroadcast */
 }
 
 /**
