@@ -26,6 +26,7 @@ OBJCOPY_BIN :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+Core/app/broadcast_message_app/source \
 Core/app/http_serv_app/src \
 Core/app/mqtt_app/source \
 Drivers/HLW8032/src \

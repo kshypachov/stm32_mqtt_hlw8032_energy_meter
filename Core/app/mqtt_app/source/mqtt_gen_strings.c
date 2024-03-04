@@ -15,15 +15,15 @@
 
 #define universal_config_topik_template	"%s/%s/%s_%s/%s/config"
 #define universal_status_topik_template	"%s_%s/%s"
-#define component_sensor				"sensor"
+//#define component_sensor				"sensor"
 
 
 
-#define voltage 						"voltage"
-#define energy							"energy"
-#define power_factor					"pf"
-#define apparent_power					"ap"
-#define current							"current"
+//#define voltage 						"voltage"
+//#define energy							"energy"
+//#define power_factor					"pf"
+//#define apparent_power					"ap"
+//#define current							"current"
 
 
 
@@ -32,10 +32,6 @@ unsigned char bin_sens[] =				{"binary_sensor"};
 unsigned char device_name[] = 			{"biver_"};
 unsigned char switch_sens[] = 			{"switch"};
 unsigned char input[] = 				{"input"};
-//const unsigned char dev_sytem_name[] =  {"zalupa"};
-//const unsigned char dev_common_name[]=	{"ZalupaKonskaya"};
-//const unsigned char dev_model_name[]=	{"PowerMeter3000"};
-//const unsigned char	dev_manufacturer[]= {"Konietta"};
 const unsigned char dev_hw_version[]=	{"0.1"};
 const unsigned char dev_sw_version[]=	{"0.1"};
 

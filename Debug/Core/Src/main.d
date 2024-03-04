@@ -84,6 +84,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPacket.h \
  ../Drivers/ioLibrary/Internet/MQTT/mqtt_interface.h \
  ../Core/Inc/data_types.h ../Core/Inc/definition.h \
+ ../Core/app/broadcast_message_app/include/broadcast_mess.h \
  ../Core/Inc/web_pages.h \
  ../Middlewares/Third_Party/mbedTLS/include/mbedtls/md5.h \
  ../MBEDTLS/App/mbedtls_config.h
@@ -176,6 +177,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/ioLibrary/Internet/MQTT/mqtt_interface.h:
 ../Core/Inc/data_types.h:
 ../Core/Inc/definition.h:
+../Core/app/broadcast_message_app/include/broadcast_mess.h:
 ../Core/Inc/web_pages.h:
 ../Middlewares/Third_Party/mbedTLS/include/mbedtls/md5.h:
 ../MBEDTLS/App/mbedtls_config.h:

@@ -9,7 +9,10 @@
 #define INC_DATA_TYPES_H_
 
 #include "stdbool.h"
+#include "string.h"
+#include "stdint.h"
 #include "definition.h"
+
 
 typedef struct MQTT_cred_t{
 	bool save;

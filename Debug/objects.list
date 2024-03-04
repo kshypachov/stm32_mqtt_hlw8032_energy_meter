@@ -7,6 +7,7 @@
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f4xx.o"
 "./Core/Startup/startup_stm32f401ccux.o"
+"./Core/app/broadcast_message_app/source/broadcast_mess.o"
 "./Core/app/http_serv_app/src/http_app.o"
 "./Core/app/mqtt_app/source/mqtt_app.o"
 "./Core/app/mqtt_app/source/mqtt_gen_strings.o"

@@ -31,6 +31,7 @@ RM := rm -rf
 -include Drivers/HLW8032/src/subdir.mk
 -include Core/app/mqtt_app/source/subdir.mk
 -include Core/app/http_serv_app/src/subdir.mk
+-include Core/app/broadcast_message_app/source/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk

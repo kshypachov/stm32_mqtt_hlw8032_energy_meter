@@ -43,6 +43,7 @@
 #include "dns_service.h"
 #include "mqtt_gen_strings.h"
 #include "mqtt_app.h"
+#include "broadcast_mess.h"
 
 #include "data_types.h"
 #include "web_pages.h"
@@ -1261,11 +1262,8 @@ void vSendBroadcast(void *argument)
 {
   /* USER CODE BEGIN vSendBroadcast */
 	Ethernet_info_struct	EthernetInfo;
-	uint8_t 				broadcastIP[4] ;//= {10,0,20,228};
-//	broadcastIP[0] = 10;
-//	broadcastIP[1] = 0;
-//	broadcastIP[2] = 20;
-//	broadcastIP[3] = 228;
+	uint8_t 				broadcastIP[4] ;
+
    /* Infinite loop */
   for(;;)
   {

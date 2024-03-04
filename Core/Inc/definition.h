@@ -32,6 +32,41 @@
 #define UPDATE_MQTT_PARAM_INTERVAL	30
 #define RELOGIN_MQTT_INTERVAL		3600
 
+#define dev_system						"vombat"
+#define dev_common_name					"Energy-Counter"
+#define dev_model_name					"PowerMeter3000"
+#define dev_manufacturer_name			"Manufacturer"
+#define dev_hw_ver						"hv0.1"
+#define dev_sw_ver						"sw1.0.1"
+
+#define dev_class_energy				"energy"
+#define dev_class_energy_human			"Енергія"
+#define dev_class_energy_state			"\"state_class\": \"total_increasing\",\n"
+#define dev_class_energy_unit_of_measurement	"kWh"
+
+#define dev_class_voltage				"voltage"
+#define dev_class_voltage_human			"Напруга"
+#define dev_class_voltage_unit_of_measurement	"V"
+
+#define dev_class_power					"power"
+#define dev_class_power_human			"Активна потужність"
+#define dev_class_power_unit_of_measurement	"W"
+
+#define dev_class_power_factor			"power_factor"
+#define dev_class_power_factor_human	"Коефіцієнт потужності"
+#define dev_class_power_factor_unit_of_measurement "%"
+
+#define dev_class_current				"current"
+#define dev_class_current_human			"Струм"
+#define dev_class_current_unit_of_measurement	"A"
+
+#define dev_class_apparent_power		"apparent_power"
+#define dev_class_apparent_power_human	"Повна потужність"
+#define dev_class_apparent_power_unit_of_measurement	"VA"
+
+#define state_topik						"main"
+#define component_sensor				"sensor"
+
 /*--------App def----------------*/
 #define delay1s			1000
 #define delay2s			delay1s * 2
