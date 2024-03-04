@@ -59,13 +59,13 @@ extern "C" {
 
 
 /* Retry to processing DHCP */
-#define	MAX_DHCP_RETRY          100       ///< Maximum retry count
-#define	DHCP_WAIT_TIME          2         ///< Wait Time 10s
+#define	MAX_DHCP_RETRY          100000       ///< Maximum retry count
+#define	DHCP_WAIT_TIME          10         ///< Wait Time 10s
 
 
 /* UDP port numbers for DHCP */
-#define DHCP_SERVER_PORT      	67	      ///< DHCP server port number
-#define DHCP_CLIENT_PORT         68	      ///< DHCP client port number
+#define DHCP_SERVER_PORT		67	      ///< DHCP server port number
+#define DHCP_CLIENT_PORT		68	      ///< DHCP client port number
 
 
 #define MAGIC_COOKIE             0x63825363  ///< You should not modify it number.

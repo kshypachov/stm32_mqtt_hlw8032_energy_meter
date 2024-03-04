@@ -11,7 +11,7 @@
 ../Drivers/ioLibrary/Internet/DHCP/dhcp.c:594:8:parseDHCPMSG	32
 ../Drivers/ioLibrary/Internet/DHCP/dhcp.c:714:9:DHCP_run	20
 ../Drivers/ioLibrary/Internet/DHCP/dhcp.c:844:9:DHCP_stop	1
-../Drivers/ioLibrary/Internet/DHCP/dhcp.c:850:9:check_DHCP_timeout	11
+../Drivers/ioLibrary/Internet/DHCP/dhcp.c:850:9:check_DHCP_timeout	6
 ../Drivers/ioLibrary/Internet/DHCP/dhcp.c:903:8:check_DHCP_leasedIP	3
 ../Drivers/ioLibrary/Internet/DHCP/dhcp.c:941:6:DHCP_init	2
 ../Drivers/ioLibrary/Internet/DHCP/dhcp.c:976:6:reset_DHCP_timeout	1

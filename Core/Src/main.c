@@ -1224,8 +1224,6 @@ void vMQTT_Task(void *argument)
 			generate_key_value_JSON(topik_payload, dev_class_apparent_power, PowerData.ApparPower);
 			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;
 
-
-
 			osDelay(delay30s);
 		}
 		osDelay(delay1s);
@@ -1247,7 +1245,7 @@ void vResetWatchDog(void *argument)
   for(;;)
   {
 	HAL_IWDG_Refresh(&hiwdg);
-    osDelay(1);
+    osDelay(delay0_5s);
   }
   /* USER CODE END vResetWatchDog */
 }
@@ -1262,10 +1260,34 @@ void vResetWatchDog(void *argument)
 void vSendBroadcast(void *argument)
 {
   /* USER CODE BEGIN vSendBroadcast */
-  /* Infinite loop */
+	Ethernet_info_struct	EthernetInfo;
+	uint8_t 				broadcastIP[4] ;//= {10,0,20,228};
+//	broadcastIP[0] = 10;
+//	broadcastIP[1] = 0;
+//	broadcastIP[2] = 20;
+//	broadcastIP[3] = 228;
+   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	xQueuePeek(EthernetInfoQHandle,  &EthernetInfo, 0);
+	if ((EthernetInfo.link != ETH_LINK_UP) || (assigned_ip() != true)){
+		osDelay(delay1s);
+		continue;
+	}
+
+	broadcastIP[0] = EthernetInfo.ip[0] | ( ~ EthernetInfo.sn[0]);
+	broadcastIP[1] = EthernetInfo.ip[1] | ( ~ EthernetInfo.sn[1]);
+	broadcastIP[2] = EthernetInfo.ip[2] | ( ~ EthernetInfo.sn[2]);
+	broadcastIP[3] = EthernetInfo.ip[3] | ( ~ EthernetInfo.sn[3]);
+
+	SocketMutexTake();
+	ServiceSockMutexTake();
+	socket(SERVICE_SOCKET, Sn_MR_UDP, 5000, 0x00);
+	sendto(SERVICE_SOCKET, (uint8_t *)"TEST_BROADCAST_MESSAGE", 22, (uint8_t *)broadcastIP, 5000);
+
+	ServiceSockMutexRelease();
+	SocketMutexRelease();
+    osDelay(delay10s);
   }
   /* USER CODE END vSendBroadcast */
 }

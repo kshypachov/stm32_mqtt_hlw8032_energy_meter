@@ -215,8 +215,8 @@ float PowerFactor(void){
 
 	ActivePower 	= GetActivePower();
 	ApparentPower	= GetApparentPower();
-	if (ApparentPower 	== 0) return 1;
-	if (ActivePower 	== 0) return 1;
+	if (ApparentPower 	== 0) return 0;
+	if (ActivePower 	== 0) return 0;
 	if (ActivePower > ApparentPower) return 1.000000000000;
 	PowerFactor		= ActivePower / ApparentPower;
 

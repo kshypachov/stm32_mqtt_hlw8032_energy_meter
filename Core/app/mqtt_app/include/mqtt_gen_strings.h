@@ -46,7 +46,7 @@
 #define dev_model_name					"PowerMeter3000"
 #define dev_manufacturer_name			"Manufacturer"
 #define dev_hw_ver						"hv0.1"
-#define dev_sw_ver						"sw1.0"
+#define dev_sw_ver						"sw1.0.1"
 
 #define dev_class_energy				"energy"
 #define dev_class_energy_human			"Енергія"
@@ -58,7 +58,7 @@
 #define dev_class_voltage_unit_of_measurement	"V"
 
 #define dev_class_power					"power"
-#define dev_class_power_human			"Потужність"
+#define dev_class_power_human			"Активна потужність"
 #define dev_class_power_unit_of_measurement	"W"
 
 #define dev_class_power_factor			"power_factor"

@@ -48,7 +48,7 @@
 /*---------NetworkDef------------*/
 #define SOCKET_BUFF_SIZE		2048 //buffer allocated in w5500 for socket
 #define DATA_BUF_SIZE			SOCKET_BUFF_SIZE
-#define MAX_DHCP_FAIL			10
+#define MAX_DHCP_FAIL			1000000000
 #define ETH_LINK_UP				1
 #define ETH_LINK_DOWN			0
 

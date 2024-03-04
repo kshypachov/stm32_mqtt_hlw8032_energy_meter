@@ -25,7 +25,7 @@
 ../Core/Src/main.c:1089:6:vDebugMemUsage	24	static
 ../Core/Src/main.c:1118:6:httpServ	4152	static
 ../Core/Src/main.c:1172:6:vMQTT_Task	2600	static
-../Core/Src/main.c:1243:6:vResetWatchDog	16	static
-../Core/Src/main.c:1262:6:vSendBroadcast	16	static
-../Core/Src/main.c:1281:6:HAL_TIM_PeriodElapsedCallback	16	static
-../Core/Src/main.c:1298:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:1241:6:vResetWatchDog	16	static
+../Core/Src/main.c:1260:6:vSendBroadcast	64	static
+../Core/Src/main.c:1303:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/main.c:1320:6:Error_Handler	4	static,ignoring_inline_asm
