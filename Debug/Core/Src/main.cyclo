@@ -26,6 +26,6 @@
 ../Core/Src/main.c:1119:6:httpServ	4
 ../Core/Src/main.c:1173:6:vMQTT_Task	14
 ../Core/Src/main.c:1242:6:vResetWatchDog	1
-../Core/Src/main.c:1261:6:vSendBroadcast	3
-../Core/Src/main.c:1301:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:1318:6:Error_Handler	1
+../Core/Src/main.c:1261:6:vSendBroadcast	4
+../Core/Src/main.c:1309:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:1326:6:Error_Handler	1

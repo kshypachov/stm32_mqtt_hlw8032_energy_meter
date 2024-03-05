@@ -36,8 +36,8 @@
 #define dev_common_name					"Energy-Counter"
 #define dev_model_name					"PowerMeter3000"
 #define dev_manufacturer_name			"Manufacturer"
-#define dev_hw_ver						"hv0.1"
-#define dev_sw_ver						"sw1.0.1"
+#define dev_hw_ver						"0.1"
+#define dev_sw_ver						"1.0.1"
 
 #define dev_class_energy				"energy"
 #define dev_class_energy_human			"Енергія"

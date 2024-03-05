@@ -1,2 +1,2 @@
-../Core/app/broadcast_message_app/source/broadcast_mess.c:20:6:set_broadcast_message_eth_info	24	static
-../Core/app/broadcast_message_app/source/broadcast_mess.c:26:9:get_broadcast_message_payload	192	static
+../Core/app/broadcast_message_app/source/broadcast_mess.c:19:6:set_broadcast_message_eth_info	16	static
+../Core/app/broadcast_message_app/source/broadcast_mess.c:25:9:get_broadcast_message_payload	200	static

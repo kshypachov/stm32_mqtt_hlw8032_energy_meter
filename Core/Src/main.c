@@ -143,7 +143,7 @@ const osThreadAttr_t resetWatchDog_attributes = {
 osThreadId_t SendBroadcastHandle;
 const osThreadAttr_t SendBroadcast_attributes = {
   .name = "SendBroadcast",
-  .stack_size = 128 * 4,
+  .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for rowPowerSensorQ */
@@ -1101,8 +1101,8 @@ void vDebugMemUsage(void *argument)
 	  mem = osThreadGetStackSpace(maintEthTaskHandle);
 	  mem = osThreadGetStackSpace(DebugMemUsageTHandle);
 	  mem = osThreadGetStackSpace(httpServTaskHandle);
-	  mem = osThreadGetStackSpace(NULL);
-	  mem = osThreadGetStackSpace(NULL);
+	  mem = osThreadGetStackSpace(mqttClientTaskHandle);
+	  mem = osThreadGetStackSpace(SendBroadcastHandle);
 	  mem = osThreadGetStackSpace(NULL);
 	  osDelay(delay1s);
   }
@@ -1264,12 +1264,16 @@ void vSendBroadcast(void *argument)
 	Ethernet_info_struct	EthernetInfo;
 	uint8_t 				broadcastIP[4] ;
 
+	#define	buffer_len 		256
+	char 					buffer[buffer_len];
+	int16_t					string_len;
+
    /* Infinite loop */
   for(;;)
   {
 	xQueuePeek(EthernetInfoQHandle,  &EthernetInfo, 0);
 	if ((EthernetInfo.link != ETH_LINK_UP) || (assigned_ip() != true)){
-		osDelay(delay1s);
+		osDelay(delay10s);
 		continue;
 	}
 
@@ -1278,14 +1282,18 @@ void vSendBroadcast(void *argument)
 	broadcastIP[2] = EthernetInfo.ip[2] | ( ~ EthernetInfo.sn[2]);
 	broadcastIP[3] = EthernetInfo.ip[3] | ( ~ EthernetInfo.sn[3]);
 
+	set_broadcast_message_eth_info(&EthernetInfo);
+	string_len = get_broadcast_message_payload((char *)buffer, buffer_len);
+	if (string_len < 0) continue ;
+
 	SocketMutexTake();
 	ServiceSockMutexTake();
 	socket(SERVICE_SOCKET, Sn_MR_UDP, 5000, 0x00);
-	sendto(SERVICE_SOCKET, (uint8_t *)"TEST_BROADCAST_MESSAGE", 22, (uint8_t *)broadcastIP, 5000);
+	sendto(SERVICE_SOCKET, (uint8_t *)buffer, string_len, (uint8_t *)broadcastIP, 5000);
 
 	ServiceSockMutexRelease();
 	SocketMutexRelease();
-    osDelay(delay10s);
+    osDelay(delay30s);
   }
   /* USER CODE END vSendBroadcast */
 }
