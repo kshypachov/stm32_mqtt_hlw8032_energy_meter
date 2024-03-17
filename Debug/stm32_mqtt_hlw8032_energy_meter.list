@@ -4511,8 +4511,8 @@ void vSendBroadcast(void *argument)
  801282a:	f7fe fca7 	bl	801117c <ServiceSockMutexRelease>
 	SocketMutexRelease();
  801282e:	f7fe fc8b 	bl	8011148 <SocketMutexRelease>
-    osDelay(delay30s);
- 8012832:	f247 5030 	movw	r0, #30000	; 0x7530
+    osDelay(delay5s);
+ 8012832:	f241 3088 	movw	r0, #5000	; 0x1388
  8012836:	f00d fccd 	bl	80201d4 <osDelay>
  801283a:	e77f      	b.n	801273c <vSendBroadcast+0x10>
 	if (string_len < 0) continue ;

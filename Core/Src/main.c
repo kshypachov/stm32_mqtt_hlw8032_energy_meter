@@ -1293,7 +1293,7 @@ void vSendBroadcast(void *argument)
 
 	ServiceSockMutexRelease();
 	SocketMutexRelease();
-    osDelay(delay30s);
+    osDelay(delay5s);
   }
   /* USER CODE END vSendBroadcast */
 }
