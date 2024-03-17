@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         0002173c  080101a0  080101a0  000101a0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00003720  080318e0  080318e0  000318e0  2**3
+  2 .rodata       00003728  080318e0  080318e0  000318e0  2**3
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08035000  08035000  000402f8  2**0
+  3 .ARM.extab    00000000  08035008  08035008  000402f8  2**0
                   CONTENTS
-  4 .ARM          00000008  08035000  08035000  00035000  2**2
+  4 .ARM          00000008  08035008  08035008  00035008  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08035008  08035008  000402f8  2**0
+  5 .preinit_array 00000000  08035010  08035010  000402f8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08035008  08035008  00035008  2**2
+  6 .init_array   00000004  08035010  08035010  00035010  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  0803500c  0803500c  0003500c  2**2
+  7 .fini_array   00000004  08035014  08035014  00035014  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         000002f8  20000000  08035010  00040000  2**2
+  8 .data         000002f8  20000000  08035018  00040000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          0000d81c  200002f8  08035308  000402f8  2**2
+  9 .bss          0000d81c  200002f8  08035310  000402f8  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  2000db14  08035308  0004db14  2**0
+ 10 ._user_heap_stack 00000604  2000db14  08035310  0004db14  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  000402f8  2**0
                   CONTENTS, READONLY
@@ -41,11 +41,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_line   0003382d  00000000  00000000  0009bac6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000aa40d  00000000  00000000  000cf2f3  2**0
+ 19 .debug_str    000aa412  00000000  00000000  000cf2f3  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  0000cadc  00000000  00000000  00179700  2**2
+ 20 .debug_frame  0000cadc  00000000  00000000  00179708  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000007c  00000000  00000000  001861dc  2**0
+ 21 .debug_line_str 0000007c  00000000  00000000  001861e4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1901,56 +1901,56 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  8011350:	e000ed00 	.word	0xe000ed00
  8011354:	08010000 	.word	0x08010000
  8011358:	0801fd0d 	.word	0x0801fd0d
- 801135c:	0803422c 	.word	0x0803422c
+ 801135c:	08034230 	.word	0x08034230
  8011360:	20000464 	.word	0x20000464
- 8011364:	0803423c 	.word	0x0803423c
+ 8011364:	08034240 	.word	0x08034240
  8011368:	20000468 	.word	0x20000468
- 801136c:	0803424c 	.word	0x0803424c
+ 801136c:	08034250 	.word	0x08034250
  8011370:	2000046c 	.word	0x2000046c
- 8011374:	0803425c 	.word	0x0803425c
+ 8011374:	08034260 	.word	0x08034260
  8011378:	20000470 	.word	0x20000470
- 801137c:	08034184 	.word	0x08034184
+ 801137c:	08034188 	.word	0x08034188
  8011380:	20000448 	.word	0x20000448
- 8011384:	0803419c 	.word	0x0803419c
+ 8011384:	080341a0 	.word	0x080341a0
  8011388:	2000044c 	.word	0x2000044c
- 801138c:	080341b4 	.word	0x080341b4
+ 801138c:	080341b8 	.word	0x080341b8
  8011390:	20000450 	.word	0x20000450
- 8011394:	080341cc 	.word	0x080341cc
+ 8011394:	080341d0 	.word	0x080341d0
  8011398:	20000454 	.word	0x20000454
- 801139c:	080341e4 	.word	0x080341e4
+ 801139c:	080341e8 	.word	0x080341e8
  80113a0:	20000458 	.word	0x20000458
- 80113a4:	080341fc 	.word	0x080341fc
+ 80113a4:	08034200 	.word	0x08034200
  80113a8:	2000045c 	.word	0x2000045c
- 80113ac:	08034214 	.word	0x08034214
+ 80113ac:	08034218 	.word	0x08034218
  80113b0:	20000460 	.word	0x20000460
- 80113b4:	0803401c 	.word	0x0803401c
+ 80113b4:	08034020 	.word	0x08034020
  80113b8:	08011785 	.word	0x08011785
  80113bc:	20000420 	.word	0x20000420
- 80113c0:	08034040 	.word	0x08034040
+ 80113c0:	08034044 	.word	0x08034044
  80113c4:	08011795 	.word	0x08011795
  80113c8:	20000424 	.word	0x20000424
- 80113cc:	08034064 	.word	0x08034064
+ 80113cc:	08034068 	.word	0x08034068
  80113d0:	08011929 	.word	0x08011929
  80113d4:	20000428 	.word	0x20000428
- 80113d8:	08034088 	.word	0x08034088
+ 80113d8:	0803408c 	.word	0x0803408c
  80113dc:	08011c91 	.word	0x08011c91
  80113e0:	2000042c 	.word	0x2000042c
- 80113e4:	080340ac 	.word	0x080340ac
+ 80113e4:	080340b0 	.word	0x080340b0
  80113e8:	08011ccd 	.word	0x08011ccd
  80113ec:	20000430 	.word	0x20000430
- 80113f0:	080340d0 	.word	0x080340d0
+ 80113f0:	080340d4 	.word	0x080340d4
  80113f4:	08012249 	.word	0x08012249
  80113f8:	20000434 	.word	0x20000434
- 80113fc:	080340f4 	.word	0x080340f4
+ 80113fc:	080340f8 	.word	0x080340f8
  8011400:	080122f5 	.word	0x080122f5
  8011404:	20000438 	.word	0x20000438
- 8011408:	08034118 	.word	0x08034118
+ 8011408:	0803411c 	.word	0x0803411c
  801140c:	08012479 	.word	0x08012479
  8011410:	2000043c 	.word	0x2000043c
- 8011414:	0803413c 	.word	0x0803413c
+ 8011414:	08034140 	.word	0x08034140
  8011418:	08012711 	.word	0x08012711
  801141c:	20000440 	.word	0x20000440
- 8011420:	08034160 	.word	0x08034160
+ 8011420:	08034164 	.word	0x08034164
  8011424:	0801272d 	.word	0x0801272d
  8011428:	20000444 	.word	0x20000444
 
@@ -5668,7 +5668,7 @@ LoopFillZerobss:
   ldr r1, =_edata
  8012dd4:	200002f8 	.word	0x200002f8
   ldr r2, =_sidata
- 8012dd8:	08035010 	.word	0x08035010
+ 8012dd8:	08035018 	.word	0x08035018
   ldr r2, =_sbss
  8012ddc:	200002f8 	.word	0x200002f8
   ldr r4, =_ebss
@@ -5686,7 +5686,7 @@ Infinite_Loop:
 
 08012de8 <set_broadcast_message_eth_info>:
 
-#define mess_template	"{\"device_name\": \"%s\", \"model_name\": \"%s\", \"mac\": \"%02X%02X%02X%02X%02X%02X\", \"ip\": \"%u.%u.%u.%u\", \"netmask\": \"%u.%u.%u.%u\", \"gw\": \"%u.%u.%u.%u\", \"dns\": \"%u.%u.%u.%u\", \"firmware\": \"%s\"}"
+#define mess_template	"{\"device_name\": \"%s\", \"model_name\": \"%s\", \"mac\": \"%02X:%02X:%02X:%02X:%02X:%02X\", \"ip\": \"%u.%u.%u.%u\", \"netmask\": \"%u.%u.%u.%u\", \"gw\": \"%u.%u.%u.%u\", \"dns\": \"%u.%u.%u.%u\", \"firmware\": \"%s\"}"
 
 Ethernet_info_struct	eth_info;
 
@@ -5884,7 +5884,7 @@ int16_t get_broadcast_message_payload(char * buffer, uint16_t buff_len){
  8012f0c:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8012f0e:	bf00      	nop
  8012f10:	200004e8 	.word	0x200004e8
- 8012f14:	0803278c 	.word	0x0803278c
+ 8012f14:	08032790 	.word	0x08032790
  8012f18:	080326b8 	.word	0x080326b8
  8012f1c:	080326c8 	.word	0x080326c8
  8012f20:	080326d0 	.word	0x080326d0
@@ -6388,18 +6388,18 @@ void param_from_http_to_Q(char * http_resp, const uint8_t parameters_type){
  80132e4:	f507 7798 	add.w	r7, r7, #304	; 0x130
  80132e8:	46bd      	mov	sp, r7
  80132ea:	bd80      	pop	{r7, pc}
- 80132ec:	08032794 	.word	0x08032794
- 80132f0:	0803279c 	.word	0x0803279c
- 80132f4:	080327a4 	.word	0x080327a4
- 80132f8:	080327b0 	.word	0x080327b0
- 80132fc:	080327b4 	.word	0x080327b4
- 8013300:	080327bc 	.word	0x080327bc
+ 80132ec:	08032798 	.word	0x08032798
+ 80132f0:	080327a0 	.word	0x080327a0
+ 80132f4:	080327a8 	.word	0x080327a8
+ 80132f8:	080327b4 	.word	0x080327b4
+ 80132fc:	080327b8 	.word	0x080327b8
+ 8013300:	080327c0 	.word	0x080327c0
  8013304:	20000508 	.word	0x20000508
- 8013308:	080327c0 	.word	0x080327c0
+ 8013308:	080327c4 	.word	0x080327c4
  801330c:	20000510 	.word	0x20000510
- 8013310:	080327c8 	.word	0x080327c8
+ 8013310:	080327cc 	.word	0x080327cc
  8013314:	20000520 	.word	0x20000520
- 8013318:	080327d0 	.word	0x080327d0
+ 8013318:	080327d4 	.word	0x080327d4
  801331c:	20000518 	.word	0x20000518
 
 08013320 <param_from_Q_to_JSON>:
@@ -6609,9 +6609,9 @@ void param_from_Q_to_JSON(char * buf, const uint8_t parameters_type, uint16_t * 
  8013516:	f507 7701 	add.w	r7, r7, #516	; 0x204
  801351a:	46bd      	mov	sp, r7
  801351c:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
- 8013520:	080327d4 	.word	0x080327d4
- 8013524:	08032828 	.word	0x08032828
- 8013528:	080328ac 	.word	0x080328ac
+ 8013520:	080327d8 	.word	0x080327d8
+ 8013524:	0803282c 	.word	0x0803282c
+ 8013528:	080328b0 	.word	0x080328b0
  801352c:	20000508 	.word	0x20000508
  8013530:	20000514 	.word	0x20000514
  8013534:	20000518 	.word	0x20000518
@@ -6958,13 +6958,13 @@ int write_to_file(char * buf, uint16_t * len, char * response, char * base_path)
  8013826:	46bd      	mov	sp, r7
  8013828:	bd90      	pop	{r4, r7, pc}
  801382a:	bf00      	nop
- 801382c:	080328c0 	.word	0x080328c0
- 8013830:	080328d4 	.word	0x080328d4
- 8013834:	080328cc 	.word	0x080328cc
- 8013838:	080328dc 	.word	0x080328dc
- 801383c:	080328e4 	.word	0x080328e4
+ 801382c:	080328c4 	.word	0x080328c4
+ 8013830:	080328d8 	.word	0x080328d8
+ 8013834:	080328d0 	.word	0x080328d0
+ 8013838:	080328e0 	.word	0x080328e0
+ 801383c:	080328e8 	.word	0x080328e8
  8013840:	20000524 	.word	0x20000524
- 8013844:	080328ec 	.word	0x080328ec
+ 8013844:	080328f0 	.word	0x080328f0
 
 08013848 <web_mkdir>:
 
@@ -7016,8 +7016,8 @@ int8_t web_mkdir(char * buf, char * base_path){
  8013896:	3740      	adds	r7, #64	; 0x40
  8013898:	46bd      	mov	sp, r7
  801389a:	bd80      	pop	{r7, pc}
- 801389c:	080328f0 	.word	0x080328f0
- 80138a0:	080328f8 	.word	0x080328f8
+ 801389c:	080328f4 	.word	0x080328f4
+ 80138a0:	080328fc 	.word	0x080328fc
 
 080138a4 <read_all_parameters>:
 
@@ -7177,7 +7177,7 @@ int8_t read_all_parameters(uint8_t * buf, uint16_t * len){
  8013a38:	46bd      	mov	sp, r7
  8013a3a:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
  8013a3e:	bf00      	nop
- 8013a40:	08032900 	.word	0x08032900
+ 8013a40:	08032904 	.word	0x08032904
  8013a44:	20000514 	.word	0x20000514
  8013a48:	20000518 	.word	0x20000518
  8013a4c:	20000508 	.word	0x20000508
@@ -7374,7 +7374,7 @@ int calculate_md5_file(char * base_path, char * filename, char * buffer, uint16_
  8013bfa:	46bd      	mov	sp, r7
  8013bfc:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8013bfe:	bf00      	nop
- 8013c00:	08032a30 	.word	0x08032a30
+ 8013c00:	08032a34 	.word	0x08032a34
 
 08013c04 <activate_firmware>:
 
@@ -7446,10 +7446,10 @@ int activate_firmware(char * buf, uint16_t * len){
  8013c6e:	46bd      	mov	sp, r7
  8013c70:	bd80      	pop	{r7, pc}
  8013c72:	bf00      	nop
- 8013c74:	08032a74 	.word	0x08032a74
- 8013c78:	08032a80 	.word	0x08032a80
- 8013c7c:	08032a8c 	.word	0x08032a8c
- 8013c80:	08032a9c 	.word	0x08032a9c
+ 8013c74:	08032a78 	.word	0x08032a78
+ 8013c78:	08032a84 	.word	0x08032a84
+ 8013c7c:	08032a90 	.word	0x08032a90
+ 8013c80:	08032aa0 	.word	0x08032aa0
 
 08013c84 <http_post_cgi_processor>:
 
@@ -7600,14 +7600,14 @@ uint8_t http_post_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf
  8013d72:	46bd      	mov	sp, r7
  8013d74:	bd80      	pop	{r7, pc}
  8013d76:	bf00      	nop
- 8013d78:	08032aa0 	.word	0x08032aa0
- 8013d7c:	08032ab4 	.word	0x08032ab4
- 8013d80:	08032ac8 	.word	0x08032ac8
- 8013d84:	08032ad8 	.word	0x08032ad8
- 8013d88:	08032ae0 	.word	0x08032ae0
- 8013d8c:	08032af0 	.word	0x08032af0
- 8013d90:	08032b08 	.word	0x08032b08
- 8013d94:	08032a74 	.word	0x08032a74
+ 8013d78:	08032aa4 	.word	0x08032aa4
+ 8013d7c:	08032ab8 	.word	0x08032ab8
+ 8013d80:	08032acc 	.word	0x08032acc
+ 8013d84:	08032adc 	.word	0x08032adc
+ 8013d88:	08032ae4 	.word	0x08032ae4
+ 8013d8c:	08032af4 	.word	0x08032af4
+ 8013d90:	08032b0c 	.word	0x08032b0c
+ 8013d94:	08032a78 	.word	0x08032a78
 
 08013d98 <http_get_cgi_processor>:
 
@@ -7802,22 +7802,22 @@ uint8_t http_get_cgi_processor(uint8_t * uri_name, uint8_t * buf, uint16_t * len
  8013ee2:	3718      	adds	r7, #24
  8013ee4:	46bd      	mov	sp, r7
  8013ee6:	bd80      	pop	{r7, pc}
- 8013ee8:	08032b1c 	.word	0x08032b1c
- 8013eec:	08032b30 	.word	0x08032b30
- 8013ef0:	08032b3c 	.word	0x08032b3c
- 8013ef4:	08032b40 	.word	0x08032b40
- 8013ef8:	08032b4c 	.word	0x08032b4c
- 8013efc:	08032b60 	.word	0x08032b60
- 8013f00:	08032b6c 	.word	0x08032b6c
- 8013f04:	08032a80 	.word	0x08032a80
- 8013f08:	08032a74 	.word	0x08032a74
- 8013f0c:	08032b84 	.word	0x08032b84
- 8013f10:	08032b9c 	.word	0x08032b9c
- 8013f14:	08032bb4 	.word	0x08032bb4
- 8013f18:	08032bbc 	.word	0x08032bbc
- 8013f1c:	08032bd0 	.word	0x08032bd0
- 8013f20:	08032be4 	.word	0x08032be4
- 8013f24:	08032bf8 	.word	0x08032bf8
+ 8013ee8:	08032b20 	.word	0x08032b20
+ 8013eec:	08032b34 	.word	0x08032b34
+ 8013ef0:	08032b40 	.word	0x08032b40
+ 8013ef4:	08032b44 	.word	0x08032b44
+ 8013ef8:	08032b50 	.word	0x08032b50
+ 8013efc:	08032b64 	.word	0x08032b64
+ 8013f00:	08032b70 	.word	0x08032b70
+ 8013f04:	08032a84 	.word	0x08032a84
+ 8013f08:	08032a78 	.word	0x08032a78
+ 8013f0c:	08032b88 	.word	0x08032b88
+ 8013f10:	08032ba0 	.word	0x08032ba0
+ 8013f14:	08032bb8 	.word	0x08032bb8
+ 8013f18:	08032bc0 	.word	0x08032bc0
+ 8013f1c:	08032bd4 	.word	0x08032bd4
+ 8013f20:	08032be8 	.word	0x08032be8
+ 8013f24:	08032bfc 	.word	0x08032bfc
 
 08013f28 <func_prototype>:
 
@@ -8106,15 +8106,15 @@ int mqtt_client_init(Ethernet_info_struct* eth_data, MQTT_cred_struct * mqtt_dat
  8014104:	20000554 	.word	0x20000554
  8014108:	20000836 	.word	0x20000836
  801410c:	20000834 	.word	0x20000834
- 8014110:	08032bfc 	.word	0x08032bfc
+ 8014110:	08032c00 	.word	0x08032c00
  8014114:	20000530 	.word	0x20000530
- 8014118:	08032c18 	.word	0x08032c18
+ 8014118:	08032c1c 	.word	0x08032c1c
  801411c:	20000540 	.word	0x20000540
  8014120:	2000083b 	.word	0x2000083b
  8014124:	2000083a 	.word	0x2000083a
  8014128:	20000839 	.word	0x20000839
  801412c:	20000838 	.word	0x20000838
- 8014130:	08032c24 	.word	0x08032c24
+ 8014130:	08032c28 	.word	0x08032c28
  8014134:	20000004 	.word	0x20000004
  8014138:	2000083c 	.word	0x2000083c
  801413c:	200008ac 	.word	0x200008ac
@@ -8921,17 +8921,17 @@ int get_config_topik_string (char * buff, uint8_t topik_type, uint8_t obj_number
  801469c:	200008bc 	.word	0x200008bc
  80146a0:	20000074 	.word	0x20000074
  80146a4:	20000064 	.word	0x20000064
- 80146a8:	08034284 	.word	0x08034284
+ 80146a8:	08034288 	.word	0x08034288
  80146ac:	20000084 	.word	0x20000084
- 80146b0:	08032c60 	.word	0x08032c60
- 80146b4:	08032c68 	.word	0x08032c68
- 80146b8:	08032c40 	.word	0x08032c40
- 80146bc:	08032c48 	.word	0x08032c48
- 80146c0:	08032c70 	.word	0x08032c70
- 80146c4:	08032c78 	.word	0x08032c78
- 80146c8:	08032c80 	.word	0x08032c80
- 80146cc:	08032c90 	.word	0x08032c90
- 80146d0:	08032ca0 	.word	0x08032ca0
+ 80146b0:	08032c64 	.word	0x08032c64
+ 80146b4:	08032c6c 	.word	0x08032c6c
+ 80146b8:	08032c44 	.word	0x08032c44
+ 80146bc:	08032c4c 	.word	0x08032c4c
+ 80146c0:	08032c74 	.word	0x08032c74
+ 80146c4:	08032c7c 	.word	0x08032c7c
+ 80146c8:	08032c84 	.word	0x08032c84
+ 80146cc:	08032c94 	.word	0x08032c94
+ 80146d0:	08032ca4 	.word	0x08032ca4
 
 080146d4 <get_config_payload_string>:
 
@@ -9268,33 +9268,33 @@ int get_config_payload_string( char * payload, uint8_t payload_type, uint8_t obj
  801492e:	e067      	b.n	8014a00 <get_config_payload_string+0x32c>
  8014930:	200008cc 	.word	0x200008cc
  8014934:	200008bc 	.word	0x200008bc
- 8014938:	080342a0 	.word	0x080342a0
- 801493c:	08034460 	.word	0x08034460
- 8014940:	08032ca8 	.word	0x08032ca8
- 8014944:	08032cb0 	.word	0x08032cb0
- 8014948:	08032cb4 	.word	0x08032cb4
- 801494c:	08032cc4 	.word	0x08032cc4
- 8014950:	08032cd4 	.word	0x08032cd4
- 8014954:	08032c68 	.word	0x08032c68
- 8014958:	08032ce4 	.word	0x08032ce4
- 801495c:	08032c60 	.word	0x08032c60
- 8014960:	08032ce8 	.word	0x08032ce8
- 8014964:	08032cf8 	.word	0x08032cf8
- 8014968:	08032d1c 	.word	0x08032d1c
- 801496c:	080345f8 	.word	0x080345f8
- 8014970:	08032d24 	.word	0x08032d24
- 8014974:	08032c70 	.word	0x08032c70
- 8014978:	08032d28 	.word	0x08032d28
- 801497c:	08032d38 	.word	0x08032d38
- 8014980:	08032d3c 	.word	0x08032d3c
- 8014984:	08032c78 	.word	0x08032c78
- 8014988:	08032d40 	.word	0x08032d40
- 801498c:	08032d64 	.word	0x08032d64
- 8014990:	08032c80 	.word	0x08032c80
- 8014994:	08032d68 	.word	0x08032d68
- 8014998:	08032d88 	.word	0x08032d88
- 801499c:	08032c90 	.word	0x08032c90
- 80149a0:	08032d8c 	.word	0x08032d8c
+ 8014938:	080342a4 	.word	0x080342a4
+ 801493c:	08034464 	.word	0x08034464
+ 8014940:	08032cac 	.word	0x08032cac
+ 8014944:	08032cb4 	.word	0x08032cb4
+ 8014948:	08032cb8 	.word	0x08032cb8
+ 801494c:	08032cc8 	.word	0x08032cc8
+ 8014950:	08032cd8 	.word	0x08032cd8
+ 8014954:	08032c6c 	.word	0x08032c6c
+ 8014958:	08032ce8 	.word	0x08032ce8
+ 801495c:	08032c64 	.word	0x08032c64
+ 8014960:	08032cec 	.word	0x08032cec
+ 8014964:	08032cfc 	.word	0x08032cfc
+ 8014968:	08032d20 	.word	0x08032d20
+ 801496c:	080345fc 	.word	0x080345fc
+ 8014970:	08032d28 	.word	0x08032d28
+ 8014974:	08032c74 	.word	0x08032c74
+ 8014978:	08032d2c 	.word	0x08032d2c
+ 801497c:	08032d3c 	.word	0x08032d3c
+ 8014980:	08032d40 	.word	0x08032d40
+ 8014984:	08032c7c 	.word	0x08032c7c
+ 8014988:	08032d44 	.word	0x08032d44
+ 801498c:	08032d68 	.word	0x08032d68
+ 8014990:	08032c84 	.word	0x08032c84
+ 8014994:	08032d6c 	.word	0x08032d6c
+ 8014998:	08032d8c 	.word	0x08032d8c
+ 801499c:	08032c94 	.word	0x08032c94
+ 80149a0:	08032d90 	.word	0x08032d90
 		case CURRENT_SENSOR_PAYLOAD:
 			len = sprintf(payload, universal_conf_template, dev_class_current, dev_system, \
  80149a4:	4b18      	ldr	r3, [pc, #96]	; (8014a08 <get_config_payload_string+0x334>)
@@ -9356,19 +9356,19 @@ int get_config_payload_string( char * payload, uint8_t payload_type, uint8_t obj
  8014a04:	46bd      	mov	sp, r7
  8014a06:	bd90      	pop	{r4, r7, pc}
  8014a08:	200008cc 	.word	0x200008cc
- 8014a0c:	08032ca8 	.word	0x08032ca8
- 8014a10:	08032cb0 	.word	0x08032cb0
- 8014a14:	08032cb4 	.word	0x08032cb4
- 8014a18:	08032cc4 	.word	0x08032cc4
- 8014a1c:	08032cd4 	.word	0x08032cd4
+ 8014a0c:	08032cac 	.word	0x08032cac
+ 8014a10:	08032cb4 	.word	0x08032cb4
+ 8014a14:	08032cb8 	.word	0x08032cb8
+ 8014a18:	08032cc8 	.word	0x08032cc8
+ 8014a1c:	08032cd8 	.word	0x08032cd8
  8014a20:	200008bc 	.word	0x200008bc
- 8014a24:	08032c68 	.word	0x08032c68
- 8014a28:	08032db8 	.word	0x08032db8
- 8014a2c:	08032ca0 	.word	0x08032ca0
- 8014a30:	08032dbc 	.word	0x08032dbc
- 8014a34:	08032d38 	.word	0x08032d38
- 8014a38:	08032d1c 	.word	0x08032d1c
- 8014a3c:	080345f8 	.word	0x080345f8
+ 8014a24:	08032c6c 	.word	0x08032c6c
+ 8014a28:	08032dbc 	.word	0x08032dbc
+ 8014a2c:	08032ca4 	.word	0x08032ca4
+ 8014a30:	08032dc0 	.word	0x08032dc0
+ 8014a34:	08032d3c 	.word	0x08032d3c
+ 8014a38:	08032d20 	.word	0x08032d20
+ 8014a3c:	080345fc 	.word	0x080345fc
 
 08014a40 <generate_status_topik>:
 	strcpy(buff, "\0");
@@ -9438,10 +9438,10 @@ int generate_status_topik(char * buff, mqtt_topik_string_type topik_type){
  8014a92:	46bd      	mov	sp, r7
  8014a94:	bd80      	pop	{r7, pc}
  8014a96:	bf00      	nop
- 8014a98:	08032d1c 	.word	0x08032d1c
+ 8014a98:	08032d20 	.word	0x08032d20
  8014a9c:	200008bc 	.word	0x200008bc
- 8014aa0:	08032c68 	.word	0x08032c68
- 8014aa4:	08032de4 	.word	0x08032de4
+ 8014aa0:	08032c6c 	.word	0x08032c6c
+ 8014aa4:	08032de8 	.word	0x08032de8
  8014aa8:	20000094 	.word	0x20000094
  8014aac:	200000a4 	.word	0x200000a4
 
@@ -9471,7 +9471,7 @@ void generate_key_value_JSON(char * buf, char * key, float value){
  8014ada:	46bd      	mov	sp, r7
  8014adc:	bd80      	pop	{r7, pc}
  8014ade:	bf00      	nop
- 8014ae0:	08032df0 	.word	0x08032df0
+ 8014ae0:	08032df4 	.word	0x08032df4
 
 08014ae4 <InitHLW8032>:
 uint32_t	PFData = 0;
@@ -13977,7 +13977,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  801651a:	bf00      	nop
  801651c:	40023c00 	.word	0x40023c00
  8016520:	40023800 	.word	0x40023800
- 8016524:	0803426c 	.word	0x0803426c
+ 8016524:	08034270 	.word	0x08034270
  8016528:	20000000 	.word	0x20000000
  801652c:	200000bc 	.word	0x200000bc
 
@@ -14279,7 +14279,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8016770:	4618      	mov	r0, r3
  8016772:	bd80      	pop	{r7, pc}
  8016774:	40023800 	.word	0x40023800
- 8016778:	0803427c 	.word	0x0803427c
+ 8016778:	08034280 	.word	0x08034280
 
 0801677c <HAL_RCC_GetPCLK2Freq>:
   * @note   Each time PCLK2 changes, this function must be called to update the
@@ -14305,7 +14305,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  8016798:	4618      	mov	r0, r3
  801679a:	bd80      	pop	{r7, pc}
  801679c:	40023800 	.word	0x40023800
- 80167a0:	0803427c 	.word	0x0803427c
+ 80167a0:	08034280 	.word	0x08034280
 
 080167a4 <HAL_RCC_GetClockConfig>:
   * will be configured.
@@ -27878,7 +27878,7 @@ int8_t check_DHCP_leasedIP(void)
  801bec6:	bd80      	pop	{r7, pc}
  801bec8:	200009a5 	.word	0x200009a5
  801becc:	200009b4 	.word	0x200009b4
- 801bed0:	08032e00 	.word	0x08032e00
+ 801bed0:	08032e04 	.word	0x08032e04
  801bed4:	200009c8 	.word	0x200009c8
  801bed8:	20000110 	.word	0x20000110
 
@@ -31293,7 +31293,7 @@ exit:
  801d43a:	3778      	adds	r7, #120	; 0x78
  801d43c:	46bd      	mov	sp, r7
  801d43e:	bd80      	pop	{r7, pc}
- 801d440:	08032e14 	.word	0x08032e14
+ 801d440:	08032e18 	.word	0x08032e18
 
 0801d444 <MQTTPublish>:
     return rc;
@@ -32260,8 +32260,8 @@ int MQTTSerialize_connect(unsigned char* buf, int buflen, MQTTPacket_connectData
  801da6a:	3728      	adds	r7, #40	; 0x28
  801da6c:	46bd      	mov	sp, r7
  801da6e:	bd80      	pop	{r7, pc}
- 801da70:	08032e6c 	.word	0x08032e6c
- 801da74:	08032e74 	.word	0x08032e74
+ 801da70:	08032e70 	.word	0x08032e70
+ 801da74:	08032e78 	.word	0x08032e78
 
 0801da78 <MQTTDeserialize_connack>:
   * @param buf the raw buffer data, of the correct length determined by the remaining length field
@@ -34011,25 +34011,25 @@ void make_http_response_head(
  801e4b6:	3720      	adds	r7, #32
  801e4b8:	46bd      	mov	sp, r7
  801e4ba:	bd80      	pop	{r7, pc}
- 801e4bc:	08032e7c 	.word	0x08032e7c
- 801e4c0:	08032ed0 	.word	0x08032ed0
- 801e4c4:	08032f0c 	.word	0x08032f0c
- 801e4c8:	08032f48 	.word	0x08032f48
- 801e4cc:	08032f84 	.word	0x08032f84
- 801e4d0:	08032fd4 	.word	0x08032fd4
- 801e4d4:	08033028 	.word	0x08033028
- 801e4d8:	08033064 	.word	0x08033064
- 801e4dc:	080330a8 	.word	0x080330a8
- 801e4e0:	080330f0 	.word	0x080330f0
- 801e4e4:	0803314c 	.word	0x0803314c
- 801e4e8:	08033188 	.word	0x08033188
- 801e4ec:	080331c8 	.word	0x080331c8
- 801e4f0:	08033218 	.word	0x08033218
- 801e4f4:	08033268 	.word	0x08033268
- 801e4f8:	080332b0 	.word	0x080332b0
- 801e4fc:	08033300 	.word	0x08033300
- 801e500:	08033340 	.word	0x08033340
- 801e504:	08033344 	.word	0x08033344
+ 801e4bc:	08032e80 	.word	0x08032e80
+ 801e4c0:	08032ed4 	.word	0x08032ed4
+ 801e4c4:	08032f10 	.word	0x08032f10
+ 801e4c8:	08032f4c 	.word	0x08032f4c
+ 801e4cc:	08032f88 	.word	0x08032f88
+ 801e4d0:	08032fd8 	.word	0x08032fd8
+ 801e4d4:	0803302c 	.word	0x0803302c
+ 801e4d8:	08033068 	.word	0x08033068
+ 801e4dc:	080330ac 	.word	0x080330ac
+ 801e4e0:	080330f4 	.word	0x080330f4
+ 801e4e4:	08033150 	.word	0x08033150
+ 801e4e8:	0803318c 	.word	0x0803318c
+ 801e4ec:	080331cc 	.word	0x080331cc
+ 801e4f0:	0803321c 	.word	0x0803321c
+ 801e4f4:	0803326c 	.word	0x0803326c
+ 801e4f8:	080332b4 	.word	0x080332b4
+ 801e4fc:	08033304 	.word	0x08033304
+ 801e500:	08033344 	.word	0x08033344
+ 801e504:	08033348 	.word	0x08033348
 
 0801e508 <find_http_uri_type>:
  */ 
@@ -34362,38 +34362,38 @@ void find_http_uri_type(
  801e78e:	46bd      	mov	sp, r7
  801e790:	bd80      	pop	{r7, pc}
  801e792:	bf00      	nop
- 801e794:	0803334c 	.word	0x0803334c
- 801e798:	08033354 	.word	0x08033354
- 801e79c:	0803335c 	.word	0x0803335c
- 801e7a0:	08033364 	.word	0x08033364
- 801e7a4:	0803336c 	.word	0x0803336c
- 801e7a8:	08033374 	.word	0x08033374
- 801e7ac:	0803337c 	.word	0x0803337c
- 801e7b0:	08033384 	.word	0x08033384
- 801e7b4:	0803338c 	.word	0x0803338c
- 801e7b8:	08033394 	.word	0x08033394
- 801e7bc:	0803339c 	.word	0x0803339c
- 801e7c0:	080333a4 	.word	0x080333a4
- 801e7c4:	080333ac 	.word	0x080333ac
- 801e7c8:	080333b0 	.word	0x080333b0
- 801e7cc:	080333b4 	.word	0x080333b4
- 801e7d0:	080333bc 	.word	0x080333bc
- 801e7d4:	080333c4 	.word	0x080333c4
- 801e7d8:	080333cc 	.word	0x080333cc
- 801e7dc:	080333d4 	.word	0x080333d4
- 801e7e0:	080333dc 	.word	0x080333dc
- 801e7e4:	080333e4 	.word	0x080333e4
- 801e7e8:	080333ec 	.word	0x080333ec
- 801e7ec:	080333f4 	.word	0x080333f4
- 801e7f0:	080333fc 	.word	0x080333fc
- 801e7f4:	08033404 	.word	0x08033404
- 801e7f8:	0803340c 	.word	0x0803340c
- 801e7fc:	08033414 	.word	0x08033414
- 801e800:	0803341c 	.word	0x0803341c
- 801e804:	08033424 	.word	0x08033424
- 801e808:	0803342c 	.word	0x0803342c
- 801e80c:	08033434 	.word	0x08033434
- 801e810:	0803343c 	.word	0x0803343c
+ 801e794:	08033350 	.word	0x08033350
+ 801e798:	08033358 	.word	0x08033358
+ 801e79c:	08033360 	.word	0x08033360
+ 801e7a0:	08033368 	.word	0x08033368
+ 801e7a4:	08033370 	.word	0x08033370
+ 801e7a8:	08033378 	.word	0x08033378
+ 801e7ac:	08033380 	.word	0x08033380
+ 801e7b0:	08033388 	.word	0x08033388
+ 801e7b4:	08033390 	.word	0x08033390
+ 801e7b8:	08033398 	.word	0x08033398
+ 801e7bc:	080333a0 	.word	0x080333a0
+ 801e7c0:	080333a8 	.word	0x080333a8
+ 801e7c4:	080333b0 	.word	0x080333b0
+ 801e7c8:	080333b4 	.word	0x080333b4
+ 801e7cc:	080333b8 	.word	0x080333b8
+ 801e7d0:	080333c0 	.word	0x080333c0
+ 801e7d4:	080333c8 	.word	0x080333c8
+ 801e7d8:	080333d0 	.word	0x080333d0
+ 801e7dc:	080333d8 	.word	0x080333d8
+ 801e7e0:	080333e0 	.word	0x080333e0
+ 801e7e4:	080333e8 	.word	0x080333e8
+ 801e7e8:	080333f0 	.word	0x080333f0
+ 801e7ec:	080333f8 	.word	0x080333f8
+ 801e7f0:	08033400 	.word	0x08033400
+ 801e7f4:	08033408 	.word	0x08033408
+ 801e7f8:	08033410 	.word	0x08033410
+ 801e7fc:	08033418 	.word	0x08033418
+ 801e800:	08033420 	.word	0x08033420
+ 801e804:	08033428 	.word	0x08033428
+ 801e808:	08033430 	.word	0x08033430
+ 801e80c:	08033438 	.word	0x08033438
+ 801e810:	08033440 	.word	0x08033440
 
 0801e814 <parse_http_request>:
  */ 
@@ -34542,14 +34542,14 @@ void parse_http_request(
  801e8ee:	46bd      	mov	sp, r7
  801e8f0:	bd80      	pop	{r7, pc}
  801e8f2:	bf00      	nop
- 801e8f4:	08033444 	.word	0x08033444
- 801e8f8:	08033448 	.word	0x08033448
- 801e8fc:	0803344c 	.word	0x0803344c
- 801e900:	08033450 	.word	0x08033450
- 801e904:	08033458 	.word	0x08033458
- 801e908:	08033460 	.word	0x08033460
- 801e90c:	08033468 	.word	0x08033468
- 801e910:	08033470 	.word	0x08033470
+ 801e8f4:	08033448 	.word	0x08033448
+ 801e8f8:	0803344c 	.word	0x0803344c
+ 801e8fc:	08033450 	.word	0x08033450
+ 801e900:	08033454 	.word	0x08033454
+ 801e904:	0803345c 	.word	0x0803345c
+ 801e908:	08033464 	.word	0x08033464
+ 801e90c:	0803346c 	.word	0x0803346c
+ 801e910:	08033474 	.word	0x08033474
 
 0801e914 <get_http_param_value>:
 #else
@@ -34731,9 +34731,9 @@ uint8_t * get_http_param_value(char* uri, char* param_name)
  801ea10:	46bd      	mov	sp, r7
  801ea12:	bd80      	pop	{r7, pc}
  801ea14:	200009f8 	.word	0x200009f8
- 801ea18:	08033474 	.word	0x08033474
- 801ea1c:	08033478 	.word	0x08033478
- 801ea20:	08033344 	.word	0x08033344
+ 801ea18:	08033478 	.word	0x08033478
+ 801ea1c:	0803347c 	.word	0x0803347c
+ 801ea20:	08033348 	.word	0x08033348
 
 0801ea24 <get_http_uri_name>:
 	return uri_name;
@@ -34792,8 +34792,8 @@ uint8_t get_http_uri_name(uint8_t * uri, uint8_t * uri_buf)
  801ea6a:	3710      	adds	r7, #16
  801ea6c:	46bd      	mov	sp, r7
  801ea6e:	bd80      	pop	{r7, pc}
- 801ea70:	0803348c 	.word	0x0803348c
- 801ea74:	08033490 	.word	0x08033490
+ 801ea70:	08033490 	.word	0x08033490
+ 801ea74:	08033494 	.word	0x08033494
 
 0801ea78 <ATOI>:
 */
@@ -35691,9 +35691,9 @@ static void send_http_response_header(uint8_t s, uint8_t content_type, uint32_t 
  801f030:	bd90      	pop	{r4, r7, pc}
  801f032:	bf00      	nop
  801f034:	20001208 	.word	0x20001208
- 801f038:	08034808 	.word	0x08034808
- 801f03c:	0803476c 	.word	0x0803476c
- 801f040:	08034880 	.word	0x08034880
+ 801f038:	0803480c 	.word	0x0803480c
+ 801f03c:	08034770 	.word	0x08034770
+ 801f040:	08034884 	.word	0x08034884
 
 0801f044 <send_http_response_body>:
 
@@ -36079,7 +36079,7 @@ static void send_http_response_body(uint8_t s, uint8_t * uri_name, uint8_t * buf
  801f2e8:	bd80      	pop	{r7, pc}
  801f2ea:	bf00      	nop
  801f2ec:	200012e4 	.word	0x200012e4
- 801f2f0:	08033498 	.word	0x08033498
+ 801f2f0:	0803349c 	.word	0x0803349c
 
 0801f2f4 <send_http_response_cgi>:
 
@@ -36129,8 +36129,8 @@ static void send_http_response_cgi(uint8_t s, uint8_t * buf, uint8_t * http_body
  801f332:	46bd      	mov	sp, r7
  801f334:	bd80      	pop	{r7, pc}
  801f336:	bf00      	nop
- 801f338:	080334a0 	.word	0x080334a0
- 801f33c:	080334fc 	.word	0x080334fc
+ 801f338:	080334a4 	.word	0x080334a4
+ 801f33c:	08033500 	.word	0x08033500
 
 0801f340 <http_disconnect>:
 
@@ -36540,14 +36540,14 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
  801f69e:	bf00      	nop
  801f6a0:	200012dc 	.word	0x200012dc
  801f6a4:	20001208 	.word	0x20001208
- 801f6a8:	08033508 	.word	0x08033508
- 801f6ac:	0803350c 	.word	0x0803350c
- 801f6b0:	08033518 	.word	0x08033518
- 801f6b4:	0803351c 	.word	0x0803351c
- 801f6b8:	0803352c 	.word	0x0803352c
- 801f6bc:	08033534 	.word	0x08033534
+ 801f6a8:	0803350c 	.word	0x0803350c
+ 801f6ac:	08033510 	.word	0x08033510
+ 801f6b0:	0803351c 	.word	0x0803351c
+ 801f6b4:	08033520 	.word	0x08033520
+ 801f6b8:	08033530 	.word	0x08033530
+ 801f6bc:	08033538 	.word	0x08033538
  801f6c0:	200012d8 	.word	0x200012d8
- 801f6c4:	08033498 	.word	0x08033498
+ 801f6c4:	0803349c 	.word	0x0803349c
  801f6c8:	200012e4 	.word	0x200012e4
 
 		case METHOD_POST :
@@ -36686,8 +36686,8 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
  801f7ce:	f507 770a 	add.w	r7, r7, #552	; 0x228
  801f7d2:	46bd      	mov	sp, r7
  801f7d4:	e8bd 83b0 	ldmia.w	sp!, {r4, r5, r7, r8, r9, pc}
- 801f7d8:	08033548 	.word	0x08033548
- 801f7dc:	08033508 	.word	0x08033508
+ 801f7d8:	0803354c 	.word	0x0803354c
+ 801f7dc:	0803350c 	.word	0x0803350c
  801f7e0:	20001208 	.word	0x20001208
  801f7e4:	200012d8 	.word	0x200012d8
  801f7e8:	20000120 	.word	0x20000120
@@ -37082,7 +37082,7 @@ uint8_t http_get_cgi_handler(uint8_t * uri_name, uint8_t * buf, uint32_t * file_
  801fa30:	bd80      	pop	{r7, pc}
  801fa32:	bf00      	nop
  801fa34:	20001538 	.word	0x20001538
- 801fa38:	08033600 	.word	0x08033600
+ 801fa38:	08033604 	.word	0x08033604
 
 0801fa3c <http_post_cgi_handler>:
 
@@ -37191,9 +37191,9 @@ uint8_t http_post_cgi_handler(uint8_t * uri_name, st_http_request * p_http_reque
  801fad4:	bd90      	pop	{r4, r7, pc}
  801fad6:	bf00      	nop
  801fad8:	20001534 	.word	0x20001534
- 801fadc:	08033600 	.word	0x08033600
- 801fae0:	0803360c 	.word	0x0803360c
- 801fae4:	08033610 	.word	0x08033610
+ 801fadc:	08033604 	.word	0x08033604
+ 801fae0:	08033610 	.word	0x08033610
+ 801fae4:	08033614 	.word	0x08033614
 
 0801fae8 <default_get_cgi_processor>:
 
@@ -37676,7 +37676,7 @@ int w5500_init(void)
  801fd9e:	3714      	adds	r7, #20
  801fda0:	46bd      	mov	sp, r7
  801fda2:	bd90      	pop	{r4, r7, pc}
- 801fda4:	08033624 	.word	0x08033624
+ 801fda4:	08033628 	.word	0x08033628
  801fda8:	2000154c 	.word	0x2000154c
  801fdac:	20001548 	.word	0x20001548
  801fdb0:	20001550 	.word	0x20001550
@@ -44039,7 +44039,7 @@ BaseType_t xReturn;
  8021e72:	46bd      	mov	sp, r7
  8021e74:	bd80      	pop	{r7, pc}
  8021e76:	bf00      	nop
- 8021e78:	08033634 	.word	0x08033634
+ 8021e78:	08033638 	.word	0x08033638
  8021e7c:	080224f5 	.word	0x080224f5
  8021e80:	20002250 	.word	0x20002250
  8021e84:	20001d58 	.word	0x20001d58
@@ -46501,7 +46501,7 @@ BaseType_t xReturn = pdFAIL;
  8022b70:	46bd      	mov	sp, r7
  8022b72:	bd80      	pop	{r7, pc}
  8022b74:	20002290 	.word	0x20002290
- 8022b78:	0803363c 	.word	0x0803363c
+ 8022b78:	08033640 	.word	0x08033640
  8022b7c:	08022cb9 	.word	0x08022cb9
  8022b80:	20002294 	.word	0x20002294
 
@@ -47601,7 +47601,7 @@ static void prvCheckForValidListAndQueue( void )
  8023180:	2000228c 	.word	0x2000228c
  8023184:	2000233c 	.word	0x2000233c
  8023188:	2000229c 	.word	0x2000229c
- 802318c:	08033644 	.word	0x08033644
+ 802318c:	08033648 	.word	0x08033648
 
 08023190 <pxPortInitialiseStack>:
 
@@ -49310,10 +49310,10 @@ static int lfs_bd_read(lfs_t *lfs,
  8023b2e:	3720      	adds	r7, #32
  8023b30:	46bd      	mov	sp, r7
  8023b32:	bdb0      	pop	{r4, r5, r7, pc}
- 8023b34:	0803364c 	.word	0x0803364c
- 8023b38:	08034920 	.word	0x08034920
- 8023b3c:	0803366c 	.word	0x0803366c
- 8023b40:	080336a0 	.word	0x080336a0
+ 8023b34:	08033650 	.word	0x08033650
+ 8023b38:	08034924 	.word	0x08034924
+ 8023b3c:	08033670 	.word	0x08033670
+ 8023b40:	080336a4 	.word	0x080336a4
 
 08023b44 <lfs_bd_cmp>:
 
@@ -49566,10 +49566,10 @@ static int lfs_bd_flush(lfs_t *lfs,
  8023cca:	46bd      	mov	sp, r7
  8023ccc:	bdb0      	pop	{r4, r5, r7, pc}
  8023cce:	bf00      	nop
- 8023cd0:	080336ac 	.word	0x080336ac
- 8023cd4:	0803492c 	.word	0x0803492c
- 8023cd8:	0803366c 	.word	0x0803366c
- 8023cdc:	080336a0 	.word	0x080336a0
+ 8023cd0:	080336b0 	.word	0x080336b0
+ 8023cd4:	08034930 	.word	0x08034930
+ 8023cd8:	08033670 	.word	0x08033670
+ 8023cdc:	080336a4 	.word	0x080336a4
 
 08023ce0 <lfs_bd_sync>:
 #endif
@@ -49631,9 +49631,9 @@ static int lfs_bd_sync(lfs_t *lfs,
  8023d36:	46bd      	mov	sp, r7
  8023d38:	bd80      	pop	{r7, pc}
  8023d3a:	bf00      	nop
- 8023d3c:	080336a0 	.word	0x080336a0
- 8023d40:	0803493c 	.word	0x0803493c
- 8023d44:	0803366c 	.word	0x0803366c
+ 8023d3c:	080336a4 	.word	0x080336a4
+ 8023d40:	08034940 	.word	0x08034940
+ 8023d44:	08033670 	.word	0x08033670
 
 08023d48 <lfs_bd_prog>:
 
@@ -49836,11 +49836,11 @@ static int lfs_bd_prog(lfs_t *lfs,
  8023e86:	46bd      	mov	sp, r7
  8023e88:	bd80      	pop	{r7, pc}
  8023e8a:	bf00      	nop
- 8023e8c:	080336d4 	.word	0x080336d4
- 8023e90:	08034948 	.word	0x08034948
- 8023e94:	0803366c 	.word	0x0803366c
- 8023e98:	08033710 	.word	0x08033710
- 8023e9c:	08033734 	.word	0x08033734
+ 8023e8c:	080336d8 	.word	0x080336d8
+ 8023e90:	0803494c 	.word	0x0803494c
+ 8023e94:	08033670 	.word	0x08033670
+ 8023e98:	08033714 	.word	0x08033714
+ 8023e9c:	08033738 	.word	0x08033738
 
 08023ea0 <lfs_bd_erase>:
 #endif
@@ -49891,10 +49891,10 @@ static int lfs_bd_erase(lfs_t *lfs, lfs_block_t block) {
  8023eee:	46bd      	mov	sp, r7
  8023ef0:	bd80      	pop	{r7, pc}
  8023ef2:	bf00      	nop
- 8023ef4:	0803364c 	.word	0x0803364c
- 8023ef8:	08034954 	.word	0x08034954
- 8023efc:	0803366c 	.word	0x0803366c
- 8023f00:	080336a0 	.word	0x080336a0
+ 8023ef4:	08033650 	.word	0x08033650
+ 8023ef8:	08034958 	.word	0x08034958
+ 8023efc:	08033670 	.word	0x08033670
+ 8023f00:	080336a4 	.word	0x080336a4
 
 08023f04 <lfs_pair_swap>:
 #endif
@@ -51211,9 +51211,9 @@ static int lfs_alloc(lfs_t *lfs, lfs_block_t *block) {
  8024722:	46bd      	mov	sp, r7
  8024724:	bd80      	pop	{r7, pc}
  8024726:	bf00      	nop
- 8024728:	08033780 	.word	0x08033780
- 802472c:	0803366c 	.word	0x0803366c
- 8024730:	08033758 	.word	0x08033758
+ 8024728:	08033784 	.word	0x08033784
+ 802472c:	08033670 	.word	0x08033670
+ 8024730:	0803375c 	.word	0x0803375c
  8024734:	08024523 	.word	0x08024523
 
 08024738 <lfs_dir_getslice>:
@@ -52266,9 +52266,9 @@ static int lfs_dir_traverse(lfs_t *lfs,
  8024e70:	e19e      	b.n	80251b0 <lfs_dir_traverse+0x608>
  8024e72:	bf00      	nop
  8024e74:	7ff00000 	.word	0x7ff00000
- 8024e78:	08033784 	.word	0x08033784
- 8024e7c:	08034964 	.word	0x08034964
- 8024e80:	0803366c 	.word	0x0803366c
+ 8024e78:	08033788 	.word	0x08033788
+ 8024e7c:	08034968 	.word	0x08034968
+ 8024e80:	08033670 	.word	0x08033670
  8024e84:	08024af1 	.word	0x08024af1
             }
         }
@@ -53438,7 +53438,7 @@ static lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
                 return err;
  802571c:	e183      	b.n	8025a26 <lfs_dir_fetchmatch+0x6be>
  802571e:	bf00      	nop
- 8025720:	080337c4 	.word	0x080337c4
+ 8025720:	080337c8 	.word	0x080337c8
                 }
 
                 crc = lfs_crc(crc, &dat, 1);
@@ -53880,9 +53880,9 @@ static lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
  8025a2e:	bf00      	nop
  8025a30:	000ffc00 	.word	0x000ffc00
  8025a34:	7ffffc00 	.word	0x7ffffc00
- 8025a38:	08033780 	.word	0x08033780
- 8025a3c:	0803366c 	.word	0x0803366c
- 8025a40:	0803378c 	.word	0x0803378c
+ 8025a38:	08033784 	.word	0x08033784
+ 8025a3c:	08033670 	.word	0x08033670
+ 8025a40:	08033790 	.word	0x08033790
 
 08025a44 <lfs_dir_fetch>:
 
@@ -54120,7 +54120,7 @@ static int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,
  8025bc2:	46bd      	mov	sp, r7
  8025bc4:	bd80      	pop	{r7, pc}
  8025bc6:	bf00      	nop
- 8025bc8:	080337cc 	.word	0x080337cc
+ 8025bc8:	080337d0 	.word	0x080337d0
  8025bcc:	780ffc00 	.word	0x780ffc00
  8025bd0:	700ffc00 	.word	0x700ffc00
 
@@ -54546,9 +54546,9 @@ nextname:
  8025e40:	bd90      	pop	{r4, r7, pc}
  8025e42:	bf00      	nop
  8025e44:	002ffc00 	.word	0x002ffc00
- 8025e48:	080337cc 	.word	0x080337cc
- 8025e4c:	080337d0 	.word	0x080337d0
- 8025e50:	080337d4 	.word	0x080337d4
+ 8025e48:	080337d0 	.word	0x080337d0
+ 8025e4c:	080337d4 	.word	0x080337d4
+ 8025e50:	080337d8 	.word	0x080337d8
  8025e54:	700ffc00 	.word	0x700ffc00
  8025e58:	08025bd5 	.word	0x08025bd5
 
@@ -56214,12 +56214,12 @@ relocate:
  80268c4:	400ffc00 	.word	0x400ffc00
  80268c8:	000ffc08 	.word	0x000ffc08
  80268cc:	7ffffc0c 	.word	0x7ffffc0c
- 80268d0:	080337d8 	.word	0x080337d8
- 80268d4:	08034978 	.word	0x08034978
- 80268d8:	0803366c 	.word	0x0803366c
- 80268dc:	08033780 	.word	0x08033780
- 80268e0:	08033800 	.word	0x08033800
- 80268e4:	08033824 	.word	0x08033824
+ 80268d0:	080337dc 	.word	0x080337dc
+ 80268d4:	0803497c 	.word	0x0803497c
+ 80268d8:	08033670 	.word	0x08033670
+ 80268dc:	08033784 	.word	0x08033784
+ 80268e0:	08033804 	.word	0x08033804
+ 80268e4:	08033828 	.word	0x08033828
 
 080268e8 <lfs_dir_splittingcompact>:
 #endif
@@ -56557,11 +56557,11 @@ static int lfs_dir_splittingcompact(lfs_t *lfs, lfs_mdir_t *dir,
  8026afa:	bf00      	nop
  8026afc:	08026455 	.word	0x08026455
  8026b00:	400ffc00 	.word	0x400ffc00
- 8026b04:	08033780 	.word	0x08033780
- 8026b08:	0803366c 	.word	0x0803366c
- 8026b0c:	0803385c 	.word	0x0803385c
- 8026b10:	0803388c 	.word	0x0803388c
- 8026b14:	080338bc 	.word	0x080338bc
+ 8026b04:	08033784 	.word	0x08033784
+ 8026b08:	08033670 	.word	0x08033670
+ 8026b0c:	08033860 	.word	0x08033860
+ 8026b10:	08033890 	.word	0x08033890
+ 8026b14:	080338c0 	.word	0x080338c0
 
 08026b18 <lfs_dir_relocatingcommit>:
 
@@ -56990,10 +56990,10 @@ static int lfs_dir_relocatingcommit(lfs_t *lfs, lfs_mdir_t *dir,
  8026e12:	6d7b      	ldr	r3, [r7, #84]	; 0x54
  8026e14:	e12b      	b.n	802706e <lfs_dir_relocatingcommit+0x556>
  8026e16:	bf00      	nop
- 8026e18:	080338e8 	.word	0x080338e8
- 8026e1c:	08034988 	.word	0x08034988
- 8026e20:	0803366c 	.word	0x0803366c
- 8026e24:	080338f8 	.word	0x080338f8
+ 8026e18:	080338ec 	.word	0x080338ec
+ 8026e1c:	0803498c 	.word	0x0803498c
+ 8026e20:	08033670 	.word	0x08033670
+ 8026e24:	080338fc 	.word	0x080338fc
  8026e28:	08026481 	.word	0x08026481
  8026e2c:	7ffffc0c 	.word	0x7ffffc0c
         }
@@ -57335,9 +57335,9 @@ compact:
  8027072:	46bd      	mov	sp, r7
  8027074:	bdb0      	pop	{r4, r5, r7, pc}
  8027076:	bf00      	nop
- 8027078:	080337d8 	.word	0x080337d8
- 802707c:	08034988 	.word	0x08034988
- 8027080:	0803366c 	.word	0x0803366c
+ 8027078:	080337dc 	.word	0x080337dc
+ 802707c:	0803498c 	.word	0x0803498c
+ 8027080:	08033670 	.word	0x08033670
 
 08027084 <lfs_dir_orphaningcommit>:
 #endif
@@ -57899,12 +57899,12 @@ static int lfs_dir_orphaningcommit(lfs_t *lfs, lfs_mdir_t *dir,
  80274f2:	f005 f84b 	bl	802c58c <__assert_func>
  80274f6:	bf00      	nop
  80274f8:	000ffc08 	.word	0x000ffc08
- 80274fc:	08033780 	.word	0x08033780
- 8027500:	0803366c 	.word	0x0803366c
- 8027504:	08033900 	.word	0x08033900
- 8027508:	0803393c 	.word	0x0803393c
- 802750c:	08033980 	.word	0x08033980
- 8027510:	080349a4 	.word	0x080349a4
+ 80274fc:	08033784 	.word	0x08033784
+ 8027500:	08033670 	.word	0x08033670
+ 8027504:	08033904 	.word	0x08033904
+ 8027508:	08033940 	.word	0x08033940
+ 802750c:	08033984 	.word	0x08033984
+ 8027510:	080349a8 	.word	0x080349a8
 
         // if we can't find dir, it must be new
         if (err != LFS_ERR_NOENT) {
@@ -58071,9 +58071,9 @@ static int lfs_dir_orphaningcommit(lfs_t *lfs, lfs_mdir_t *dir,
  8027662:	46bd      	mov	sp, r7
  8027664:	bdb0      	pop	{r4, r5, r7, pc}
  8027666:	bf00      	nop
- 8027668:	08033780 	.word	0x08033780
- 802766c:	0803366c 	.word	0x0803366c
- 8027670:	0803393c 	.word	0x0803393c
+ 8027668:	08033784 	.word	0x08033784
+ 802766c:	08033670 	.word	0x08033670
+ 8027670:	08033940 	.word	0x08033940
  8027674:	000ffc08 	.word	0x000ffc08
 
 08027678 <lfs_dir_commit>:
@@ -58796,8 +58796,8 @@ static int lfs_dir_rawread(lfs_t *lfs, lfs_dir_t *dir, struct lfs_info *info) {
  8027b4e:	3718      	adds	r7, #24
  8027b50:	46bd      	mov	sp, r7
  8027b52:	bd80      	pop	{r7, pc}
- 8027b54:	080337d0 	.word	0x080337d0
- 8027b58:	080337d4 	.word	0x080337d4
+ 8027b54:	080337d4 	.word	0x080337d4
+ 8027b58:	080337d8 	.word	0x080337d8
 
 08027b5c <lfs_ctz_index>:
     return 0;
@@ -59345,9 +59345,9 @@ relocate:
  8027ea2:	46bd      	mov	sp, r7
  8027ea4:	bd80      	pop	{r7, pc}
  8027ea6:	bf00      	nop
- 8027ea8:	08033780 	.word	0x08033780
- 8027eac:	0803366c 	.word	0x0803366c
- 8027eb0:	08033800 	.word	0x08033800
+ 8027ea8:	08033784 	.word	0x08033784
+ 8027eac:	08033670 	.word	0x08033670
+ 8027eb0:	08033804 	.word	0x08033804
 
 08027eb4 <lfs_ctz_traverse>:
 #endif
@@ -60405,9 +60405,9 @@ relocate:
  8028528:	bd90      	pop	{r4, r7, pc}
  802852a:	bf00      	nop
  802852c:	fff7fc00 	.word	0xfff7fc00
- 8028530:	08033780 	.word	0x08033780
- 8028534:	0803366c 	.word	0x0803366c
- 8028538:	08033800 	.word	0x08033800
+ 8028530:	08033784 	.word	0x08033784
+ 8028534:	08033670 	.word	0x08033670
+ 8028538:	08033804 	.word	0x08033804
 
 0802853c <lfs_file_outline>:
 #endif
@@ -60720,9 +60720,9 @@ relocate:
  8028716:	46bd      	mov	sp, r7
  8028718:	bd90      	pop	{r4, r7, pc}
  802871a:	bf00      	nop
- 802871c:	08033780 	.word	0x08033780
- 8028720:	0803366c 	.word	0x0803366c
- 8028724:	08033800 	.word	0x08033800
+ 802871c:	08033784 	.word	0x08033784
+ 8028720:	08033670 	.word	0x08033670
+ 8028724:	08033804 	.word	0x08033804
 
 08028728 <lfs_file_rawsync>:
 
@@ -61218,9 +61218,9 @@ static lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
  8028a3e:	46bd      	mov	sp, r7
  8028a40:	bd80      	pop	{r7, pc}
  8028a42:	bf00      	nop
- 8028a44:	080339a8 	.word	0x080339a8
- 8028a48:	080349bc 	.word	0x080349bc
- 8028a4c:	0803366c 	.word	0x0803366c
+ 8028a44:	080339ac 	.word	0x080339ac
+ 8028a48:	080349c0 	.word	0x080349c0
+ 8028a4c:	08033670 	.word	0x08033670
 
 08028a50 <lfs_file_flushedwrite>:
 
@@ -61747,9 +61747,9 @@ static lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
  8028d96:	3728      	adds	r7, #40	; 0x28
  8028d98:	46bd      	mov	sp, r7
  8028d9a:	bd80      	pop	{r7, pc}
- 8028d9c:	080339d8 	.word	0x080339d8
- 8028da0:	080349d0 	.word	0x080349d0
- 8028da4:	0803366c 	.word	0x0803366c
+ 8028d9c:	080339dc 	.word	0x080339dc
+ 8028da0:	080349d4 	.word	0x080349d4
+ 8028da4:	08033670 	.word	0x08033670
 
 08028da8 <lfs_file_rawseek>:
 #endif
@@ -63144,20 +63144,20 @@ static int lfs_init(lfs_t *lfs, const struct lfs_config *cfg) {
  8029774:	4803      	ldr	r0, [pc, #12]	; (8029784 <lfs_init+0x270>)
  8029776:	f002 ff09 	bl	802c58c <__assert_func>
  802977a:	bf00      	nop
- 802977c:	08033a08 	.word	0x08033a08
- 8029780:	080349e4 	.word	0x080349e4
- 8029784:	0803366c 	.word	0x0803366c
- 8029788:	08033a24 	.word	0x08033a24
- 802978c:	08033a40 	.word	0x08033a40
- 8029790:	08033a5c 	.word	0x08033a5c
- 8029794:	08033a8c 	.word	0x08033a8c
- 8029798:	08033abc 	.word	0x08033abc
- 802979c:	08033af0 	.word	0x08033af0
- 80297a0:	08033b3c 	.word	0x08033b3c
- 80297a4:	08033b58 	.word	0x08033b58
- 80297a8:	08033b78 	.word	0x08033b78
- 80297ac:	08033bcc 	.word	0x08033bcc
- 80297b0:	08033be8 	.word	0x08033be8
+ 802977c:	08033a0c 	.word	0x08033a0c
+ 8029780:	080349e8 	.word	0x080349e8
+ 8029784:	08033670 	.word	0x08033670
+ 8029788:	08033a28 	.word	0x08033a28
+ 802978c:	08033a44 	.word	0x08033a44
+ 8029790:	08033a60 	.word	0x08033a60
+ 8029794:	08033a90 	.word	0x08033a90
+ 8029798:	08033ac0 	.word	0x08033ac0
+ 802979c:	08033af4 	.word	0x08033af4
+ 80297a0:	08033b40 	.word	0x08033b40
+ 80297a4:	08033b5c 	.word	0x08033b5c
+ 80297a8:	08033b7c 	.word	0x08033b7c
+ 80297ac:	08033bd0 	.word	0x08033bd0
+ 80297b0:	08033bec 	.word	0x08033bec
     lfs->file_max = lfs->cfg->file_max;
  80297b4:	687b      	ldr	r3, [r7, #4]
  80297b6:	6e9b      	ldr	r3, [r3, #104]	; 0x68
@@ -63277,10 +63277,10 @@ cleanup:
  8029872:	46bd      	mov	sp, r7
  8029874:	bd80      	pop	{r7, pc}
  8029876:	bf00      	nop
- 8029878:	08033c0c 	.word	0x08033c0c
- 802987c:	080349e4 	.word	0x080349e4
- 8029880:	0803366c 	.word	0x0803366c
- 8029884:	08033c28 	.word	0x08033c28
+ 8029878:	08033c10 	.word	0x08033c10
+ 802987c:	080349e8 	.word	0x080349e8
+ 8029880:	08033670 	.word	0x08033670
+ 8029884:	08033c2c 	.word	0x08033c2c
 
 08029888 <lfs_deinit>:
 
@@ -63547,7 +63547,7 @@ cleanup:
  8029a06:	bd80      	pop	{r7, pc}
  8029a08:	40100000 	.word	0x40100000
  8029a0c:	0ff00008 	.word	0x0ff00008
- 8029a10:	08033c58 	.word	0x08033c58
+ 8029a10:	08033c5c 	.word	0x08033c5c
  8029a14:	20100018 	.word	0x20100018
 
 08029a18 <lfs_rawmount>:
@@ -63941,19 +63941,19 @@ static int lfs_rawmount(lfs_t *lfs, const struct lfs_config *cfg) {
  8029c94:	65fb      	str	r3, [r7, #92]	; 0x5c
         goto cleanup;
  8029c96:	e05d      	b.n	8029d54 <lfs_rawmount+0x33c>
- 8029c98:	08033c58 	.word	0x08033c58
+ 8029c98:	08033c5c 	.word	0x08033c5c
  8029c9c:	08025bd5 	.word	0x08025bd5
  8029ca0:	0ff00008 	.word	0x0ff00008
  8029ca4:	7ffffc00 	.word	0x7ffffc00
  8029ca8:	20100018 	.word	0x20100018
- 8029cac:	08033780 	.word	0x08033780
- 8029cb0:	0803366c 	.word	0x0803366c
- 8029cb4:	08033c64 	.word	0x08033c64
- 8029cb8:	08033c90 	.word	0x08033c90
- 8029cbc:	08033cc4 	.word	0x08033cc4
- 8029cc0:	08033cf8 	.word	0x08033cf8
- 8029cc4:	08033d2c 	.word	0x08033d2c
- 8029cc8:	08033d60 	.word	0x08033d60
+ 8029cac:	08033784 	.word	0x08033784
+ 8029cb0:	08033670 	.word	0x08033670
+ 8029cb4:	08033c68 	.word	0x08033c68
+ 8029cb8:	08033c94 	.word	0x08033c94
+ 8029cbc:	08033cc8 	.word	0x08033cc8
+ 8029cc0:	08033cfc 	.word	0x08033cfc
+ 8029cc4:	08033d30 	.word	0x08033d30
+ 8029cc8:	08033d64 	.word	0x08033d64
     }
 
     // update littlefs with gstate
@@ -64043,9 +64043,9 @@ cleanup:
  8029d5e:	3760      	adds	r7, #96	; 0x60
  8029d60:	46bd      	mov	sp, r7
  8029d62:	bd80      	pop	{r7, pc}
- 8029d64:	08033780 	.word	0x08033780
- 8029d68:	0803366c 	.word	0x0803366c
- 8029d6c:	08033d90 	.word	0x08033d90
+ 8029d64:	08033784 	.word	0x08033784
+ 8029d68:	08033670 	.word	0x08033670
+ 8029d6c:	08033d94 	.word	0x08033d94
 
 08029d70 <lfs_rawunmount>:
 
@@ -64767,9 +64767,9 @@ static int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans) {
  802a1f6:	370c      	adds	r7, #12
  802a1f8:	46bd      	mov	sp, r7
  802a1fa:	bd90      	pop	{r4, r7, pc}
- 802a1fc:	08033dc8 	.word	0x08033dc8
- 802a200:	080349f0 	.word	0x080349f0
- 802a204:	0803366c 	.word	0x0803366c
+ 802a1fc:	08033dcc 	.word	0x08033dcc
+ 802a200:	080349f4 	.word	0x080349f4
+ 802a204:	08033670 	.word	0x08033670
 
 0802a208 <lfs_fs_prepmove>:
 #endif
@@ -64947,9 +64947,9 @@ static int lfs_fs_demove(lfs_t *lfs) {
  802a336:	46bd      	mov	sp, r7
  802a338:	bdb0      	pop	{r4, r5, r7, pc}
  802a33a:	bf00      	nop
- 802a33c:	08033780 	.word	0x08033780
- 802a340:	0803366c 	.word	0x0803366c
- 802a344:	08033dfc 	.word	0x08033dfc
+ 802a33c:	08033784 	.word	0x08033784
+ 802a340:	08033670 	.word	0x08033670
+ 802a344:	08033e00 	.word	0x08033e00
 
 0802a348 <lfs_fs_deorphan>:
 #endif
@@ -65362,13 +65362,13 @@ restart:
  802a66a:	37b8      	adds	r7, #184	; 0xb8
  802a66c:	46bd      	mov	sp, r7
  802a66e:	bdb0      	pop	{r4, r5, r7, pc}
- 802a670:	08033780 	.word	0x08033780
- 802a674:	0803366c 	.word	0x0803366c
- 802a678:	08033e30 	.word	0x08033e30
+ 802a670:	08033784 	.word	0x08033784
+ 802a674:	08033670 	.word	0x08033670
+ 802a678:	08033e34 	.word	0x08033e34
  802a67c:	000ffc08 	.word	0x000ffc08
  802a680:	7ffffc00 	.word	0x7ffffc00
- 802a684:	08033e60 	.word	0x08033e60
- 802a688:	08033ea4 	.word	0x08033ea4
+ 802a684:	08033e64 	.word	0x08033e64
+ 802a688:	08033ea8 	.word	0x08033ea8
  802a68c:	600ffc08 	.word	0x600ffc08
 
 0802a690 <lfs_fs_forceconsistency>:
@@ -65750,9 +65750,9 @@ int lfs_file_opencfg(lfs_t *lfs, lfs_file_t *file,
  802a862:	46bd      	mov	sp, r7
  802a864:	bd80      	pop	{r7, pc}
  802a866:	bf00      	nop
- 802a868:	08033eec 	.word	0x08033eec
- 802a86c:	08034a04 	.word	0x08034a04
- 802a870:	0803366c 	.word	0x0803366c
+ 802a868:	08033ef0 	.word	0x08033ef0
+ 802a86c:	08034a08 	.word	0x08034a08
+ 802a870:	08033670 	.word	0x08033670
 
 0802a874 <lfs_file_close>:
 
@@ -65804,9 +65804,9 @@ int lfs_file_close(lfs_t *lfs, lfs_file_t *file) {
  802a8ba:	3710      	adds	r7, #16
  802a8bc:	46bd      	mov	sp, r7
  802a8be:	bd80      	pop	{r7, pc}
- 802a8c0:	08033f24 	.word	0x08033f24
- 802a8c4:	08034a18 	.word	0x08034a18
- 802a8c8:	0803366c 	.word	0x0803366c
+ 802a8c0:	08033f28 	.word	0x08033f28
+ 802a8c4:	08034a1c 	.word	0x08034a1c
+ 802a8c8:	08033670 	.word	0x08033670
 
 0802a8cc <lfs_file_read>:
     return err;
@@ -65867,9 +65867,9 @@ lfs_ssize_t lfs_file_read(lfs_t *lfs, lfs_file_t *file,
  802a91a:	3718      	adds	r7, #24
  802a91c:	46bd      	mov	sp, r7
  802a91e:	bd80      	pop	{r7, pc}
- 802a920:	08033f24 	.word	0x08033f24
- 802a924:	08034a28 	.word	0x08034a28
- 802a928:	0803366c 	.word	0x0803366c
+ 802a920:	08033f28 	.word	0x08033f28
+ 802a924:	08034a2c 	.word	0x08034a2c
+ 802a928:	08033670 	.word	0x08033670
 
 0802a92c <lfs_file_write>:
 
@@ -65928,9 +65928,9 @@ lfs_ssize_t lfs_file_write(lfs_t *lfs, lfs_file_t *file,
  802a97a:	3718      	adds	r7, #24
  802a97c:	46bd      	mov	sp, r7
  802a97e:	bd80      	pop	{r7, pc}
- 802a980:	08033f24 	.word	0x08033f24
- 802a984:	08034a38 	.word	0x08034a38
- 802a988:	0803366c 	.word	0x0803366c
+ 802a980:	08033f28 	.word	0x08033f28
+ 802a984:	08034a3c 	.word	0x08034a3c
+ 802a988:	08033670 	.word	0x08033670
 
 0802a98c <lfs_file_seek>:
 #endif
@@ -65989,9 +65989,9 @@ lfs_soff_t lfs_file_seek(lfs_t *lfs, lfs_file_t *file,
  802a9da:	3718      	adds	r7, #24
  802a9dc:	46bd      	mov	sp, r7
  802a9de:	bd80      	pop	{r7, pc}
- 802a9e0:	08033f24 	.word	0x08033f24
- 802a9e4:	08034a48 	.word	0x08034a48
- 802a9e8:	0803366c 	.word	0x0803366c
+ 802a9e0:	08033f28 	.word	0x08033f28
+ 802a9e4:	08034a4c 	.word	0x08034a4c
+ 802a9e8:	08033670 	.word	0x08033670
 
 0802a9ec <lfs_mkdir>:
     LFS_UNLOCK(lfs->cfg);
@@ -66090,9 +66090,9 @@ int lfs_dir_open(lfs_t *lfs, lfs_dir_t *dir, const char *path) {
  802aa6a:	46bd      	mov	sp, r7
  802aa6c:	bd80      	pop	{r7, pc}
  802aa6e:	bf00      	nop
- 802aa70:	08033f5c 	.word	0x08033f5c
- 802aa74:	08034a58 	.word	0x08034a58
- 802aa78:	0803366c 	.word	0x0803366c
+ 802aa70:	08033f60 	.word	0x08033f60
+ 802aa74:	08034a5c 	.word	0x08034a5c
+ 802aa78:	08033670 	.word	0x08033670
 
 0802aa7c <lfs_dir_close>:
 
@@ -66334,9 +66334,9 @@ int block_device_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t o
  802abca:	3710      	adds	r7, #16
  802abcc:	46bd      	mov	sp, r7
  802abce:	bd80      	pop	{r7, pc}
- 802abd0:	08033f94 	.word	0x08033f94
- 802abd4:	08034a68 	.word	0x08034a68
- 802abd8:	08033fac 	.word	0x08033fac
+ 802abd0:	08033f98 	.word	0x08033f98
+ 802abd4:	08034a6c 	.word	0x08034a6c
+ 802abd8:	08033fb0 	.word	0x08033fb0
 
 0802abdc <block_device_erase>:
 
@@ -66374,9 +66374,9 @@ int block_device_erase(const struct lfs_config *c, lfs_block_t block){
  802ac12:	46bd      	mov	sp, r7
  802ac14:	bd80      	pop	{r7, pc}
  802ac16:	bf00      	nop
- 802ac18:	08033f94 	.word	0x08033f94
- 802ac1c:	08034a7c 	.word	0x08034a7c
- 802ac20:	08033fac 	.word	0x08033fac
+ 802ac18:	08033f98 	.word	0x08033f98
+ 802ac1c:	08034a80 	.word	0x08034a80
+ 802ac20:	08033fb0 	.word	0x08033fb0
 
 0802ac24 <block_device_prog>:
 
@@ -66420,9 +66420,9 @@ int block_device_prog(const struct lfs_config *c, lfs_block_t block, lfs_off_t o
  802ac66:	3710      	adds	r7, #16
  802ac68:	46bd      	mov	sp, r7
  802ac6a:	bd80      	pop	{r7, pc}
- 802ac6c:	08033f94 	.word	0x08033f94
- 802ac70:	08034a90 	.word	0x08034a90
- 802ac74:	08033fac 	.word	0x08033fac
+ 802ac6c:	08033f98 	.word	0x08033f98
+ 802ac70:	08034a94 	.word	0x08034a94
+ 802ac74:	08033fb0 	.word	0x08033fb0
 
 0802ac78 <block_device_sync>:
 
@@ -66518,7 +66518,7 @@ uint32_t lfs_crc(uint32_t crc, const void *buffer, size_t size) {
  802ad00:	f85d 7b04 	ldr.w	r7, [sp], #4
  802ad04:	4770      	bx	lr
  802ad06:	bf00      	nop
- 802ad08:	08034aa4 	.word	0x08034aa4
+ 802ad08:	08034aa8 	.word	0x08034aa8
 
 0802ad0c <spi_fs_init_mutex>:
 //int (* lfs_unlock)(const struct lfs_config *c);
@@ -67242,11 +67242,11 @@ void remove_recursively_files_and_directories(const char *path, uint8_t deep) {
  802b1b2:	bd80      	pop	{r7, pc}
  802b1b4:	2000d79c 	.word	0x2000d79c
  802b1b8:	2000d6d0 	.word	0x2000d6d0
- 802b1bc:	08033fe4 	.word	0x08033fe4
- 802b1c0:	08033fe8 	.word	0x08033fe8
- 802b1c4:	08033fec 	.word	0x08033fec
- 802b1c8:	08033ffc 	.word	0x08033ffc
- 802b1cc:	08034004 	.word	0x08034004
+ 802b1bc:	08033fe8 	.word	0x08033fe8
+ 802b1c0:	08033fec 	.word	0x08033fec
+ 802b1c4:	08033ff0 	.word	0x08033ff0
+ 802b1c8:	08034000 	.word	0x08034000
+ 802b1cc:	08034008 	.word	0x08034008
 
 0802b1d0 <spi_fs_remove_recurcuve_in>:
 
@@ -67705,7 +67705,7 @@ int mbedtls_base64_decode( unsigned char *dst, size_t dlen, size_t *olen,
  802b474:	46bd      	mov	sp, r7
  802b476:	f85d 7b04 	ldr.w	r7, [sp], #4
  802b47a:	4770      	bx	lr
- 802b47c:	08034ae4 	.word	0x08034ae4
+ 802b47c:	08034ae8 	.word	0x08034ae8
 
 0802b480 <mbedtls_md5_init>:
     (b)[(i) + 3] = (unsigned char) ( ( (n) >> 24 ) & 0xFF );    \
@@ -70030,9 +70030,9 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802c5b4:	e7f3      	b.n	802c59e <__assert_func+0x12>
  802c5b6:	bf00      	nop
  802c5b8:	20000188 	.word	0x20000188
- 802c5bc:	08034b64 	.word	0x08034b64
- 802c5c0:	08034b71 	.word	0x08034b71
- 802c5c4:	08034b9f 	.word	0x08034b9f
+ 802c5bc:	08034b68 	.word	0x08034b68
+ 802c5c0:	08034b75 	.word	0x08034b75
+ 802c5c4:	08034ba3 	.word	0x08034ba3
 
 0802c5c8 <_calloc_r>:
  802c5c8:	b537      	push	{r0, r1, r2, r4, r5, lr}
@@ -70648,11 +70648,11 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802cb80:	e7ee      	b.n	802cb60 <_printf_float+0x2b4>
  802cb82:	bf00      	nop
  802cb84:	7fefffff 	.word	0x7fefffff
- 802cb88:	08034ba0 	.word	0x08034ba0
- 802cb8c:	08034ba4 	.word	0x08034ba4
- 802cb90:	08034ba8 	.word	0x08034ba8
- 802cb94:	08034bac 	.word	0x08034bac
- 802cb98:	08034f90 	.word	0x08034f90
+ 802cb88:	08034ba4 	.word	0x08034ba4
+ 802cb8c:	08034ba8 	.word	0x08034ba8
+ 802cb90:	08034bac 	.word	0x08034bac
+ 802cb94:	08034bb0 	.word	0x08034bb0
+ 802cb98:	08034f98 	.word	0x08034f98
  802cb9c:	9a0a      	ldr	r2, [sp, #40]	; 0x28
  802cb9e:	6da3      	ldr	r3, [r4, #88]	; 0x58
  802cba0:	429a      	cmp	r2, r3
@@ -71139,8 +71139,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802d028:	f104 0619 	add.w	r6, r4, #25
  802d02c:	e7f5      	b.n	802d01a <_printf_i+0x226>
  802d02e:	bf00      	nop
- 802d030:	08034bb0 	.word	0x08034bb0
- 802d034:	08034bc1 	.word	0x08034bc1
+ 802d030:	08034bb4 	.word	0x08034bb4
+ 802d034:	08034bc5 	.word	0x08034bc5
 
 0802d038 <_scanf_float>:
  802d038:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -71534,8 +71534,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802d44a:	2500      	movs	r5, #0
  802d44c:	e635      	b.n	802d0ba <_scanf_float+0x82>
  802d44e:	bf00      	nop
- 802d450:	08034bd2 	.word	0x08034bd2
- 802d454:	08034b9f 	.word	0x08034b9f
+ 802d450:	08034bd6 	.word	0x08034bd6
+ 802d454:	08034ba3 	.word	0x08034ba3
 
 0802d458 <std>:
  802d458:	2300      	movs	r3, #0
@@ -72240,8 +72240,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802da7c:	e8bd 4070 	ldmia.w	sp!, {r4, r5, r6, lr}
  802da80:	f000 b806 	b.w	802da90 <__strtok_r>
  802da84:	20000188 	.word	0x20000188
- 802da88:	08034bd7 	.word	0x08034bd7
- 802da8c:	08034bee 	.word	0x08034bee
+ 802da88:	08034bdb 	.word	0x08034bdb
+ 802da8c:	08034bf2 	.word	0x08034bf2
 
 0802da90 <__strtok_r>:
  802da90:	b5f0      	push	{r4, r5, r6, r7, lr}
@@ -72501,10 +72501,10 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802dcaa:	4798      	blx	r3
  802dcac:	3601      	adds	r6, #1
  802dcae:	e7f2      	b.n	802dc96 <__libc_init_array+0x1e>
- 802dcb0:	08035008 	.word	0x08035008
- 802dcb4:	08035008 	.word	0x08035008
- 802dcb8:	08035008 	.word	0x08035008
- 802dcbc:	0803500c 	.word	0x0803500c
+ 802dcb0:	08035010 	.word	0x08035010
+ 802dcb4:	08035010 	.word	0x08035010
+ 802dcb8:	08035010 	.word	0x08035010
+ 802dcbc:	08035014 	.word	0x08035014
 
 0802dcc0 <__retarget_lock_init_recursive>:
  802dcc0:	4770      	bx	lr
@@ -72940,15 +72940,15 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802e0fc:	3fc68a28 	.word	0x3fc68a28
  802e100:	509f79fb 	.word	0x509f79fb
  802e104:	3fd34413 	.word	0x3fd34413
- 802e108:	08034bd7 	.word	0x08034bd7
- 802e10c:	08034c55 	.word	0x08034c55
+ 802e108:	08034bdb 	.word	0x08034bdb
+ 802e10c:	08034c59 	.word	0x08034c59
  802e110:	7ff00000 	.word	0x7ff00000
- 802e114:	08034c51 	.word	0x08034c51
- 802e118:	08034c48 	.word	0x08034c48
- 802e11c:	08034f91 	.word	0x08034f91
+ 802e114:	08034c55 	.word	0x08034c55
+ 802e118:	08034c4c 	.word	0x08034c4c
+ 802e11c:	08034f99 	.word	0x08034f99
  802e120:	3ff80000 	.word	0x3ff80000
- 802e124:	08034d40 	.word	0x08034d40
- 802e128:	08034cad 	.word	0x08034cad
+ 802e124:	08034d48 	.word	0x08034d48
+ 802e128:	08034cb1 	.word	0x08034cb1
  802e12c:	2301      	movs	r3, #1
  802e12e:	9309      	str	r3, [sp, #36]	; 0x24
  802e130:	e7d7      	b.n	802e0e2 <_dtoa_r+0x2c2>
@@ -73248,8 +73248,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802e456:	4689      	mov	r9, r1
  802e458:	e7bd      	b.n	802e3d6 <_dtoa_r+0x5b6>
  802e45a:	bf00      	nop
- 802e45c:	08034d40 	.word	0x08034d40
- 802e460:	08034d18 	.word	0x08034d18
+ 802e45c:	08034d48 	.word	0x08034d48
+ 802e460:	08034d20 	.word	0x08034d20
  802e464:	3ff00000 	.word	0x3ff00000
  802e468:	40240000 	.word	0x40240000
  802e46c:	401c0000 	.word	0x401c0000
@@ -73845,9 +73845,9 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802e9f0:	f73f aeb1 	bgt.w	802e756 <_dtoa_r+0x936>
  802e9f4:	e7b0      	b.n	802e958 <_dtoa_r+0xb38>
  802e9f6:	bf00      	nop
- 802e9f8:	08034cad 	.word	0x08034cad
- 802e9fc:	08034f90 	.word	0x08034f90
- 802ea00:	08034c48 	.word	0x08034c48
+ 802e9f8:	08034cb1 	.word	0x08034cb1
+ 802e9fc:	08034f98 	.word	0x08034f98
+ 802ea00:	08034c4c 	.word	0x08034c4c
 
 0802ea04 <_free_r>:
  802ea04:	b537      	push	{r0, r1, r2, r4, r5, lr}
@@ -73972,8 +73972,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802eb0c:	e9c0 3303 	strd	r3, r3, [r0, #12]
  802eb10:	e7f7      	b.n	802eb02 <_Balloc+0x66>
  802eb12:	bf00      	nop
- 802eb14:	08034bd7 	.word	0x08034bd7
- 802eb18:	08034cbe 	.word	0x08034cbe
+ 802eb14:	08034bdb 	.word	0x08034bdb
+ 802eb18:	08034cc2 	.word	0x08034cc2
 
 0802eb1c <_Bfree>:
  802eb1c:	b570      	push	{r4, r5, r6, lr}
@@ -74001,8 +74001,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802eb50:	6021      	str	r1, [r4, #0]
  802eb52:	f843 4022 	str.w	r4, [r3, r2, lsl #2]
  802eb56:	bd70      	pop	{r4, r5, r6, pc}
- 802eb58:	08034bd7 	.word	0x08034bd7
- 802eb5c:	08034cbe 	.word	0x08034cbe
+ 802eb58:	08034bdb 	.word	0x08034bdb
+ 802eb5c:	08034cc2 	.word	0x08034cc2
 
 0802eb60 <__multadd>:
  802eb60:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
@@ -74056,8 +74056,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802ebdc:	6125      	str	r5, [r4, #16]
  802ebde:	4620      	mov	r0, r4
  802ebe0:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
- 802ebe4:	08034cad 	.word	0x08034cad
- 802ebe8:	08034cbe 	.word	0x08034cbe
+ 802ebe4:	08034cb1 	.word	0x08034cb1
+ 802ebe8:	08034cc2 	.word	0x08034cc2
 
 0802ebec <__s2b>:
  802ebec:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -74118,8 +74118,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802ec70:	f7ff ff76 	bl	802eb60 <__multadd>
  802ec74:	e7ee      	b.n	802ec54 <__s2b+0x68>
  802ec76:	bf00      	nop
- 802ec78:	08034cad 	.word	0x08034cad
- 802ec7c:	08034cbe 	.word	0x08034cbe
+ 802ec78:	08034cb1 	.word	0x08034cb1
+ 802ec7c:	08034cc2 	.word	0x08034cc2
 
 0802ec80 <__hi0bits>:
  802ec80:	0c03      	lsrs	r3, r0, #16
@@ -74212,8 +74212,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802ed3a:	6103      	str	r3, [r0, #16]
  802ed3c:	bd10      	pop	{r4, pc}
  802ed3e:	bf00      	nop
- 802ed40:	08034cad 	.word	0x08034cad
- 802ed44:	08034cbe 	.word	0x08034cbe
+ 802ed40:	08034cb1 	.word	0x08034cb1
+ 802ed44:	08034cc2 	.word	0x08034cc2
 
 0802ed48 <__multiply>:
  802ed48:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -74332,8 +74332,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802ee8e:	e799      	b.n	802edc4 <__multiply+0x7c>
  802ee90:	3e01      	subs	r6, #1
  802ee92:	e79b      	b.n	802edcc <__multiply+0x84>
- 802ee94:	08034cad 	.word	0x08034cad
- 802ee98:	08034cbe 	.word	0x08034cbe
+ 802ee94:	08034cb1 	.word	0x08034cb1
+ 802ee98:	08034cc2 	.word	0x08034cc2
 
 0802ee9c <__pow5mult>:
  802ee9c:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -74401,9 +74401,9 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802ef3c:	4638      	mov	r0, r7
  802ef3e:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
  802ef42:	bf00      	nop
- 802ef44:	08034e08 	.word	0x08034e08
- 802ef48:	08034bd7 	.word	0x08034bd7
- 802ef4c:	08034cbe 	.word	0x08034cbe
+ 802ef44:	08034e10 	.word	0x08034e10
+ 802ef48:	08034bdb 	.word	0x08034bdb
+ 802ef4c:	08034cc2 	.word	0x08034cc2
 
 0802ef50 <__lshift>:
  802ef50:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -74482,8 +74482,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802f01a:	d8f9      	bhi.n	802f010 <__lshift+0xc0>
  802f01c:	e7ea      	b.n	802eff4 <__lshift+0xa4>
  802f01e:	bf00      	nop
- 802f020:	08034cad 	.word	0x08034cad
- 802f024:	08034cbe 	.word	0x08034cbe
+ 802f020:	08034cb1 	.word	0x08034cb1
+ 802f024:	08034cc2 	.word	0x08034cc2
 
 0802f028 <__mcmp>:
  802f028:	b530      	push	{r4, r5, lr}
@@ -74609,8 +74609,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802f166:	3f01      	subs	r7, #1
  802f168:	e7ea      	b.n	802f140 <__mdiff+0xe0>
  802f16a:	bf00      	nop
- 802f16c:	08034cad 	.word	0x08034cad
- 802f170:	08034cbe 	.word	0x08034cbe
+ 802f16c:	08034cb1 	.word	0x08034cb1
+ 802f170:	08034cc2 	.word	0x08034cc2
 
 0802f174 <__ulp>:
  802f174:	b082      	sub	sp, #8
@@ -74762,8 +74762,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802f2f8:	ebc0 1042 	rsb	r0, r0, r2, lsl #5
  802f2fc:	e7e2      	b.n	802f2c4 <__d2b+0x70>
  802f2fe:	bf00      	nop
- 802f300:	08034cad 	.word	0x08034cad
- 802f304:	08034cbe 	.word	0x08034cbe
+ 802f300:	08034cb1 	.word	0x08034cb1
+ 802f304:	08034cc2 	.word	0x08034cc2
 
 0802f308 <__ratio>:
  802f308:	e92d 4ff7 	stmdb	sp!, {r0, r1, r2, r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -75159,8 +75159,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802f6b8:	e788      	b.n	802f5cc <_strtod_l+0x19c>
  802f6ba:	f04f 0c01 	mov.w	ip, #1
  802f6be:	e7f8      	b.n	802f6b2 <_strtod_l+0x282>
- 802f6c0:	08034e18 	.word	0x08034e18
- 802f6c4:	08034e14 	.word	0x08034e14
+ 802f6c0:	08034e20 	.word	0x08034e20
+ 802f6c4:	08034e1c 	.word	0x08034e1c
  802f6c8:	7ff00000 	.word	0x7ff00000
  802f6cc:	9a15      	ldr	r2, [sp, #84]	; 0x54
  802f6ce:	1c51      	adds	r1, r2, #1
@@ -75452,13 +75452,13 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802f9a0:	f04f 0900 	mov.w	r9, #0
  802f9a4:	6023      	str	r3, [r4, #0]
  802f9a6:	e78d      	b.n	802f8c4 <_strtod_l+0x494>
- 802f9a8:	08034bad 	.word	0x08034bad
- 802f9ac:	08034e2c 	.word	0x08034e2c
- 802f9b0:	08034ba5 	.word	0x08034ba5
- 802f9b4:	08034c4b 	.word	0x08034c4b
- 802f9b8:	08034b9f 	.word	0x08034b9f
- 802f9bc:	08034d40 	.word	0x08034d40
- 802f9c0:	08034d18 	.word	0x08034d18
+ 802f9a8:	08034bb1 	.word	0x08034bb1
+ 802f9ac:	08034e34 	.word	0x08034e34
+ 802f9b0:	08034ba9 	.word	0x08034ba9
+ 802f9b4:	08034c4f 	.word	0x08034c4f
+ 802f9b8:	08034ba3 	.word	0x08034ba3
+ 802f9bc:	08034d48 	.word	0x08034d48
+ 802f9c0:	08034d20 	.word	0x08034d20
  802f9c4:	7ff00000 	.word	0x7ff00000
  802f9c8:	7ca00000 	.word	0x7ca00000
  802f9cc:	7fefffff 	.word	0x7fefffff
@@ -75823,7 +75823,7 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  802fd70:	39500000 	.word	0x39500000
  802fd74:	000fffff 	.word	0x000fffff
  802fd78:	7fefffff 	.word	0x7fefffff
- 802fd7c:	08034e40 	.word	0x08034e40
+ 802fd7c:	08034e48 	.word	0x08034e48
  802fd80:	4659      	mov	r1, fp
  802fd82:	4628      	mov	r0, r5
  802fd84:	f7ff fac0 	bl	802f308 <__ratio>
@@ -76166,7 +76166,7 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  8030116:	230a      	movs	r3, #10
  8030118:	e7ab      	b.n	8030072 <_strtol_l.constprop.0+0x56>
  803011a:	bf00      	nop
- 803011c:	08034e69 	.word	0x08034e69
+ 803011c:	08034e71 	.word	0x08034e71
 
 08030120 <_strtol_r>:
  8030120:	f7ff bf7c 	b.w	803001c <_strtol_l.constprop.0>
@@ -76447,11 +76447,11 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  80303b8:	4638      	mov	r0, r7
  80303ba:	f7fc fd1b 	bl	802cdf4 <_printf_i>
  80303be:	e7eb      	b.n	8030398 <_svfiprintf_r+0x1c0>
- 80303c0:	08034f69 	.word	0x08034f69
- 80303c4:	08034f73 	.word	0x08034f73
+ 80303c0:	08034f71 	.word	0x08034f71
+ 80303c4:	08034f7b 	.word	0x08034f7b
  80303c8:	0802c8ad 	.word	0x0802c8ad
  80303cc:	08030125 	.word	0x08030125
- 80303d0:	08034f6f 	.word	0x08034f6f
+ 80303d0:	08034f77 	.word	0x08034f77
 
 080303d4 <_sungetc_r>:
  80303d4:	b538      	push	{r3, r4, r5, lr}
@@ -76816,8 +76816,8 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  8030732:	bf00      	nop
  8030734:	080303d5 	.word	0x080303d5
  8030738:	0803044f 	.word	0x0803044f
- 803073c:	08034e69 	.word	0x08034e69
- 8030740:	08034f6f 	.word	0x08034f6f
+ 803073c:	08034e71 	.word	0x08034e71
+ 8030740:	08034f77 	.word	0x08034f77
  8030744:	4b0b      	ldr	r3, [pc, #44]	; (8030774 <__ssvfiscanf_r+0x2ec>)
  8030746:	2b00      	cmp	r3, #0
  8030748:	f43f aec5 	beq.w	80304d6 <__ssvfiscanf_r+0x4e>
@@ -77104,11 +77104,11 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  80309e4:	4630      	mov	r0, r6
  80309e6:	f7fc fa05 	bl	802cdf4 <_printf_i>
  80309ea:	e7e4      	b.n	80309b6 <_vfiprintf_r+0x1ea>
- 80309ec:	08034f69 	.word	0x08034f69
- 80309f0:	08034f73 	.word	0x08034f73
+ 80309ec:	08034f71 	.word	0x08034f71
+ 80309f0:	08034f7b 	.word	0x08034f7b
  80309f4:	0802c8ad 	.word	0x0802c8ad
  80309f8:	080307a7 	.word	0x080307a7
- 80309fc:	08034f6f 	.word	0x08034f6f
+ 80309fc:	08034f77 	.word	0x08034f77
 
 08030a00 <_scanf_chars>:
  8030a00:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -77191,7 +77191,7 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  8030aa8:	2000      	movs	r0, #0
  8030aaa:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
  8030aae:	bf00      	nop
- 8030ab0:	08034e69 	.word	0x08034e69
+ 8030ab0:	08034e71 	.word	0x08034e71
 
 08030ab4 <_scanf_i>:
  8030ab4:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -77385,10 +77385,10 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  8030c86:	2001      	movs	r0, #1
  8030c88:	e7f2      	b.n	8030c70 <_scanf_i+0x1bc>
  8030c8a:	bf00      	nop
- 8030c8c:	08034010 	.word	0x08034010
+ 8030c8c:	08034014 	.word	0x08034014
  8030c90:	08031895 	.word	0x08031895
  8030c94:	08030121 	.word	0x08030121
- 8030c98:	08034f8a 	.word	0x08034f8a
+ 8030c98:	08034f92 	.word	0x08034f92
 
 08030c9c <__sflush_r>:
  8030c9c:	898a      	ldrh	r2, [r1, #12]
@@ -78213,9 +78213,9 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  8031422:	2b00      	cmp	r3, #0
  8031424:	d1dc      	bne.n	80313e0 <__gethex+0x290>
  8031426:	e7ed      	b.n	8031404 <__gethex+0x2b4>
- 8031428:	08034e14 	.word	0x08034e14
- 803142c:	08034cad 	.word	0x08034cad
- 8031430:	08034f9d 	.word	0x08034f9d
+ 8031428:	08034e1c 	.word	0x08034e1c
+ 803142c:	08034cb1 	.word	0x08034cb1
+ 8031430:	08034fa5 	.word	0x08034fa5
  8031434:	f106 38ff 	add.w	r8, r6, #4294967295
  8031438:	f1bb 0f00 	cmp.w	fp, #0
  803143c:	d133      	bne.n	80314a6 <__gethex+0x356>
@@ -78355,7 +78355,7 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  80315a2:	dbe6      	blt.n	8031572 <__gethex+0x422>
  80315a4:	e7ee      	b.n	8031584 <__gethex+0x434>
  80315a6:	bf00      	nop
- 80315a8:	08034cad 	.word	0x08034cad
+ 80315a8:	08034cb1 	.word	0x08034cb1
 
 080315ac <L_shift>:
  80315ac:	f1c2 0208 	rsb	r2, r2, #8
@@ -78674,7 +78674,7 @@ void mbedtls_platform_zeroize( void *buf, size_t len )
  803188a:	230a      	movs	r3, #10
  803188c:	e7af      	b.n	80317ee <_strtoul_l.constprop.0+0x3e>
  803188e:	bf00      	nop
- 8031890:	08034e69 	.word	0x08034e69
+ 8031890:	08034e71 	.word	0x08034e71
 
 08031894 <_strtoul_r>:
  8031894:	f7ff bf8c 	b.w	80317b0 <_strtoul_l.constprop.0>

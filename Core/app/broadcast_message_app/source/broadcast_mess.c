@@ -12,7 +12,7 @@
 //#include "data_types.h"
 
 
-#define mess_template	"{\"device_name\": \"%s\", \"model_name\": \"%s\", \"mac\": \"%02X%02X%02X%02X%02X%02X\", \"ip\": \"%u.%u.%u.%u\", \"netmask\": \"%u.%u.%u.%u\", \"gw\": \"%u.%u.%u.%u\", \"dns\": \"%u.%u.%u.%u\", \"firmware\": \"%s\"}"
+#define mess_template	"{\"device_name\": \"%s\", \"model_name\": \"%s\", \"mac\": \"%02X:%02X:%02X:%02X:%02X:%02X\", \"ip\": \"%u.%u.%u.%u\", \"netmask\": \"%u.%u.%u.%u\", \"gw\": \"%u.%u.%u.%u\", \"dns\": \"%u.%u.%u.%u\", \"firmware\": \"%s\"}"
 
 Ethernet_info_struct	eth_info;
 
