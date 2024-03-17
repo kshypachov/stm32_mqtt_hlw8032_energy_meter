@@ -21,6 +21,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "main.h"
+#include "mqtt_app.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -55,6 +56,7 @@
 /* Hook prototypes */
 void configureTimerForRunTimeStats(void);
 unsigned long getRunTimeCounterValue(void);
+void vApplicationTickHook(void);
 
 /* USER CODE BEGIN 1 */
 /* Functions needed when configGENERATE_RUN_TIME_STATS is on */
@@ -68,6 +70,18 @@ __weak unsigned long getRunTimeCounterValue(void)
 return 0;
 }
 /* USER CODE END 1 */
+
+/* USER CODE BEGIN 3 */
+void vApplicationTickHook( void )
+{
+   /* This function will be called by each tick interrupt if
+   configUSE_TICK_HOOK is set to 1 in FreeRTOSConfig.h. User code can be
+   added here, but the tick hook is called from an interrupt context, so
+   code must not attempt to block, and only the interrupt safe FreeRTOS API
+   functions can be used (those that end in FromISR()). */
+	mqtt_1ms_tik();
+}
+/* USER CODE END 3 */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */

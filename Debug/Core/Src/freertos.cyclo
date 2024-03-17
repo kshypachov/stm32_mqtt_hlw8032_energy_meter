@@ -1,2 +1,3 @@
-../Core/Src/freertos.c:61:13:configureTimerForRunTimeStats	1
-../Core/Src/freertos.c:66:22:getRunTimeCounterValue	1
+../Core/Src/freertos.c:63:13:configureTimerForRunTimeStats	1
+../Core/Src/freertos.c:68:22:getRunTimeCounterValue	1
+../Core/Src/freertos.c:75:6:vApplicationTickHook	1

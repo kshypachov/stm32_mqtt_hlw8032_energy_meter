@@ -38,7 +38,21 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ ../Core/app/mqtt_app/include/mqtt_app.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Drivers/ioLibrary/Internet/MQTT/MQTTClient.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPacket.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTConnect.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPublish.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTSubscribe.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTUnsubscribe.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTFormat.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/StackTrace.h \
+ ../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPacket.h \
+ ../Drivers/ioLibrary/Internet/MQTT/mqtt_interface.h \
+ ../Core/Inc/data_types.h ../Core/Inc/definition.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -80,3 +94,18 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+../Core/app/mqtt_app/include/mqtt_app.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+../Drivers/ioLibrary/Internet/MQTT/MQTTClient.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPacket.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTConnect.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPublish.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTSubscribe.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTUnsubscribe.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTFormat.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/StackTrace.h:
+../Drivers/ioLibrary/Internet/MQTT/./MQTTPacket/src/MQTTPacket.h:
+../Drivers/ioLibrary/Internet/MQTT/mqtt_interface.h:
+../Core/Inc/data_types.h:
+../Core/Inc/definition.h:

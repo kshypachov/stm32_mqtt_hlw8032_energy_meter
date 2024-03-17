@@ -86,9 +86,9 @@ void param_from_http_to_Q(char * http_resp, const uint8_t parameters_type){
 
 			memset(&MQTT_params, 0, sizeof(MQTT_params));
 
-			if (strstr(get_http_param_value( http_resp, "mqtt"), "1")){
+			if (strstr(get_http_param_value( http_resp, "mqtt"), "1") || strstr(get_http_param_value( http_resp, "mqtt"), "true")){
 				MQTT_params.enable = 1;
-			}else if (strstr(get_http_param_value( http_resp, "mqtt"), "0")) {
+			}else if (strstr(get_http_param_value( http_resp, "mqtt"), "0") || strstr(get_http_param_value( http_resp, "mqtt"), "false")) {
 				MQTT_params.enable = 0;
 			}
 
@@ -113,7 +113,7 @@ void param_from_http_to_Q(char * http_resp, const uint8_t parameters_type){
 			buf = (uint8_t *) get_http_param_value( http_resp, "port");
 			if (buf || (strlen(buf) <= 5) ) {						// 5 ��������, ������������ ����� ������ �����
 				sscanf(buf, "%d", &port);
-				if ((port > 0) && (port < 65535)){
+				if ((port > 0) && (port < 65534)){
 					MQTT_params.port = port;
 				}
 			}

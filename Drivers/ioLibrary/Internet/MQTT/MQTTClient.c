@@ -15,6 +15,9 @@
  *******************************************************************************/
 #include "MQTTClient.h"
 
+#include "main.h"
+#include "cmsis_os.h" // this 2 include is needed only for taskYELD() function
+
 static void NewMessageData(MessageData* md, MQTTString* aTopicName, MQTTMessage* aMessage) {
     md->topicName = aTopicName;
     md->message = aMessage;
@@ -341,6 +344,7 @@ int waitfor(MQTTClient* c, int packet_type, Timer* timer)
     {
         if (TimerIsExpired(timer))
             break; // we timed out
+        taskYIELD(); //This function is needed to return management to OS during waiting time.
     }
     while ((rc = cycle(c, timer)) != packet_type);
 

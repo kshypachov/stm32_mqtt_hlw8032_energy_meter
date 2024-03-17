@@ -288,6 +288,10 @@ void PowerON_HLW8032(){
 void PowerOFF_HLW8032(){
 	HAL_GPIO_WritePin(GPIOA, enable_power_isolator_Pin,GPIO_PIN_SET);
 }
+
+//void vApplicationTickHook(void){
+
+//}
 /* USER CODE END 0 */
 
 /**
@@ -1152,6 +1156,7 @@ void httpServ(void *argument)
 			  httpServer_run(i); // HTTP Server handler
 			  SocketMutexRelease();
 			  //osDelay(delay0_1s);
+			  taskYIELD();
 
 		  }
 	  }else{
@@ -1206,6 +1211,11 @@ void vMQTT_Task(void *argument)
 
 		generate_status_topik(topik_name, 0);
 		while (1){
+			xQueuePeek(mqttQHandle, &MQTT_cred, 0);
+			if (MQTT_cred.enable == 0){
+				mqtt_disconnect();
+				break;
+			}
 			xQueuePeek(PowerDataQHandle, &PowerData, 0);
 			generate_key_value_JSON(topik_payload, dev_class_energy, PowerData.KWatt_h);
 			if (send_data_to_topik(topik_name, topik_payload) != 0 ) break;

@@ -18,12 +18,6 @@
 #include "definition.h"
 
 
-#define SUBSCR_TOPIK_BUF_LEN		64
-#define COMMAND_TIMEOUT_MS			1000
-#define TOPIK_MAX_LEN				128
-#define	SEND_PAYLOD_LEN				600
-
-
 #ifndef MQTT_CLIENT_SOCKET
 	#error "please define MQTT_CLIENT_SOCKET - number  "
 #endif
@@ -335,6 +329,10 @@ void mqtt_message_resieve(MessageData* data){
 	}
 }
 
+void mqtt_disconnect(void){
 
+	MQTTDisconnect(&MQTT_Client);
+
+}
 
 

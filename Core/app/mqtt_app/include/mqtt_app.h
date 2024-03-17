@@ -1,7 +1,7 @@
 /*
  * mqtt_app.h
  *
- *  Created on: 27 апр. 2023 г.
+ *  Created on: 27 пїЅпїЅпїЅ. 2023 пїЅ.
  *      Author: kir
  */
 
@@ -26,5 +26,6 @@ int8_t mqtt_subscrabe_on_topik(void);
 int8_t send_data_to_topik(const char* topik, char* payload);
 int8_t mqtt_handler(void);
 void mqtt_1ms_tik(void);
+void mqtt_disconnect(void);
 
 #endif /* APP_FILES_MQTT_APP_INCLUDE_MQTT_APP_H_ */
