@@ -126,9 +126,9 @@ void param_from_http_to_Q(char * http_resp, const uint8_t parameters_type){
 
 		case ModBusTCP:
 			memset(&ModBusTCP_parameters, 0, sizeof(ModBusTCP_parameters));
-			if (strstr(get_http_param_value( http_resp, "mb_tcp"), "1")){
+			if (strstr(get_http_param_value( http_resp, "mb_tcp"), "1") || strstr(get_http_param_value( http_resp, "mb_tcp"), "true")){
 				ModBusTCP_parameters.enable = 1;
-			}else if (strstr(get_http_param_value( http_resp, "mb_tcp"), "0")) {
+			}else if (strstr(get_http_param_value( http_resp, "mb_tcp"), "0") || strstr(get_http_param_value( http_resp, "mb_tcp"), "false")) {
 				ModBusTCP_parameters.enable = 0;
 			}
 			ModBusTCP_parameters.save = 1;
