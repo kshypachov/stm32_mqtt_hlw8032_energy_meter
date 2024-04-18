@@ -1,5 +1,5 @@
 This firmware works with bootloader and start execution from 0x08010000.
-bootloader needed only for updating firmware from SPI Flash. You can use bootloader from my repository or write your oun bootloader. 
+bootloader needed only for updating firmware from SPI Flash. You can use bootloader from my repository or write your own bootloader. 
 
 This code writed for stm32f401ce and support Home Assistant via MQTT. You can connect module to HA without any another integrations, only MQTT and HA.
 Module provide some data parameters, readed from HLW8032
