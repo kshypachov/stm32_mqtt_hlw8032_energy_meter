@@ -136,10 +136,10 @@ void sFLASH_Reset(void){
 void sFLASH_Init(void){
 
     HAL_Delay(100);
-    W25_Reset();
+    sFLASH_Reset();
     HAL_Delay(100);
     HAL_Delay(100);
-    unsigned int id = W25_Read_ID();
+    //unsigned int id = W25_Read_ID();
 
 }
 
@@ -147,7 +147,8 @@ struct SPI_flash_info sFLASH_GetInfo(void){
 	uint32_t flash_id;
 
 //	HAL_Delay(100);
-	sFLASH_Reset();
+	//sFLASH_Reset();
+	sFLASH_Init();
 //	HAL_Delay(100);
 //	HAL_Delay(100);
 

@@ -790,7 +790,8 @@ void vSensorsTask(void *argument)
 			osThreadYield();
 		}
 	}
-	osThreadYield();
+	osThreadYield
+	();
     xQueuePeek(Curr_sensor_settingsHandle ,&PowerSett,0);
     if (PowerSett.resistance != old_resistance){
     	old_resistance = PowerSett.resistance;
@@ -828,6 +829,7 @@ void vRW_Settings_Tas(void *argument)
 
 
 	if (spi_fs_mount() < 0){
+		sFLASH_EraseBulk();
 		spi_fs_format();
 		spi_fs_mount();
 	}

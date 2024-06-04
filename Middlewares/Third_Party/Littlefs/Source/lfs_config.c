@@ -59,10 +59,10 @@ int io_fs_init(uint8_t * lfsReadBuff, uint8_t * lfsWriteBuff, uint8_t * lfslooka
 #endif
 
     cfg->block_cycles 	= FLASH_BLOCK_CYCLES;
-    cfg->name_max  		= LFS_NAME_MAX;
-    cfg->file_max		= LFS_FILE_MAX;
-    cfg->attr_max		= LFS_ATTR_MAX;
-    cfg->metadata_max	= flash_info.erase_size;
+//    cfg->name_max  		= LFS_NAME_MAX;
+//    cfg->file_max		= LFS_FILE_MAX;
+//    cfg->attr_max		= LFS_ATTR_MAX;
+//    cfg->metadata_max	= flash_info.erase_size;
 
     return 0;
 }

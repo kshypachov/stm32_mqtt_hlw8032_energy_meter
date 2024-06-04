@@ -1,12 +1,69 @@
-This firmware works with bootloader and start execution from 0x08010000.
-bootloader needed only for updating firmware from SPI Flash. You can use bootloader from my repository or write your oun bootloader. 
+# STM32F401CE Firmware for Home Assistant Integration
 
-This code writed for stm32f401ce and support Home Assistant via MQTT. You can connect module to HA without any another integrations, only MQTT and HA.
-Module provide some data parameters, readed from HLW8032
-1) Voltage
-2) Current
-3) Energy
-4) Power Factor
-5) Active Power
-And additionaly calculate Appatern Power (Voltage * Current)
-Module stor Energy data into Flash between reboot or poweroff. 
+## Overview
+
+This project contains firmware designed to work with the STM32F401CE microcontroller. The firmware starts execution from address `0x08010000` and works in conjunction with a bootloader. The bootloader is necessary for updating the firmware from SPI Flash. You can use the bootloader provided in my repository or create your own.
+
+## Features
+
+- **Home Assistant Integration via MQTT**: The module can be connected to Home Assistant (HA) using MQTT without requiring any additional integrations.
+- **Data Parameters**: The module provides several data parameters, read from the HLW8032 sensor:
+  - Voltage
+  - Current
+  - Energy
+  - Power Factor
+  - Active Power
+  - Apparent Power (calculated as Voltage * Current)
+- **Persistent Storage**: The module stores energy data into Flash memory between reboots or power-offs.
+
+## Getting Started
+
+### Prerequisites
+
+- STM32F401CE microcontroller
+- HLW8032 sensor
+- Home Assistant setup with MQTT integration
+- SPI Flash for firmware updates
+
+### Installation
+
+1. **Bootloader**: Ensure the bootloader is flashed at the correct location. You can use the provided bootloader from this repository or write your own.
+2. **Firmware**: Flash the firmware to address `0x08010000` on the STM32F401CE microcontroller.
+3. **Home Assistant Configuration**:
+   - Set up MQTT in Home Assistant.
+   - Configure the module to connect to your MQTT broker.
+
+### Usage
+
+Once the module is set up and connected to Home Assistant via MQTT, it will start sending the following data parameters:
+
+- **Voltage**
+- **Current**
+- **Energy**
+- **Power Factor**
+- **Active Power**
+- **Apparent Power**
+
+These values can be monitored and used in Home Assistant for various automations and monitoring tasks.
+
+## Repository Structure
+
+/bootloader # Bootloader source code
+/firmware # Firmware source code
+/docs # Documentation and additional resources
+README.md # Project documentation
+
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit pull requests with your improvements.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Contact
+
+For any questions or issues, please open an issue in this repository or contact me directly.
+
+Feel free to modify any part of this template to better suit your project's specific details and requirements.
