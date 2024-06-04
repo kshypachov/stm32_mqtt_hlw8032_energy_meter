@@ -46,12 +46,6 @@ Once the module is set up and connected to Home Assistant via MQTT, it will star
 
 These values can be monitored and used in Home Assistant for various automations and monitoring tasks.
 
-## Repository Structure
-
-/bootloader # Bootloader source code
-/firmware # Firmware source code
-/docs # Documentation and additional resources
-README.md # Project documentation
 
 
 ## Contributing
@@ -66,4 +60,3 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 For any questions or issues, please open an issue in this repository or contact me directly.
 
-Feel free to modify any part of this template to better suit your project's specific details and requirements.
